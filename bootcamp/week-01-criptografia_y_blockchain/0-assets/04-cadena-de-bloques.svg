@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 330" role="img" aria-label="Tres bloques encadenados. Cada bloque guarda el hash del bloque anterior y sus transacciones; su propio hash se calcula sobre ambos. Si alguien altera una transacción del bloque 1, su hash cambia, deja de coincidir con el hash anterior guardado en el bloque 2 y la cadena se rompe desde ahí.">
+  <title>Cadena de bloques y efecto de una alteración</title>
+  <rect width="880" height="330" fill="#0d1117"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#58a6ff"/></marker></defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <g fill="#161b22" stroke-width="2">
+      <rect x="20" y="40" width="240" height="170" rx="10" stroke="#627eea"/>
+      <rect x="320" y="40" width="240" height="170" rx="10" stroke="#f85149"/>
+      <rect x="620" y="40" width="240" height="170" rx="10" stroke="#f85149"/>
+    </g>
+    <g font-size="15" font-weight="700" fill="#f0f6fc">
+      <text x="36" y="68">Bloque 0</text><text x="336" y="68">Bloque 1</text><text x="636" y="68">Bloque 2</text>
+    </g>
+    <g font-size="13" fill="#8b949e">
+      <text x="36" y="96">hash anterior</text><text x="336" y="96">hash anterior</text><text x="636" y="96">hash anterior</text>
+      <text x="36" y="146">transacciones</text><text x="336" y="146">transacciones</text><text x="636" y="146">transacciones</text>
+      <text x="36" y="192">hash del bloque</text><text x="336" y="192">hash del bloque</text><text x="636" y="192">hash del bloque</text>
+    </g>
+    <g font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+      <text x="36" y="116" fill="#f0f6fc">0x0000…0000</text>
+      <text x="336" y="116" fill="#f0f6fc">0xb179…</text>
+      <text x="636" y="116" fill="#e3b341">0xed68… ≠ 0xa125…</text>
+      <text x="36" y="166" fill="#f0f6fc">Ana paga 5 a Luis</text>
+      <text x="336" y="166" fill="#f85149">Eva paga 9 a Raúl (era 2)</text>
+      <text x="636" y="166" fill="#f0f6fc">Luis paga 1 a Eva</text>
+      <text x="150" y="192" fill="#3fb950">0xb179…</text>
+      <text x="460" y="192" fill="#f85149">0xa125…</text>
+      <text x="760" y="192" fill="#f85149">inválido</text>
+    </g>
+    <g stroke="#58a6ff" stroke-width="2" marker-end="url(#a)">
+      <path d="M200,198 C 260,240 300,140 330,112" fill="none"/>
+      <path d="M510,198 C 570,240 600,140 630,112" fill="none" stroke="#f85149"/>
+    </g>
+    <text x="440" y="262" font-size="14" fill="#f0f6fc" text-anchor="middle">hash del bloque = keccak256(hash anterior + transacciones)</text>
+    <text x="440" y="290" font-size="14" fill="#f85149" text-anchor="middle">Alterar el bloque 1 cambia su hash: el bloque 2 ya no apunta a él y todo lo posterior queda inválido.</text>
+    <text x="440" y="314" font-size="13" fill="#8b949e" text-anchor="middle">Para que la mentira pase, habría que rehacer todos los bloques siguientes en la mayoría de los nodos.</text>
+  </g>
+</svg>

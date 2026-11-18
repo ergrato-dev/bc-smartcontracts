@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 300" role="img" aria-label="Derivación en un solo sentido: la clave privada de 32 bytes produce, con la curva secp256k1, la clave pública de 64 bytes; su hash keccak256 da 32 bytes y los últimos 20 son la dirección. Ninguna flecha se puede recorrer al revés.">
+  <title>De la clave privada a la dirección</title>
+  <rect width="880" height="300" fill="#0d1117"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#58a6ff"/></marker></defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <g fill="#161b22" stroke-width="2">
+      <rect x="20" y="70" width="180" height="110" rx="10" stroke="#f85149"/>
+      <rect x="250" y="70" width="180" height="110" rx="10" stroke="#627eea"/>
+      <rect x="480" y="70" width="180" height="110" rx="10" stroke="#627eea"/>
+      <rect x="710" y="70" width="150" height="110" rx="10" stroke="#3fb950"/>
+    </g>
+    <g text-anchor="middle">
+      <text x="110" y="102" font-size="15" font-weight="700" fill="#f0f6fc">Clave privada</text>
+      <text x="110" y="126" font-size="13" fill="#8b949e">32 bytes al azar</text>
+      <text x="110" y="160" font-size="13" fill="#f85149">secreta, nunca sale</text>
+      <text x="340" y="102" font-size="15" font-weight="700" fill="#f0f6fc">Clave pública</text>
+      <text x="340" y="126" font-size="13" fill="#8b949e">64 bytes</text>
+      <text x="340" y="160" font-size="13" fill="#3fb950">se puede compartir</text>
+      <text x="570" y="102" font-size="15" font-weight="700" fill="#f0f6fc">keccak256</text>
+      <text x="570" y="126" font-size="13" fill="#8b949e">32 bytes</text>
+      <text x="570" y="160" font-size="13" fill="#f0883e">se toman los últimos 20</text>
+      <text x="785" y="102" font-size="15" font-weight="700" fill="#f0f6fc">Dirección</text>
+      <text x="785" y="126" font-size="13" fill="#8b949e">20 bytes</text>
+      <text x="785" y="160" font-size="13" fill="#3fb950">tu "cuenta"</text>
+    </g>
+    <g stroke="#58a6ff" stroke-width="2" marker-end="url(#a)">
+      <line x1="202" y1="125" x2="246" y2="125"/><line x1="432" y1="125" x2="476" y2="125"/><line x1="662" y1="125" x2="706" y2="125"/>
+    </g>
+    <g font-size="12" fill="#58a6ff" text-anchor="middle">
+      <text x="225" y="60">secp256k1</text><text x="455" y="60">hash</text><text x="685" y="60">recortar</text>
+    </g>
+    <text x="440" y="230" font-size="14" fill="#e3b341" text-anchor="middle">Cada flecha va en un solo sentido: de la dirección no se llega a la clave pública,</text>
+    <text x="440" y="252" font-size="14" fill="#e3b341" text-anchor="middle">ni de la clave pública a la privada.</text>
+    <text x="440" y="282" font-size="12" fill="#8b949e" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">0xac09…ff80  →  0x8318…2aa5  →  0xc1ff…2266  →  0xf39F…2266</text>
+  </g>
+</svg>

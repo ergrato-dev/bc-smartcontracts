@@ -14,7 +14,7 @@ La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está p
 
 | Semana | Tema | Estado |
 |:--:|---|:--:|
-| 01 | Criptografía y blockchain | ⬜ |
+| [01](week-01-criptografia_y_blockchain/README.md) | [Criptografía y blockchain](week-01-criptografia_y_blockchain/README.md) | ✅ |
 | 02 | Ethereum: cuentas, transacciones y gas | ⬜ |
 | 03 | Primer contrato con Foundry | ⬜ |
 
