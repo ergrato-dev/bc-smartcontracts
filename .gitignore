@@ -1,0 +1,23 @@
+# Política anticopia: las soluciones nunca se suben.
+**/solution/
+
+# Foundry
+out/
+cache/
+broadcast/
+
+# Node y Python (fase 4)
+node_modules/
+dist/
+.venv/
+__pycache__/
+
+# Editores y sistema
+.idea/
+.vscode/
+.DS_Store
+
+# Secretos: claves, keystores y variables de entorno
+.env
+*.pem
+keystore/
