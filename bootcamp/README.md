@@ -23,7 +23,7 @@ La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está p
 | Semana | Tema | Estado |
 |:--:|---|:--:|
 | [04](week-04-tipos_y_funciones/README.md) | [Tipos y funciones](week-04-tipos_y_funciones/README.md) | ✅ |
-| 05 | Control de flujo y errores | ⬜ |
+| [05](week-05-control_y_errores/README.md) | [Control de flujo y errores](week-05-control_y_errores/README.md) | ✅ |
 | 06 | Estructuras de datos | ⬜ |
 | 07 | Eventos y ether | ⬜ |
 | 08 | Herencia, interfaces y librerías | ⬜ |

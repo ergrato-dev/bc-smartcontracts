@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" role="img" aria-label="Una transacción llama a register. Antes: count vale 3. La función escribe count igual a 4 y después comprueba una regla que falla y revierte. Resultado: count vuelve a valer 3, todos los cambios se deshacen, la transacción queda en el bloque con status 0 y quien la envió paga el gas gastado hasta el revert. Quien llama recibe los datos del error: selector y argumentos.">
+  <title>Qué deshace un revert</title>
+  <rect width="900" height="360" fill="#0d1117"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="36" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">Qué deshace un revert</text>
+
+    <rect x="20" y="64" width="250" height="160" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <text x="145" y="94" font-size="16" font-weight="700" fill="#58a6ff" text-anchor="middle">Antes</text>
+    <text x="145" y="140" font-size="15" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">count = 3</text>
+    <text x="145" y="180" font-size="13" fill="#8b949e" text-anchor="middle">estado guardado</text>
+
+    <rect x="325" y="64" width="250" height="160" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+    <text x="450" y="94" font-size="16" font-weight="700" fill="#e3b341" text-anchor="middle">Durante la llamada</text>
+    <text x="345" y="130" font-size="14" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">1. count = 4</text>
+    <text x="345" y="160" font-size="14" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">2. ¿regla? no</text>
+    <text x="345" y="190" font-size="14" fill="#f85149" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">3. revert Full(3)</text>
+
+    <rect x="630" y="64" width="250" height="160" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+    <text x="755" y="94" font-size="16" font-weight="700" fill="#f85149" text-anchor="middle">Después</text>
+    <text x="755" y="140" font-size="15" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">count = 3</text>
+    <text x="755" y="180" font-size="13" fill="#8b949e" text-anchor="middle">el paso 1 se deshace</text>
+
+    <line x1="272" y1="144" x2="321" y2="144" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="577" y1="144" x2="626" y2="144" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+
+    <rect x="20" y="250" width="420" height="90" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <text x="40" y="280" font-size="14" font-weight="700" fill="#f0f6fc">Lo que no se deshace</text>
+    <text x="40" y="306" font-size="13" fill="#8b949e">La transacción entra en el bloque con status 0</text>
+    <text x="40" y="326" font-size="13" fill="#8b949e">y paga el gas gastado hasta el revert</text>
+
+    <rect x="460" y="250" width="420" height="90" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <text x="480" y="280" font-size="14" font-weight="700" fill="#f0f6fc">Lo que recibe quien llama</text>
+    <text x="480" y="306" font-size="13" fill="#8b949e">Los datos del error: selector de 4 bytes</text>
+    <text x="480" y="326" font-size="13" fill="#8b949e">y sus argumentos codificados</text>
+  </g>
+</svg>
