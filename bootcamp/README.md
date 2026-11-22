@@ -26,7 +26,7 @@ La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está p
 | [05](week-05-control_y_errores/README.md) | [Control de flujo y errores](week-05-control_y_errores/README.md) | ✅ |
 | [06](week-06-estructuras_de_datos/README.md) | [Estructuras de datos](week-06-estructuras_de_datos/README.md) | ✅ |
 | [07](week-07-eventos_y_ether/README.md) | [Eventos y ether](week-07-eventos_y_ether/README.md) | ✅ |
-| 08 | Herencia, interfaces y librerías | ⬜ |
+| [08](week-08-herencia_interfaces_y_librerias/README.md) | [Herencia, interfaces y librerías](week-08-herencia_interfaces_y_librerias/README.md) | ✅ |
 | 09 | Testing con Foundry | ⬜ |
 | 10 | Llamadas entre contratos | ⬜ |
 

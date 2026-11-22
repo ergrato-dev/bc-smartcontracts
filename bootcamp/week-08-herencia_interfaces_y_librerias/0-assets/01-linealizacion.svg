@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" role="img" aria-label="Linealización de Market is Fees, Limits. Izquierda, el rombo de herencia: Base arriba; Fees y Limits heredan de Base; Market hereda de Fees y de Limits. Derecha, la fila que forma Solidity leyendo la lista is de derecha a izquierda: Market, Limits, Fees, Base. Cada super llama al siguiente de la fila, así que el super de Limits es Fees aunque Limits no herede de Fees. Resultado de layers: Market > Limits > Fees > Base.">
+  <title>Linealización de Market</title>
+  <rect width="900" height="400" fill="#0d1117"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/>
+    </marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">contract Market is Fees, Limits</text>
+
+    <rect x="30" y="56" width="380" height="320" rx="10" fill="#161b22" stroke="#30363d"/>
+    <text x="220" y="84" font-size="15" font-weight="700" fill="#8b949e" text-anchor="middle">Lo que escribes: quién hereda de quién</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" text-anchor="middle">
+      <rect x="160" y="104" width="120" height="40" rx="6" fill="#0d1117" stroke="#627eea"/>
+      <text x="220" y="129" fill="#f0f6fc">Base</text>
+      <rect x="60" y="204" width="120" height="40" rx="6" fill="#0d1117" stroke="#627eea"/>
+      <text x="120" y="229" fill="#f0f6fc">Fees</text>
+      <rect x="260" y="204" width="120" height="40" rx="6" fill="#0d1117" stroke="#627eea"/>
+      <text x="320" y="229" fill="#f0f6fc">Limits</text>
+      <rect x="160" y="304" width="120" height="40" rx="6" fill="#0d1117" stroke="#8fa4f0" stroke-width="2"/>
+      <text x="220" y="329" fill="#f0f6fc">Market</text>
+    </g>
+    <g stroke="#8b949e" stroke-width="2" fill="none" marker-end="url(#a)">
+      <path d="M130 202 L200 147"/>
+      <path d="M310 202 L240 147"/>
+      <path d="M200 302 L130 247"/>
+      <path d="M240 302 L310 247"/>
+    </g>
+    <text x="220" y="368" font-size="13" fill="#8b949e" text-anchor="middle">La flecha apunta al padre</text>
+
+    <rect x="440" y="56" width="430" height="320" rx="10" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="655" y="84" font-size="15" font-weight="700" fill="#58a6ff" text-anchor="middle">Lo que forma Solidity: una sola fila</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" text-anchor="middle">
+      <rect x="595" y="104" width="120" height="40" rx="6" fill="#0d1117" stroke="#8fa4f0" stroke-width="2"/>
+      <text x="655" y="129" fill="#f0f6fc">Market</text>
+      <rect x="595" y="172" width="120" height="40" rx="6" fill="#0d1117" stroke="#627eea"/>
+      <text x="655" y="197" fill="#f0f6fc">Limits</text>
+      <rect x="595" y="240" width="120" height="40" rx="6" fill="#0d1117" stroke="#627eea"/>
+      <text x="655" y="265" fill="#f0f6fc">Fees</text>
+      <rect x="595" y="308" width="120" height="40" rx="6" fill="#0d1117" stroke="#627eea"/>
+      <text x="655" y="333" fill="#f0f6fc">Base</text>
+    </g>
+    <g stroke="#58a6ff" stroke-width="2" fill="none" marker-end="url(#b)">
+      <path d="M655 146 L655 170"/>
+      <path d="M655 214 L655 238"/>
+      <path d="M655 282 L655 306"/>
+    </g>
+    <g font-size="13" fill="#58a6ff">
+      <text x="667" y="162">super</text>
+      <text x="667" y="230">super</text>
+      <text x="667" y="298">super</text>
+    </g>
+    <g font-size="13" fill="#8b949e">
+      <text x="728" y="197">último padre de la lista</text>
+      <text x="728" y="265">primer padre de la lista</text>
+      <text x="728" y="333">común: una sola vez</text>
+    </g>
+    <text x="470" y="197" font-size="13" fill="#e3b341">super de Limits</text>
+    <text x="470" y="215" font-size="13" fill="#e3b341">es Fees</text>
+  </g>
+</svg>

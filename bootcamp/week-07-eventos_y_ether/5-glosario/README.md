@@ -28,4 +28,4 @@
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | Semana 08 (próximamente) |
+| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | [Semana 08 — Herencia, interfaces y librerías →](../../week-08-herencia_interfaces_y_librerias/README.md) |
