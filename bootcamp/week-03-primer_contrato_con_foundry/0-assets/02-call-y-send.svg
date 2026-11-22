@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" role="img" aria-label="Dos caminos hacia el mismo contrato en anvil. Arriba, cast call: sin firma, viaja como eth_call, el nodo ejecuta la función en una copia del estado, devuelve el resultado y descarta la copia; no se mina nada ni se paga gas. Abajo, cast send: firma con la clave privada, viaja como eth_sendRawTransaction, se mina en un bloque, cuesta gas, el cambio queda en el storage y lo que vuelve es el recibo, no el valor de la función.">
+  <title>cast call y cast send</title>
+  <rect width="900" height="380" fill="#0d1117"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#58a6ff"/></marker>
+    <marker id="y" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#e3b341"/></marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="20" y="34" font-size="16" font-weight="700" fill="#58a6ff">cast call: leer</text>
+    <rect x="20" y="50" width="160" height="80" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="100" y="84" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">get()</text>
+    <text x="100" y="108" font-size="13" fill="#8b949e" text-anchor="middle">sin firma</text>
+    <line x1="180" y1="90" x2="265" y2="90" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <text x="222" y="80" font-size="12" fill="#8b949e" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">eth_call</text>
+    <rect x="270" y="50" width="250" height="80" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="395" y="84" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Copia del estado</text>
+    <text x="395" y="108" font-size="13" fill="#8b949e" text-anchor="middle">se ejecuta y se descarta</text>
+    <line x1="520" y1="90" x2="605" y2="90" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <rect x="610" y="50" width="270" height="80" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="745" y="84" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Devuelve el valor</text>
+    <text x="745" y="108" font-size="13" fill="#8b949e" text-anchor="middle">sin bloque, sin gas, sin cambios</text>
+
+    <line x1="20" y1="180" x2="880" y2="180" stroke="#30363d" stroke-width="1"/>
+
+    <text x="20" y="224" font-size="16" font-weight="700" fill="#e3b341">cast send: cambiar</text>
+    <rect x="20" y="240" width="160" height="80" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+    <text x="100" y="274" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">increment()</text>
+    <text x="100" y="298" font-size="13" fill="#8b949e" text-anchor="middle">firmada con PK</text>
+    <line x1="180" y1="280" x2="265" y2="280" stroke="#e3b341" stroke-width="2" marker-end="url(#y)"/>
+    <text x="222" y="270" font-size="12" fill="#8b949e" text-anchor="middle">transacción</text>
+    <rect x="270" y="240" width="250" height="80" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="395" y="274" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Bloque nuevo</text>
+    <text x="395" y="298" font-size="13" fill="#8b949e" text-anchor="middle">el storage cambia de verdad</text>
+    <line x1="520" y1="280" x2="605" y2="280" stroke="#e3b341" stroke-width="2" marker-end="url(#y)"/>
+    <rect x="610" y="240" width="270" height="80" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+    <text x="745" y="274" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Devuelve el recibo</text>
+    <text x="745" y="298" font-size="13" fill="#8b949e" text-anchor="middle">status, gasUsed; no el valor</text>
+
+    <text x="450" y="360" font-size="13" fill="#8b949e" text-anchor="middle">Leer: call. Cambiar: send. Al revés, call no guarda nada y send cobra por leer.</text>
+  </g>
+</svg>

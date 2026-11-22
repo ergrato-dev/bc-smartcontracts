@@ -16,7 +16,7 @@ La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está p
 |:--:|---|:--:|
 | [01](week-01-criptografia_y_blockchain/README.md) | [Criptografía y blockchain](week-01-criptografia_y_blockchain/README.md) | ✅ |
 | [02](week-02-ethereum_cuentas_transacciones_y_gas/README.md) | [Ethereum: cuentas, transacciones y gas](week-02-ethereum_cuentas_transacciones_y_gas/README.md) | ✅ |
-| 03 | Primer contrato con Foundry | ⬜ |
+| [03](week-03-primer_contrato_con_foundry/README.md) | [Primer contrato con Foundry](week-03-primer_contrato_con_foundry/README.md) | ✅ |
 
 ### Fase 2 — Solidity (S04-10, 98 h)
 
