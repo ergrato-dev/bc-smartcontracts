@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" role="img" aria-label="Swap-and-pop para quitar el elemento de la posición 1 de un array. Antes: [10, 20, 30, 40], longitud 4. Paso 1: el último elemento, 40, se copia en la posición 1, que queda [10, 40, 30, 40]. Paso 2: pop quita la última posición. Después: [10, 40, 30], longitud 3, sin huecos, con el orden cambiado y con el mismo coste sea cual sea la longitud.">
+  <title>Swap-and-pop</title>
+  <rect width="900" height="400" fill="#0d1117"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">Swap-and-pop: quitar values[1]</text>
+
+    <!-- Antes -->
+    <text x="40" y="92" font-size="15" font-weight="700" fill="#58a6ff">Antes</text>
+    <text x="40" y="112" font-size="13" fill="#8b949e">length 4</text>
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" text-anchor="middle">
+      <rect x="160" y="70" width="80" height="50" rx="6" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+      <text x="200" y="101" fill="#f0f6fc">10</text>
+      <rect x="250" y="70" width="80" height="50" rx="6" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+      <text x="290" y="101" fill="#f85149">20</text>
+      <rect x="340" y="70" width="80" height="50" rx="6" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+      <text x="380" y="101" fill="#f0f6fc">30</text>
+      <rect x="430" y="70" width="80" height="50" rx="6" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+      <text x="470" y="101" fill="#8fa4f0">40</text>
+    </g>
+    <g font-size="12" fill="#8b949e" text-anchor="middle">
+      <text x="200" y="138">[0]</text><text x="290" y="138">[1]</text><text x="380" y="138">[2]</text><text x="470" y="138">[3]</text>
+    </g>
+    <text x="560" y="92" font-size="14" fill="#f85149">a quitar: posición 1</text>
+    <text x="560" y="114" font-size="14" fill="#8fa4f0">último: posición 3</text>
+
+    <!-- Paso 1 -->
+    <text x="40" y="202" font-size="15" font-weight="700" fill="#e3b341">1. Copia</text>
+    <text x="40" y="222" font-size="13" fill="#8b949e">el último encima</text>
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" text-anchor="middle">
+      <rect x="160" y="180" width="80" height="50" rx="6" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+      <text x="200" y="211" fill="#f0f6fc">10</text>
+      <rect x="250" y="180" width="80" height="50" rx="6" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+      <text x="290" y="211" fill="#8fa4f0">40</text>
+      <rect x="340" y="180" width="80" height="50" rx="6" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+      <text x="380" y="211" fill="#f0f6fc">30</text>
+      <rect x="430" y="180" width="80" height="50" rx="6" fill="#161b22" stroke="#30363d" stroke-width="2" stroke-dasharray="6 4"/>
+      <text x="470" y="211" fill="#8b949e">40</text>
+    </g>
+    <path d="M470 176 C470 150 290 150 290 176" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/>
+    <text x="560" y="202" font-size="14" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">values[1] = values[3];</text>
+
+    <!-- Paso 2 -->
+    <text x="40" y="302" font-size="15" font-weight="700" fill="#3fb950">2. pop</text>
+    <text x="40" y="322" font-size="13" fill="#8b949e">length 3</text>
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" text-anchor="middle">
+      <rect x="160" y="280" width="80" height="50" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+      <text x="200" y="311" fill="#f0f6fc">10</text>
+      <rect x="250" y="280" width="80" height="50" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+      <text x="290" y="311" fill="#f0f6fc">40</text>
+      <rect x="340" y="280" width="80" height="50" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+      <text x="380" y="311" fill="#f0f6fc">30</text>
+    </g>
+    <text x="470" y="311" font-size="22" fill="#8b949e" text-anchor="middle">✕</text>
+    <text x="560" y="302" font-size="14" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">values.pop();</text>
+
+    <text x="450" y="372" font-size="14" fill="#8b949e" text-anchor="middle">Sin huecos y con coste fijo, sea cual sea la longitud. A cambio, el orden cambia: 40 va antes que 30.</text>
+  </g>
+</svg>

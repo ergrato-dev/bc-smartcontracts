@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" role="img" aria-label="Las tres ubicaciones de datos durante una llamada a setWeight con weight 999. En storage, permanente, está guardado packages[1] con weight 100. Una variable local Package storage p apunta a ese mismo struct: p.weight = 999 cambia lo guardado, que pasa a 999. Una variable local Package memory p es una copia temporal: p.weight = 999 cambia solo la copia, que desaparece al terminar la llamada, y lo guardado sigue en 100. Calldata contiene los argumentos de la transacción, id 1 y weight 999, y es de solo lectura.">
+  <title>storage, memory y calldata</title>
+  <rect width="900" height="460" fill="#0d1117"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/>
+    </marker>
+    <marker id="y" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">Dónde viven los datos durante setWeight(1, 999)</text>
+
+    <!-- Calldata -->
+    <rect x="30" y="64" width="250" height="150" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="155" y="92" font-size="16" font-weight="700" fill="#58a6ff" text-anchor="middle">calldata</text>
+    <text x="155" y="112" font-size="13" fill="#8b949e" text-anchor="middle">argumentos de la transacción</text>
+    <text x="155" y="150" font-size="15" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">id = 1</text>
+    <text x="155" y="176" font-size="15" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">weight = 999</text>
+    <text x="155" y="202" font-size="13" fill="#e3b341" text-anchor="middle">solo lectura</text>
+
+    <!-- Storage -->
+    <rect x="590" y="64" width="280" height="150" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="730" y="92" font-size="16" font-weight="700" fill="#8fa4f0" text-anchor="middle">storage</text>
+    <text x="730" y="112" font-size="13" fill="#8b949e" text-anchor="middle">permanente, del contrato</text>
+    <text x="730" y="150" font-size="15" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">packages[1]</text>
+    <text x="730" y="176" font-size="15" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">weight = 100</text>
+    <text x="730" y="202" font-size="13" fill="#8b949e" text-anchor="middle">antes de la llamada</text>
+
+    <!-- storage pointer -->
+    <rect x="30" y="250" width="400" height="120" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="50" y="278" font-size="15" font-weight="700" fill="#3fb950">Referencia</text>
+    <text x="50" y="306" font-size="14" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">Package storage p = packages[1];</text>
+    <text x="50" y="332" font-size="14" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">p.weight = 999;</text>
+    <text x="50" y="358" font-size="13" fill="#3fb950">p ES lo guardado: storage pasa a 999</text>
+    <path d="M300 248 C300 222 520 190 586 182" fill="none" stroke="#3fb950" stroke-width="2" marker-end="url(#b)"/>
+
+    <!-- memory copy -->
+    <rect x="470" y="250" width="400" height="120" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2" stroke-dasharray="7 5"/>
+    <text x="490" y="278" font-size="15" font-weight="700" fill="#e3b341">Copia</text>
+    <text x="490" y="306" font-size="14" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">Package memory p = packages[1];</text>
+    <text x="490" y="332" font-size="14" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">p.weight = 999;</text>
+    <text x="490" y="358" font-size="13" fill="#e3b341">solo cambia la copia: storage sigue en 100</text>
+    <path d="M820 214 L820 246" fill="none" stroke="#e3b341" stroke-width="2" marker-end="url(#y)"/>
+    <text x="830" y="236" font-size="12" fill="#e3b341">copia</text>
+
+    <text x="450" y="410" font-size="14" fill="#8b949e" text-anchor="middle">memory y calldata desaparecen al terminar la llamada; solo storage queda.</text>
+    <text x="450" y="434" font-size="14" fill="#8b949e" text-anchor="middle">La copia no revierte ni avisa en ejecución: el compilador solo sugiere view (Warning 2018).</text>
+  </g>
+</svg>
