@@ -63,7 +63,7 @@ escribir la semana y se actualiza esta tabla.
 no escriben Solidity (solo `cast` y `anvil`); antes de la 05 no hay `require` ni
 modificadores; antes de la 06 no hay `mapping` ni `struct`; antes de la 07 no hay eventos
 ni ETH; antes de la 09 los tests usan solo `assertEq`/`assertTrue`, `vm.prank` y
-`vm.expectRevert` (presentados como "plantilla" mínima); antes de la 11 no hay
+`vm.expectRevert` (presentados como "plantilla" mínima), más `vm.deal` y `vm.expectEmit` desde la 07; antes de la 11 no hay
 OpenZeppelin; antes de la 17 no hay JavaScript/TypeScript.
 
 **Seguridad como eje, no como bloque.** Desde la semana 03 cada teoría que introduce una

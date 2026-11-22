@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" role="img" aria-label="Reentrada frente a checks-effects-interactions en withdrawAll. Izquierda, orden equivocado: la caja envía 1 ETH con call antes de poner el saldo a 0; el receive del atacante vuelve a llamar a withdrawAll, el saldo sigue en 1 ETH y cobra otra vez, hasta vaciar la caja: se lleva 6 ETH. Derecha, orden CEI: la caja pone el saldo a 0 y después envía; cuando el atacante vuelve a entrar, su saldo es 0, la llamada revierte con NothingToWithdraw y todo el ataque revierte con TransferFailed. La caja conserva los 5 ETH de Bob.">
+  <title>Reentrada y checks-effects-interactions</title>
+  <rect width="900" height="440" fill="#0d1117"/>
+  <defs>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f85149"/>
+    </marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">withdrawAll() con un atacante que vuelve a entrar</text>
+
+    <!-- Izquierda: orden equivocado -->
+    <rect x="30" y="56" width="405" height="360" rx="10" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+    <text x="232" y="86" font-size="16" font-weight="700" fill="#f85149" text-anchor="middle">Orden equivocado: envía y luego actualiza</text>
+
+    <g font-size="14" fill="#f0f6fc">
+      <rect x="55" y="104" width="355" height="44" rx="6" fill="#0d1117" stroke="#30363d"/>
+      <text x="70" y="131">1. Lee el saldo del atacante: 1 ETH</text>
+      <rect x="55" y="160" width="355" height="44" rx="6" fill="#0d1117" stroke="#30363d"/>
+      <text x="70" y="187">2. call le envía 1 ETH</text>
+      <rect x="55" y="216" width="355" height="44" rx="6" fill="#0d1117" stroke="#f85149"/>
+      <text x="70" y="243" fill="#f85149">3. Su receive llama otra vez a withdrawAll</text>
+      <rect x="55" y="272" width="355" height="44" rx="6" fill="#0d1117" stroke="#30363d"/>
+      <text x="70" y="299" fill="#f85149">4. El saldo sigue en 1 ETH: vuelve al paso 2</text>
+      <rect x="55" y="328" width="355" height="44" rx="6" fill="#0d1117" stroke="#30363d"/>
+      <text x="70" y="355" fill="#8b949e">5. Saldo a 0, demasiado tarde (×6)</text>
+    </g>
+    <path d="M412 294 C440 270 440 206 412 182" fill="none" stroke="#f85149" stroke-width="2" marker-end="url(#r)"/>
+    <text x="232" y="400" font-size="15" font-weight="700" fill="#f85149" text-anchor="middle">El atacante se lleva 6 ETH: el suyo y los 5 de Bob</text>
+
+    <!-- Derecha: CEI -->
+    <rect x="465" y="56" width="405" height="360" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="667" y="86" font-size="16" font-weight="700" fill="#3fb950" text-anchor="middle">Checks-effects-interactions</text>
+
+    <g font-size="14" fill="#f0f6fc">
+      <rect x="490" y="104" width="355" height="44" rx="6" fill="#0d1117" stroke="#30363d"/>
+      <text x="505" y="131">1. Checks: saldo 1 ETH, distinto de 0</text>
+      <rect x="490" y="160" width="355" height="44" rx="6" fill="#0d1117" stroke="#3fb950"/>
+      <text x="505" y="187" fill="#3fb950">2. Effects: saldo a 0 antes de enviar</text>
+      <rect x="490" y="216" width="355" height="44" rx="6" fill="#0d1117" stroke="#30363d"/>
+      <text x="505" y="243">3. Interactions: call le envía 1 ETH</text>
+      <rect x="490" y="272" width="355" height="44" rx="6" fill="#0d1117" stroke="#30363d"/>
+      <text x="505" y="299">4. Vuelve a entrar: saldo 0, NothingToWithdraw</text>
+      <rect x="490" y="328" width="355" height="44" rx="6" fill="#0d1117" stroke="#30363d"/>
+      <text x="505" y="355" fill="#f85149">5. Todo revierte: TransferFailed</text>
+    </g>
+    <text x="667" y="400" font-size="15" font-weight="700" fill="#3fb950" text-anchor="middle">La caja conserva los 5 ETH de Bob</text>
+  </g>
+</svg>
