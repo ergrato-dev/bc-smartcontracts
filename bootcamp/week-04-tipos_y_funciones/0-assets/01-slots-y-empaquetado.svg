@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" role="img" aria-label="Dos contratos con las mismas tres variables en distinto orden. PackA declara a y b de 16 bytes seguidas y luego c de 32: a y b comparten el slot 0 y c ocupa el slot 1, dos slots en total. PackB declara a, c y b: c no cabe en el resto del slot 0 y salta al 1, y b queda sola en el 2, tres slots en total.">
+  <title>Slots y empaquetado</title>
+  <rect width="900" height="360" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="20" y="34" font-size="16" font-weight="700" fill="#3fb950">PackA: a, b, c → 2 slots</text>
+    <text x="20" y="74" font-size="13" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">slot 0</text>
+    <rect x="90" y="52" width="380" height="36" rx="4" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <rect x="90" y="52" width="190" height="36" rx="4" fill="#1f3a2a" stroke="#3fb950" stroke-width="2"/>
+    <text x="185" y="75" font-size="14" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">b (16 bytes)</text>
+    <rect x="280" y="52" width="190" height="36" rx="4" fill="#1f3a2a" stroke="#3fb950" stroke-width="2"/>
+    <text x="375" y="75" font-size="14" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">a (16 bytes)</text>
+    <text x="20" y="118" font-size="13" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">slot 1</text>
+    <rect x="90" y="96" width="380" height="36" rx="4" fill="#1f3a2a" stroke="#3fb950" stroke-width="2"/>
+    <text x="280" y="119" font-size="14" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">c (32 bytes)</text>
+    <text x="500" y="75" font-size="13" fill="#8b949e">a empieza en el byte 0 (derecha)</text>
+    <text x="500" y="97" font-size="13" fill="#8b949e">b cabe en lo que queda: offset 16</text>
+
+    <text x="20" y="184" font-size="16" font-weight="700" fill="#f85149">PackB: a, c, b → 3 slots</text>
+    <text x="20" y="224" font-size="13" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">slot 0</text>
+    <rect x="90" y="202" width="380" height="36" rx="4" fill="#161b22" stroke="#f85149" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="185" y="225" font-size="13" fill="#8b949e" text-anchor="middle">16 bytes sin usar</text>
+    <rect x="280" y="202" width="190" height="36" rx="4" fill="#3a1f1f" stroke="#f85149" stroke-width="2"/>
+    <text x="375" y="225" font-size="14" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">a (16 bytes)</text>
+    <text x="20" y="268" font-size="13" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">slot 1</text>
+    <rect x="90" y="246" width="380" height="36" rx="4" fill="#3a1f1f" stroke="#f85149" stroke-width="2"/>
+    <text x="280" y="269" font-size="14" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">c (32 bytes)</text>
+    <text x="20" y="312" font-size="13" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">slot 2</text>
+    <rect x="90" y="290" width="380" height="36" rx="4" fill="#161b22" stroke="#f85149" stroke-width="2" stroke-dasharray="6 4"/>
+    <rect x="280" y="290" width="190" height="36" rx="4" fill="#3a1f1f" stroke="#f85149" stroke-width="2"/>
+    <text x="375" y="313" font-size="14" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">b (16 bytes)</text>
+    <text x="500" y="225" font-size="13" fill="#8b949e">c no cabe en los 16 bytes libres:</text>
+    <text x="500" y="247" font-size="13" fill="#8b949e">salta al slot siguiente</text>
+    <text x="500" y="313" font-size="13" fill="#8b949e">b no vuelve atrás: slot nuevo</text>
+  </g>
+</svg>

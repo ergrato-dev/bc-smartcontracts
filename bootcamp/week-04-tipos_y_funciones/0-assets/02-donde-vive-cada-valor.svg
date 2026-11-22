@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" role="img" aria-label="Tres columnas. constant: el compilador escribe el valor en el bytecode; no ocupa storage y no cambia nunca. immutable: el compilador deja un hueco en el bytecode y el constructor lo rellena al desplegar; no ocupa storage y no cambia después. Variable de estado: vive en un slot del storage, la primera escritura la hace el constructor o una transacción y cualquier función que escriba puede cambiarla; leerla cuesta una lectura de storage.">
+  <title>Dónde vive cada valor</title>
+  <rect width="900" height="340" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <rect x="20" y="20" width="270" height="300" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="155" y="54" font-size="17" font-weight="700" fill="#58a6ff" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">constant</text>
+    <text x="155" y="84" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">MAX_LIMIT = 1000</text>
+    <text x="40" y="124" font-size="14" fill="#f0f6fc">Se fija: al compilar</text>
+    <text x="40" y="152" font-size="14" fill="#f0f6fc">Vive en: el bytecode</text>
+    <text x="40" y="180" font-size="14" fill="#f0f6fc">Storage: no</text>
+    <text x="40" y="208" font-size="14" fill="#f0f6fc">Cambia: nunca</text>
+    <text x="40" y="250" font-size="13" fill="#8b949e">Solo literales y expresiones</text>
+    <text x="40" y="270" font-size="13" fill="#8b949e">que el compilador calcula</text>
+
+    <rect x="315" y="20" width="270" height="300" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+    <text x="450" y="54" font-size="17" font-weight="700" fill="#e3b341" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">immutable</text>
+    <text x="450" y="84" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">OWNER = msg.sender</text>
+    <text x="335" y="124" font-size="14" fill="#f0f6fc">Se fija: en el constructor</text>
+    <text x="335" y="152" font-size="14" fill="#f0f6fc">Vive en: el bytecode</text>
+    <text x="335" y="180" font-size="14" fill="#f0f6fc">Storage: no</text>
+    <text x="335" y="208" font-size="14" fill="#f0f6fc">Cambia: nunca tras desplegar</text>
+    <text x="335" y="250" font-size="13" fill="#8b949e">Solo tipos de valor</text>
+    <text x="335" y="270" font-size="13" fill="#8b949e">(no string)</text>
+
+    <rect x="610" y="20" width="270" height="300" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="745" y="54" font-size="17" font-weight="700" fill="#3fb950" text-anchor="middle">variable de estado</text>
+    <text x="745" y="84" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">limit</text>
+    <text x="630" y="124" font-size="14" fill="#f0f6fc">Se fija: cuando se escribe</text>
+    <text x="630" y="152" font-size="14" fill="#f0f6fc">Vive en: un slot del storage</text>
+    <text x="630" y="180" font-size="14" fill="#f0f6fc">Storage: sí</text>
+    <text x="630" y="208" font-size="14" fill="#f0f6fc">Cambia: con transacciones</text>
+    <text x="630" y="250" font-size="13" fill="#8b949e">Leerla cuesta una lectura</text>
+    <text x="630" y="270" font-size="13" fill="#8b949e">de storage</text>
+  </g>
+</svg>
