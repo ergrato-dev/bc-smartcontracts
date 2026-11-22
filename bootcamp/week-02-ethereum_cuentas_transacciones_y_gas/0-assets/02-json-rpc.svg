@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 340" role="img" aria-label="Un cliente, cast o curl, envía por HTTP al puerto 8545 una petición JSON con los campos jsonrpc 2.0, id 1, method eth_blockNumber y params vacío. El nodo anvil la ejecuta contra su copia de la cadena y responde con el mismo id y un campo result con el valor 0x0, o un campo error con código y mensaje si no puede atenderla.">
+  <title>Petición y respuesta JSON-RPC</title>
+  <rect width="880" height="340" fill="#0d1117"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#58a6ff"/></marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3fb950"/></marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <rect x="20" y="40" width="180" height="250" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="110" y="70" font-size="16" font-weight="700" fill="#f0f6fc" text-anchor="middle">Cliente</text>
+    <text x="110" y="96" font-size="13" fill="#8b949e" text-anchor="middle">cast, curl, billetera,</text>
+    <text x="110" y="114" font-size="13" fill="#8b949e" text-anchor="middle">dApp, servidor</text>
+
+    <rect x="680" y="40" width="180" height="250" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="770" y="70" font-size="16" font-weight="700" fill="#f0f6fc" text-anchor="middle">Nodo</text>
+    <text x="770" y="96" font-size="13" fill="#8b949e" text-anchor="middle">anvil en :8545</text>
+    <text x="770" y="114" font-size="13" fill="#8b949e" text-anchor="middle">su copia de la cadena</text>
+
+    <text x="440" y="40" font-size="13" fill="#8b949e" text-anchor="middle">HTTP POST, cuerpo JSON</text>
+    <rect x="230" y="52" width="420" height="96" rx="8" fill="#161b22" stroke="#30363d"/>
+    <g font-size="13" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+      <text x="246" y="76">{"jsonrpc": "2.0",</text>
+      <text x="256" y="96">"id": 1,</text>
+      <text x="256" y="116">"method": "eth_blockNumber",</text>
+      <text x="256" y="136">"params": []}</text>
+    </g>
+    <line x1="652" y1="100" x2="676" y2="100" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="202" y1="100" x2="228" y2="100" stroke="#58a6ff" stroke-width="2"/>
+
+    <rect x="230" y="180" width="420" height="56" rx="8" fill="#161b22" stroke="#3fb950"/>
+    <text x="246" y="213" font-size="13" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">{"jsonrpc": "2.0", "id": 1, "result": "0x0"}</text>
+    <line x1="678" y1="208" x2="652" y2="208" stroke="#3fb950" stroke-width="2"/>
+    <line x1="228" y1="208" x2="204" y2="208" stroke="#3fb950" stroke-width="2" marker-end="url(#g)"/>
+
+    <rect x="230" y="248" width="420" height="42" rx="8" fill="#161b22" stroke="#f85149"/>
+    <text x="246" y="274" font-size="13" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">o bien "error": {"code": -32601, …}</text>
+    <text x="440" y="320" font-size="13" fill="#8b949e" text-anchor="middle">la respuesta repite el id; los números llegan como texto hexadecimal</text>
+  </g>
+</svg>

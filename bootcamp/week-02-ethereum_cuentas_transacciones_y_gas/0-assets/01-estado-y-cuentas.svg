@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 380" role="img" aria-label="El estado de Ethereum es una tabla que asocia cada dirección con una cuenta de cuatro campos: nonce, saldo, código y storage. La cuenta externa 0xf39F…2266 tiene nonce 0, saldo 10000 ETH, código vacío y storage vacío, y la controla una clave privada. La cuenta de contrato 0x5FbD…0aa3 tiene nonce 1, saldo 0, código 0x602a…f3 y storage propio, y la controla su código. Cada transacción de un bloque cambia filas de la tabla.">
+  <title>El estado: una tabla de cuentas</title>
+  <rect width="880" height="380" fill="#0d1117"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#58a6ff"/></marker></defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="20" y="34" font-size="16" font-weight="700" fill="#f0f6fc">Estado de Ethereum: dirección → cuenta</text>
+    <rect x="20" y="52" width="840" height="40" rx="6" fill="#161b22" stroke="#30363d"/>
+    <g font-size="14" font-weight="700" fill="#8b949e">
+      <text x="36" y="77">dirección</text><text x="250" y="77">nonce</text><text x="340" y="77">saldo</text>
+      <text x="500" y="77">código</text><text x="650" y="77">storage</text><text x="760" y="77">la controla</text>
+    </g>
+    <rect x="20" y="100" width="840" height="56" rx="6" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <rect x="20" y="164" width="840" height="56" rx="6" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <g font-size="13" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+      <text x="36" y="125">0xf39F…2266</text><text x="250" y="125">0</text><text x="340" y="125">10000 ETH</text>
+      <text x="500" y="125" fill="#8b949e">0x (vacío)</text><text x="650" y="125" fill="#8b949e">vacío</text>
+      <text x="36" y="189">0x5FbD…0aa3</text><text x="250" y="189">1</text><text x="340" y="189">0</text>
+      <text x="500" y="189">0x602a…f3</text><text x="650" y="189">sus datos</text>
+    </g>
+    <g font-size="12" fill="#8b949e">
+      <text x="36" y="145">cuenta externa (EOA)</text><text x="36" y="209">cuenta de contrato</text>
+    </g>
+    <g font-size="13" fill="#f0f6fc">
+      <text x="760" y="125">clave privada</text><text x="760" y="189">su código</text>
+    </g>
+    <text x="36" y="248" font-size="13" fill="#8b949e">… una fila por cada dirección; las que nunca se usaron tienen todos sus campos a cero</text>
+
+    <rect x="20" y="276" width="220" height="80" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <text x="130" y="306" font-size="14" font-weight="700" fill="#f0f6fc" text-anchor="middle">Bloque N</text>
+    <text x="130" y="330" font-size="13" fill="#8b949e" text-anchor="middle">transacciones firmadas</text>
+    <line x1="242" y1="316" x2="356" y2="316" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/>
+    <text x="298" y="306" font-size="12" fill="#8b949e" text-anchor="middle">se ejecutan</text>
+    <rect x="360" y="276" width="500" height="80" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="610" y="306" font-size="14" font-weight="700" fill="#f0f6fc" text-anchor="middle">Estado tras el bloque N</text>
+    <text x="610" y="330" font-size="13" fill="#8b949e" text-anchor="middle">cambian saldos, nonces, código o storage de algunas filas</text>
+  </g>
+</svg>

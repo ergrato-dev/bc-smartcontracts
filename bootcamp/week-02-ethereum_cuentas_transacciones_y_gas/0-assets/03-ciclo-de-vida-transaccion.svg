@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 330" role="img" aria-label="Ciclo de vida de una transacción en seis pasos. En la máquina de quien envía: 1, construir los campos nonce, to, value, gas y precios; 2, firmarlos con la clave privada, lo que da la transacción en bruto y su hash. En la red: 3, enviar los bytes con eth_sendRawTransaction; 4, el nodo valida firma, nonce y saldo y la deja en el mempool, donde cualquiera la ve; 5, quien construye el bloque la incluye y la ejecuta; 6, queda un recibo con status, gasUsed y effectiveGasPrice. Si el nonce deja un hueco, espera en cola en el mempool.">
+  <title>Ciclo de vida de una transacción</title>
+  <rect width="880" height="330" fill="#0d1117"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#58a6ff"/></marker></defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="20" y="30" font-size="14" font-weight="700" fill="#8b949e">En tu máquina (cast mktx)</text>
+    <text x="320" y="30" font-size="14" font-weight="700" fill="#8b949e">En la red (cast publish; cast send hace todo)</text>
+    <line x1="300" y1="16" x2="300" y2="300" stroke="#30363d" stroke-dasharray="6 6"/>
+    <g fill="#161b22" stroke-width="2">
+      <rect x="20" y="50" width="120" height="110" rx="8" stroke="#30363d"/>
+      <rect x="160" y="50" width="120" height="110" rx="8" stroke="#627eea"/>
+      <rect x="320" y="50" width="120" height="110" rx="8" stroke="#58a6ff"/>
+      <rect x="460" y="50" width="120" height="110" rx="8" stroke="#e3b341"/>
+      <rect x="600" y="50" width="120" height="110" rx="8" stroke="#627eea"/>
+      <rect x="740" y="50" width="120" height="110" rx="8" stroke="#3fb950"/>
+    </g>
+    <g font-size="14" font-weight="700" fill="#f0f6fc" text-anchor="middle">
+      <text x="80" y="78">1. Construir</text><text x="220" y="78">2. Firmar</text><text x="380" y="78">3. Enviar</text>
+      <text x="520" y="78">4. Mempool</text><text x="660" y="78">5. Incluir</text><text x="800" y="78">6. Recibo</text>
+    </g>
+    <g font-size="12" fill="#8b949e" text-anchor="middle">
+      <text x="80" y="102">nonce, to, value,</text><text x="80" y="120">gas, precios,</text><text x="80" y="138">chainId</text>
+      <text x="220" y="102">con la clave</text><text x="220" y="120">privada: bytes</text><text x="220" y="138">en bruto + hash</text>
+      <text x="380" y="102">eth_send</text><text x="380" y="120">RawTransaction</text><text x="380" y="138">al nodo</text>
+      <text x="520" y="102">valida firma,</text><text x="520" y="120">nonce y saldo;</text><text x="520" y="138">pública</text>
+      <text x="660" y="102">en un bloque,</text><text x="660" y="120">ejecutada</text><text x="660" y="138">en orden</text>
+      <text x="800" y="102">status, gasUsed,</text><text x="800" y="120">effective</text><text x="800" y="138">GasPrice</text>
+    </g>
+    <g stroke="#58a6ff" stroke-width="2" marker-end="url(#a)">
+      <line x1="141" y1="105" x2="157" y2="105"/><line x1="281" y1="105" x2="317" y2="105"/>
+      <line x1="441" y1="105" x2="457" y2="105"/><line x1="581" y1="105" x2="597" y2="105"/><line x1="721" y1="105" x2="737" y2="105"/>
+    </g>
+    <rect x="460" y="190" width="260" height="96" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+    <text x="590" y="216" font-size="13" font-weight="700" fill="#f0f6fc" text-anchor="middle">Rechazos y esperas</text>
+    <g font-size="12" fill="#8b949e" text-anchor="middle">
+      <text x="590" y="238">nonce usado o sin saldo: rechazada</text>
+      <text x="590" y="256">nonce adelantado: en cola (queued)</text>
+      <text x="590" y="274">tope menor que la base fee: espera</text>
+    </g>
+    <line x1="520" y1="162" x2="520" y2="186" stroke="#f85149" stroke-width="2"/>
+    <text x="20" y="214" font-size="13" fill="#8b949e">anvil hace 4 y 5 al instante:</text>
+    <text x="20" y="234" font-size="13" fill="#8b949e">un bloque por transacción.</text>
+    <text x="20" y="266" font-size="13" fill="#8b949e">El hash se conoce desde el paso 2:</text>
+    <text x="20" y="286" font-size="13" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">keccak256(bytes en bruto)</text>
+  </g>
+</svg>

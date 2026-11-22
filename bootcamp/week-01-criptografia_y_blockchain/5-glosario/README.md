@@ -45,4 +45,4 @@
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | Semana 02 (próximamente) |
+| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | [Semana 02 — Ethereum: cuentas, transacciones y gas →](../../week-02-ethereum_cuentas_transacciones_y_gas/README.md) |
