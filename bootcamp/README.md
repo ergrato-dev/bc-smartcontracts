@@ -37,7 +37,7 @@ La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está p
 | [11](week-11-erc20_y_openzeppelin/README.md) | [ERC-20 y OpenZeppelin](week-11-erc20_y_openzeppelin/README.md) | ✅ |
 | [12](week-12-nfts_erc721_y_erc1155/README.md) | [NFTs: ERC-721 y ERC-1155](week-12-nfts_erc721_y_erc1155/README.md) | ✅ |
 | [13](week-13-control_de_acceso/README.md) | [Control de acceso](week-13-control_de_acceso/README.md) | ✅ |
-| 14 | Firmas: EIP-712 y permit | ⬜ |
+| [14](week-14-firmas_eip712_y_permit/README.md) | [Firmas: EIP-712 y permit](week-14-firmas_eip712_y_permit/README.md) | ✅ |
 | 15 | Contratos actualizables | ⬜ |
 
 ### Fase 4 — dApps full-stack (S16-20, 70 h)

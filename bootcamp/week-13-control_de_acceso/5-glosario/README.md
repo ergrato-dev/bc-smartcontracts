@@ -25,4 +25,4 @@
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | Semana 14 (próximamente) |
+| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | [Semana 14 — Firmas, EIP-712 y permit →](../../week-14-firmas_eip712_y_permit/README.md) |

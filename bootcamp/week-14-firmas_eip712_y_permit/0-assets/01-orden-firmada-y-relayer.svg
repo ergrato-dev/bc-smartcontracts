@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" role="img" aria-label="Fuera de la cadena, quien firma usa su clave privada para firmar una orden y obtiene 65 bytes de firma, sin gastar gas. La firma llega a un relayer por cualquier canal. El relayer envía una transacción al contrato y paga el gas. El contrato comprueba en orden el plazo, rehace el hash con el dominio, el struct y el nonce actual, recupera el firmante con ecrecover y lo compara con quien dice firmar, gasta el nonce y ejecuta la orden. Si alguien reenvía la misma firma, el nonce ya cambió, el hash es otro, ecrecover devuelve otra dirección y la transacción revierte.">
+  <title>Orden firmada y relayer</title>
+  <rect width="900" height="400" fill="#0d1117"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f85149"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="32" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">Firmar es gratis; quien envía paga el gas y el contrato comprueba todo</text>
+
+    <rect x="20" y="56" width="250" height="230" rx="10" fill="none" stroke="#30363d" stroke-dasharray="6 4"/>
+    <text x="145" y="80" font-size="13" fill="#8b949e" text-anchor="middle">Fuera de la cadena · sin gas</text>
+    <rect x="45" y="96" width="200" height="64" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="145" y="122" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Quien firma</text>
+    <text x="145" y="144" font-size="13" fill="#8b949e" text-anchor="middle">clave privada + orden</text>
+    <line x1="145" y1="160" x2="145" y2="196" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <rect x="45" y="200" width="200" height="64" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="145" y="226" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Firma</text>
+    <text x="145" y="248" font-size="12" fill="#f0883e" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">r ‖ s ‖ v · 65 bytes</text>
+
+    <line x1="245" y1="232" x2="318" y2="232" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <text x="282" y="222" font-size="12" fill="#8b949e" text-anchor="middle">cualquier</text>
+    <text x="282" y="252" font-size="12" fill="#8b949e" text-anchor="middle">canal</text>
+
+    <rect x="322" y="200" width="160" height="64" rx="8" fill="#161b22" stroke="#e3b341"/>
+    <text x="402" y="226" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Relayer</text>
+    <text x="402" y="248" font-size="13" fill="#e3b341" text-anchor="middle">paga el gas</text>
+    <line x1="482" y1="232" x2="548" y2="232" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <text x="515" y="222" font-size="12" fill="#8b949e" text-anchor="middle">tx</text>
+
+    <rect x="552" y="56" width="328" height="230" rx="10" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="716" y="82" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Contrato</text>
+    <g font-size="13" fill="#f0f6fc">
+      <text x="572" y="112">1. ¿Plazo vigente?</text>
+      <text x="572" y="140">2. Rehace el hash: dominio + struct</text>
+      <text x="590" y="158" fill="#8b949e">con el nonce actual del firmante</text>
+      <text x="572" y="186">3. ecrecover(hash, firma) == firmante</text>
+      <text x="572" y="214">4. Gasta el nonce</text>
+      <text x="572" y="242" fill="#3fb950">5. Ejecuta la orden a su nombre</text>
+    </g>
+
+    <rect x="322" y="318" width="558" height="58" rx="8" fill="#161b22" stroke="#f85149"/>
+    <text x="601" y="342" font-size="13" fill="#f0f6fc" text-anchor="middle">Reenviar la misma firma: el nonce ya subió, el hash es otro,</text>
+    <text x="601" y="362" font-size="13" fill="#f85149" text-anchor="middle">ecrecover devuelve otra dirección y la transacción revierte</text>
+    <line x1="402" y1="264" x2="402" y2="314" stroke="#f85149" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#r)"/>
+  </g>
+</svg>

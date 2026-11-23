@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" role="img" aria-label="El hash que se firma con EIP-712 es keccak256 de tres piezas pegadas: los bytes 0x19 0x01, el domain separator y el struct hash. El domain separator es keccak256 del typehash de EIP712Domain, del keccak256 del nombre, del keccak256 de la versión, del chainId y de la dirección del contrato. El struct hash es keccak256 del typehash del struct, por ejemplo Vote, y de cada campo codificado en 32 bytes; un string entra como su keccak256. El dominio ata la firma a un contrato y a una red; el struct, a una orden concreta.">
+  <title>El hash de EIP-712</title>
+  <rect width="900" height="430" fill="#0d1117"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="32" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">Lo que se firma: un dominio y un struct, cada uno resumido en 32 bytes</text>
+
+    <rect x="200" y="56" width="500" height="56" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="450" y="80" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">digest (lo que se firma)</text>
+    <text x="450" y="100" font-size="13" fill="#f0883e" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">keccak256(0x19 ‖ 0x01 ‖ domainSeparator ‖ structHash)</text>
+
+    <line x1="320" y1="112" x2="230" y2="160" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <line x1="580" y1="112" x2="670" y2="160" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <rect x="390" y="128" width="120" height="34" rx="6" fill="#161b22" stroke="#30363d"/>
+    <text x="450" y="150" font-size="12" fill="#8b949e" text-anchor="middle">0x19 0x01: EIP-191</text>
+
+    <rect x="20" y="164" width="420" height="200" rx="10" fill="#161b22" stroke="#30363d"/>
+    <text x="230" y="190" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">domainSeparator</text>
+    <g font-size="12" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+      <text x="40" y="218">keccak256(abi.encode(</text>
+      <text x="60" y="240" fill="#8b949e">keccak256("EIP712Domain(...)"),</text>
+      <text x="60" y="260">keccak256(bytes(name)),</text>
+      <text x="60" y="280">keccak256(bytes(version)),</text>
+      <text x="60" y="300" fill="#e3b341">block.chainid,</text>
+      <text x="60" y="320" fill="#e3b341">address(this)</text>
+      <text x="40" y="342">))</text>
+    </g>
+
+    <rect x="460" y="164" width="420" height="200" rx="10" fill="#161b22" stroke="#30363d"/>
+    <text x="670" y="190" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">structHash</text>
+    <g font-size="12" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+      <text x="480" y="218">keccak256(abi.encode(</text>
+      <text x="500" y="240" fill="#8b949e">VOTE_TYPEHASH,</text>
+      <text x="500" y="260">voter, option,</text>
+      <text x="500" y="280" fill="#f0883e">keccak256(bytes(comment)),</text>
+      <text x="500" y="300" fill="#e3b341">nonce, deadline</text>
+      <text x="480" y="342">))</text>
+    </g>
+
+    <g font-size="13" text-anchor="middle">
+      <text x="230" y="394" fill="#e3b341">Ata la firma a una red y a un contrato</text>
+      <text x="230" y="414" fill="#8b949e">otro despliegue u otra red: otro hash</text>
+      <text x="670" y="394" fill="#e3b341">Ata la firma a una orden y a una vez</text>
+      <text x="670" y="414" fill="#8b949e">un string entra como su keccak256</text>
+    </g>
+  </g>
+</svg>

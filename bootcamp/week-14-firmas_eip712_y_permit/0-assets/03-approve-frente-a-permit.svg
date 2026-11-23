@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-label="Arriba, el camino clásico: la usuaria envía una transacción approve al token y después otra transacción buy a la tienda, que llama a transferFrom; son dos transacciones y dos pagos de gas. En medio, con permit: la usuaria firma un Permit fuera de la cadena, gratis, y envía una sola transacción buyWithPermit; la tienda llama a permit en el token, que da la allowance, y después a transferFrom. Abajo, el ataque de front-running: alguien copia la firma del mempool y llama antes a permit. La allowance queda dada y el nonce gastado, así que el permit de la tienda revierte; con try y catch la tienda ignora ese fallo y cobra con la allowance que ya existe.">
+  <title>Approve frente a permit</title>
+  <rect width="900" height="420" fill="#0d1117"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f85149"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="32" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">Permit convierte la transacción approve en una firma gratuita</text>
+
+    <text x="20" y="72" font-size="15" font-weight="700" fill="#f0f6fc">approve + buy</text>
+    <text x="20" y="92" font-size="13" fill="#e3b341">2 transacciones</text>
+    <g font-size="13" fill="#f0f6fc" text-anchor="middle">
+      <rect x="180" y="56" width="140" height="44" rx="8" fill="#161b22" stroke="#627eea"/>
+      <text x="250" y="83">Usuaria</text>
+      <rect x="400" y="56" width="140" height="44" rx="8" fill="#161b22" stroke="#30363d"/>
+      <text x="470" y="83">Token</text>
+      <rect x="680" y="56" width="140" height="44" rx="8" fill="#161b22" stroke="#30363d"/>
+      <text x="750" y="83">Tienda</text>
+    </g>
+    <line x1="320" y1="70" x2="396" y2="70" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <text x="358" y="62" font-size="12" fill="#e3b341" text-anchor="middle">tx 1: approve</text>
+    <path d="M250 100 Q250 128 676 92" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <text x="600" y="128" font-size="12" fill="#e3b341" text-anchor="middle">tx 2: buy → transferFrom</text>
+
+    <line x1="20" y1="150" x2="880" y2="150" stroke="#30363d"/>
+
+    <text x="20" y="192" font-size="15" font-weight="700" fill="#f0f6fc">permit</text>
+    <text x="20" y="212" font-size="13" fill="#3fb950">1 transacción</text>
+    <g font-size="13" fill="#f0f6fc" text-anchor="middle">
+      <rect x="180" y="176" width="140" height="44" rx="8" fill="#161b22" stroke="#627eea"/>
+      <text x="250" y="203">Usuaria</text>
+      <rect x="400" y="176" width="140" height="44" rx="8" fill="#161b22" stroke="#30363d"/>
+      <text x="470" y="203">Token</text>
+      <rect x="680" y="176" width="140" height="44" rx="8" fill="#161b22" stroke="#30363d"/>
+      <text x="750" y="203">Tienda</text>
+    </g>
+    <text x="250" y="240" font-size="12" fill="#8b949e" text-anchor="middle">firma Permit fuera de la cadena</text>
+    <path d="M320 212 Q500 258 676 212" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <text x="500" y="262" font-size="12" fill="#3fb950" text-anchor="middle">tx: buyWithPermit(firma)</text>
+    <line x1="680" y1="190" x2="544" y2="190" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <text x="612" y="182" font-size="12" fill="#8b949e" text-anchor="middle">permit, transferFrom</text>
+
+    <line x1="20" y1="284" x2="880" y2="284" stroke="#30363d"/>
+
+    <text x="20" y="320" font-size="15" font-weight="700" fill="#f85149">front-running</text>
+    <rect x="180" y="304" width="140" height="44" rx="8" fill="#161b22" stroke="#f85149"/>
+    <text x="250" y="331" font-size="13" fill="#f0f6fc" text-anchor="middle">Atacante</text>
+    <line x1="320" y1="326" x2="396" y2="326" stroke="#f85149" stroke-width="2" marker-end="url(#r)"/>
+    <text x="358" y="318" font-size="12" fill="#f85149" text-anchor="middle">permit antes</text>
+    <rect x="400" y="304" width="140" height="44" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="470" y="324" font-size="12" fill="#f0f6fc" text-anchor="middle">allowance dada</text>
+    <text x="470" y="340" font-size="12" fill="#8b949e" text-anchor="middle">nonce gastado</text>
+    <rect x="580" y="300" width="300" height="100" rx="8" fill="#161b22" stroke="#3fb950"/>
+    <text x="730" y="324" font-size="13" fill="#f0f6fc" text-anchor="middle">El permit de la tienda revierte.</text>
+    <text x="730" y="346" font-size="13" fill="#f0f6fc" text-anchor="middle">Con try/catch lo ignora y cobra</text>
+    <text x="730" y="366" font-size="13" fill="#f0f6fc" text-anchor="middle">con la allowance que ya existe:</text>
+    <text x="730" y="388" font-size="13" fill="#3fb950" text-anchor="middle">la compra sale igual</text>
+  </g>
+</svg>
