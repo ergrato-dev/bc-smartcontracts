@@ -54,7 +54,7 @@ La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está p
 
 | Semana | Tema | Estado |
 |:--:|---|:--:|
-| 21 | Vulnerabilidades clásicas | ⬜ |
+| [21](week-21-vulnerabilidades_clasicas/README.md) | [Vulnerabilidades clásicas](week-21-vulnerabilidades_clasicas/README.md) | ✅ |
 | 22 | Vulnerabilidades económicas | ⬜ |
 | 23 | Análisis estático | ⬜ |
 | 24 | Fuzzing de invariantes | ⬜ |

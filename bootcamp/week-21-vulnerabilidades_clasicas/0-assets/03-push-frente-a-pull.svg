@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Arriba, patrón push: la puja de Bob tiene que devolver el ETH al bloqueador, la devolución falla y la puja revierte, igual que todas las siguientes. Abajo, patrón pull: la puja de Bob solo apunta lo que se debe; Alice retira lo suyo en otra transacción, y el bloqueador no puede retirar pero no bloquea a nadie">
+<title>Push frente a pull</title>
+<rect width="960" height="540" fill="#0d1117"/>
+<g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+<text x="30" y="40" font-size="16" fill="#f0f6fc">Push: la puja devuelve el ETH en el acto</text>
+<rect x="30" y="70" width="170" height="56" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+<text x="115.0" y="95.0" font-size="14" fill="#f0f6fc" text-anchor="middle">Bob</text>
+<text x="115.0" y="115.0" font-size="12" fill="#8b949e" text-anchor="middle">puja 3 ETH</text>
+<rect x="330" y="70" width="200" height="56" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+<text x="430.0" y="103.0" font-size="14" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">PushAuction.bid()</text>
+<rect x="680" y="70" width="240" height="56" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+<text x="800.0" y="95.0" font-size="14" fill="#f0f6fc" text-anchor="middle">Bloqueador</text>
+<text x="800.0" y="115.0" font-size="12" fill="#8b949e" text-anchor="middle">sin receive: rechaza ETH</text>
+<path d="M200 98 L330 98" stroke="#58a6ff" stroke-width="2"/>
+<path d="M320.0 92.0 L330 98 L320.0 104.0" stroke="#58a6ff" stroke-width="2" fill="none"/>
+<text x="265.0" y="90.0" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">bid{3 ETH}</text>
+<path d="M530 98 L680 98" stroke="#f0883e" stroke-width="2"/>
+<path d="M670.0 92.0 L680 98 L670.0 104.0" stroke="#f0883e" stroke-width="2" fill="none"/>
+<text x="605.0" y="90.0" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">call{1,1 ETH}</text>
+<text x="605" y="150" font-size="13" fill="#f85149" text-anchor="middle">falla</text>
+<path d="M605 160 L445 190" stroke="#f85149" stroke-width="2"/>
+<path d="M455.9 194.1 L445 190 L453.7 182.3" stroke="#f85149" stroke-width="2" fill="none"/>
+<rect x="330" y="190" width="230" height="50" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+<text x="445.0" y="220.0" font-size="14" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">revert RefundFailed</text>
+<text x="580" y="220" font-size="13" fill="#f85149">Toda puja futura revierte igual:</text>
+<text x="580" y="240" font-size="13" fill="#f85149">el bloqueador gana con 1,1 ETH.</text>
+<line x1="30" y1="280" x2="930" y2="280" stroke="#30363d"/>
+<text x="30" y="318" font-size="16" fill="#f0f6fc">Pull: la puja apunta; cada uno retira lo suyo</text>
+<rect x="30" y="348" width="170" height="56" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+<text x="115.0" y="373.0" font-size="14" fill="#f0f6fc" text-anchor="middle">Bob</text>
+<text x="115.0" y="393.0" font-size="12" fill="#8b949e" text-anchor="middle">puja 3 ETH</text>
+<rect x="330" y="348" width="200" height="56" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+<text x="430.0" y="381.0" font-size="14" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">Auction.bid()</text>
+<path d="M200 376 L330 376" stroke="#58a6ff" stroke-width="2"/>
+<path d="M320.0 370.0 L330 376 L320.0 382.0" stroke="#58a6ff" stroke-width="2" fill="none"/>
+<text x="265.0" y="368.0" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">bid{3 ETH}</text>
+<rect x="640" y="340" width="280" height="72" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+<text x="780.0" y="373.0" font-size="14" fill="#f0f6fc" text-anchor="middle">pendingReturns</text>
+<text x="780.0" y="393.0" font-size="12" fill="#8b949e" text-anchor="middle">alice: 1 ETH · bloqueador: 1,1 ETH</text>
+<path d="M530 376 L640 376" stroke="#3fb950" stroke-width="2"/>
+<path d="M630.0 370.0 L640 376 L630.0 382.0" stroke="#3fb950" stroke-width="2" fill="none"/>
+<text x="585.0" y="368.0" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">+= puja</text>
+<text x="445" y="428" font-size="13" fill="#3fb950" text-anchor="middle">Bob gana; nadie envía nada</text>
+<rect x="30" y="456" width="170" height="56" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+<text x="115.0" y="481.0" font-size="14" fill="#f0f6fc" text-anchor="middle">Alice</text>
+<text x="115.0" y="501.0" font-size="12" fill="#8b949e" text-anchor="middle">otra transacción</text>
+<rect x="330" y="456" width="200" height="56" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+<text x="430.0" y="489.0" font-size="14" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">Auction.withdraw()</text>
+<path d="M200 484 L330 484" stroke="#58a6ff" stroke-width="2"/>
+<path d="M320.0 478.0 L330 484 L320.0 490.0" stroke="#58a6ff" stroke-width="2" fill="none"/>
+<text x="265.0" y="476.0" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">withdraw()</text>
+<path d="M530 484 L700 484" stroke="#f0883e" stroke-width="2"/>
+<path d="M690.0 478.0 L700 484 L690.0 490.0" stroke="#f0883e" stroke-width="2" fill="none"/>
+<text x="615.0" y="476.0" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">1 ETH a Alice</text>
+<text x="720" y="478" font-size="13" fill="#8b949e">Si el bloqueador retira,</text>
+<text x="720" y="498" font-size="13" fill="#8b949e">solo falla su retirada.</text>
+</g></svg>
