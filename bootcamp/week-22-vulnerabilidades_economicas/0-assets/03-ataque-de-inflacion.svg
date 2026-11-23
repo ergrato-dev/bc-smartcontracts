@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" role="img" aria-label="Ataque de inflación en cuatro pasos: Mallory deposita 1 wei y recibe 1 participación; dona 10 000 tokens y la bóveda tiene 10 000 tokens y 1 participación; Alice deposita 15 000 y recibe 1 participación porque 1,49 se redondea a 1; Mallory quema su participación y saca 12 500 tokens, 2500 de ellos de Alice">
+  <title>Ataque de inflación contra una bóveda vacía</title>
+  <rect width="900" height="470" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Ataque de inflación: el redondeo de un depósito</text>
+
+    <g font-size="15" font-weight="600" text-anchor="middle">
+      <text x="120" y="76" fill="#f85149">1 · Mallory deposita</text>
+      <text x="335" y="76" fill="#f85149">2 · Mallory dona</text>
+      <text x="565" y="76" fill="#58a6ff">3 · Alice deposita</text>
+      <text x="785" y="76" fill="#f85149">4 · Mallory retira</text>
+    </g>
+    <g font-size="13" text-anchor="middle" fill="#8b949e">
+      <text x="120" y="98">deposit(1 wei)</text>
+      <text x="335" y="98">transfer(vault, 10 000)</text>
+      <text x="565" y="98">deposit(15 000)</text>
+      <text x="785" y="98">redeem(1)</text>
+    </g>
+
+    <!-- Bóvedas -->
+    <g fill="#161b22" stroke="#627eea" stroke-width="2">
+      <rect x="30" y="116" width="180" height="150" rx="8"/>
+      <rect x="245" y="116" width="180" height="150" rx="8"/>
+      <rect x="460" y="116" width="210" height="150" rx="8"/>
+      <rect x="695" y="116" width="180" height="150" rx="8"/>
+    </g>
+    <g font-size="12" fill="#8b949e" text-anchor="middle">
+      <text x="120" y="142">tokens</text>
+      <text x="335" y="142">tokens</text>
+      <text x="565" y="142">tokens</text>
+      <text x="785" y="142">tokens</text>
+      <text x="120" y="212">participaciones</text>
+      <text x="335" y="212">participaciones</text>
+      <text x="565" y="212">participaciones</text>
+      <text x="785" y="212">participaciones</text>
+    </g>
+    <g font-size="17" font-weight="600" fill="#f0f6fc" text-anchor="middle">
+      <text x="120" y="170" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">1 wei</text>
+      <text x="335" y="170" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">10 000 + 1 wei</text>
+      <text x="565" y="170" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">25 000 + 1 wei</text>
+      <text x="785" y="170" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">12 500 + 1 wei</text>
+      <text x="120" y="240">1 (Mallory)</text>
+      <text x="335" y="240">1 (Mallory)</text>
+      <text x="565" y="240">2 (Mallory, Alice)</text>
+      <text x="785" y="240">1 (Alice)</text>
+    </g>
+
+    <!-- Flechas entre pasos -->
+    <g stroke="#58a6ff" stroke-width="2">
+      <line x1="212" y1="191" x2="241" y2="191"/>
+      <line x1="427" y1="191" x2="456" y2="191"/>
+      <line x1="672" y1="191" x2="691" y2="191"/>
+    </g>
+
+    <!-- Cálculos -->
+    <g font-size="13" text-anchor="middle">
+      <text x="335" y="294" fill="#e3b341">la donación no da participaciones:</text>
+      <text x="335" y="314" fill="#e3b341">1 participación vale 10 000</text>
+      <text x="565" y="294" fill="#e3b341" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">15 000 × 1 / 10 000 = 1,49</text>
+      <text x="565" y="314" fill="#f85149" font-weight="600">se redondea a 1</text>
+      <text x="785" y="294" fill="#e3b341">la mitad de 25 000</text>
+      <text x="785" y="314" fill="#f85149" font-weight="600">12 500 para Mallory</text>
+    </g>
+
+    <!-- Resultado -->
+    <rect x="30" y="344" width="845" height="100" rx="10" fill="none" stroke="#f85149" stroke-width="2"/>
+    <text x="50" y="374" fill="#f85149" font-size="15" font-weight="600">Mallory pone 10 000 y saca 12 500; a Alice le quedan 12 500 de sus 15 000</text>
+    <text x="50" y="402" fill="#f0f6fc" font-size="13">Con 10 000 exactos, Alice recibiría 0 participaciones y Mallory se llevaría todo.</text>
+    <text x="50" y="426" fill="#3fb950" font-size="13">Con 1000 participaciones virtuales, la donación se reparte también con ellas y Mallory saca 5001.</text>
+  </g>
+</svg>

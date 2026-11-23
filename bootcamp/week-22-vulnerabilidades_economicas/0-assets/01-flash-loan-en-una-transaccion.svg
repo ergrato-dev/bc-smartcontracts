@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-label="Secuencia de un flash loan en una sola transacción: el token USD presta 1 000 000 al atacante; el atacante compra 500 GOV en el pool y el precio sube de 1000 a 4000; deja los 500 GOV en SpotLender y recibe 1 600 000 USD; el token quema 1 001 000 USD; al atacante le quedan 599 000 USD">
+  <title>Flash loan en una sola transacción</title>
+  <rect width="900" height="600" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Un flash loan: todo dentro de una transacción</text>
+
+    <!-- Marco de la transacción -->
+    <rect x="30" y="56" width="840" height="490" rx="10" fill="none" stroke="#627eea" stroke-width="2" stroke-dasharray="8 6"/>
+    <text x="46" y="78" fill="#8fa4f0" font-size="13">transacción de mallory → attacker.attack(1 000 000)</text>
+
+    <!-- Cabeceras -->
+    <g font-size="14" font-weight="600" text-anchor="middle">
+      <rect x="70" y="92" width="160" height="40" rx="6" fill="#161b22" stroke="#30363d"/>
+      <text x="150" y="117" fill="#f0f6fc">Token USD</text>
+      <rect x="270" y="92" width="160" height="40" rx="6" fill="#161b22" stroke="#f85149"/>
+      <text x="350" y="117" fill="#f85149">FlashAttacker</text>
+      <rect x="470" y="92" width="160" height="40" rx="6" fill="#161b22" stroke="#30363d"/>
+      <text x="550" y="117" fill="#f0f6fc">Pool</text>
+      <rect x="670" y="92" width="160" height="40" rx="6" fill="#161b22" stroke="#30363d"/>
+      <text x="750" y="117" fill="#f0f6fc">SpotLender</text>
+    </g>
+
+    <!-- Líneas de vida -->
+    <g stroke="#30363d" stroke-width="2">
+      <line x1="150" y1="132" x2="150" y2="530"/>
+      <line x1="350" y1="132" x2="350" y2="530"/>
+      <line x1="550" y1="132" x2="550" y2="530"/>
+      <line x1="750" y1="132" x2="750" y2="530"/>
+    </g>
+
+    <defs>
+      <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+        <path d="M0,0 L10,5 L0,10 z" fill="#58a6ff"/>
+      </marker>
+      <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+        <path d="M0,0 L10,5 L0,10 z" fill="#3fb950"/>
+      </marker>
+      <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+        <path d="M0,0 L10,5 L0,10 z" fill="#f85149"/>
+      </marker>
+      <marker id="ay" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+        <path d="M0,0 L10,5 L0,10 z" fill="#e3b341"/>
+      </marker>
+    </defs>
+
+    <!-- 1. Préstamo -->
+    <line x1="150" y1="170" x2="344" y2="170" stroke="#58a6ff" stroke-width="2" marker-end="url(#ab)"/>
+    <text x="160" y="162" fill="#58a6ff" font-size="13">1 · mint 1 000 000 USD + onFlashLoan</text>
+
+    <!-- 2. Swap -->
+    <line x1="350" y1="225" x2="544" y2="225" stroke="#f85149" stroke-width="2" marker-end="url(#ar)"/>
+    <text x="360" y="217" fill="#f85149" font-size="13">2 · swap 1 000 000 USD</text>
+    <line x1="550" y1="255" x2="356" y2="255" stroke="#3fb950" stroke-width="2" marker-end="url(#ag)"/>
+    <text x="540" y="275" fill="#3fb950" font-size="13" text-anchor="end">500 GOV</text>
+    <rect x="566" y="206" width="170" height="54" rx="6" fill="#161b22" stroke="#e3b341"/>
+    <text x="651" y="228" fill="#e3b341" font-size="13" text-anchor="middle">precio al contado</text>
+    <text x="651" y="249" fill="#e3b341" font-size="14" font-weight="600" text-anchor="middle">1000 → 4000 USD</text>
+
+    <!-- 3. Préstamo contra el precio inflado -->
+    <line x1="350" y1="320" x2="744" y2="320" stroke="#f85149" stroke-width="2" marker-end="url(#ar)"/>
+    <text x="360" y="312" fill="#f85149" font-size="13">3 · borrow: 500 GOV de colateral</text>
+    <line x1="750" y1="350" x2="356" y2="350" stroke="#3fb950" stroke-width="2" marker-end="url(#ag)"/>
+    <text x="740" y="370" fill="#3fb950" font-size="13" text-anchor="end">1 600 000 USD (500 × 4000 × 80 %)</text>
+    <text x="740" y="395" fill="#8b949e" font-size="12" text-anchor="end">lee el precio del pool: spotPrice()</text>
+
+    <!-- 4. Devolución -->
+    <line x1="350" y1="440" x2="156" y2="440" stroke="#e3b341" stroke-width="2" marker-end="url(#ay)"/>
+    <text x="340" y="432" fill="#e3b341" font-size="13" text-anchor="end">4 · burn 1 001 000 USD</text>
+    <text x="340" y="460" fill="#8b949e" font-size="12" text-anchor="end">préstamo + 0,1 % de comisión</text>
+
+    <!-- Resultado -->
+    <rect x="390" y="470" width="440" height="60" rx="8" fill="#161b22" stroke="#3fb950"/>
+    <text x="610" y="495" fill="#3fb950" font-size="15" font-weight="600" text-anchor="middle">a mallory le quedan 599 000 USD</text>
+    <text x="610" y="517" fill="#8b949e" font-size="13" text-anchor="middle">SpotLender: deuda de 1 600 000 contra 500 GOV que valen 500 000</text>
+  </g>
+  <text x="450" y="578" fill="#8b949e" font-size="13" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">Si en el paso 4 no hay saldo para devolver, el token revierte y nada de esto ocurrió.</text>
+</svg>

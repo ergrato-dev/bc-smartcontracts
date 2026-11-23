@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-label="Sándwich en un bloque: primero el atacante compra GOV con 500 000 USD y el precio sube de 1000 a 2250; después Alice cambia 100 000 USD y recibe 41,6 GOV en vez de 90,9, y el precio sube a 2560; por último el atacante vende sus 333,3 GOV y recibe 556 521 USD, 56 521 más de los que puso">
+  <title>Un sándwich alrededor de un swap</title>
+  <rect width="900" height="520" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Un sándwich: tres transacciones del mismo bloque</text>
+
+    <!-- Bloque -->
+    <rect x="30" y="56" width="840" height="300" rx="10" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="46" y="80" fill="#8fa4f0" font-size="13">bloque N, en el orden que eligió el constructor</text>
+
+    <!-- Tx 1 -->
+    <rect x="50" y="96" width="250" height="160" rx="8" fill="#0d1117" stroke="#f85149" stroke-width="2"/>
+    <text x="175" y="122" fill="#f85149" font-size="15" font-weight="600" text-anchor="middle">1 · atacante: frontRun</text>
+    <text x="175" y="150" fill="#f0f6fc" font-size="13" text-anchor="middle">compra GOV con 500 000 USD</text>
+    <text x="175" y="174" fill="#8b949e" font-size="13" text-anchor="middle">recibe 333,3 GOV</text>
+    <text x="175" y="214" fill="#8b949e" font-size="12" text-anchor="middle">propina más alta que Alice</text>
+    <text x="175" y="238" fill="#8b949e" font-size="12" text-anchor="middle">para ir antes</text>
+
+    <!-- Tx 2 -->
+    <rect x="325" y="96" width="250" height="160" rx="8" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+    <text x="450" y="122" fill="#58a6ff" font-size="15" font-weight="600" text-anchor="middle">2 · Alice: swap</text>
+    <text x="450" y="150" fill="#f0f6fc" font-size="13" text-anchor="middle">cambia 100 000 USD</text>
+    <text x="450" y="174" fill="#f85149" font-size="13" font-weight="600" text-anchor="middle">recibe 41,6 GOV</text>
+    <text x="450" y="198" fill="#8b949e" font-size="13" text-anchor="middle">sola habría recibido 90,9</text>
+    <text x="450" y="238" fill="#8b949e" font-size="12" text-anchor="middle">minAmountOut = 0</text>
+
+    <!-- Tx 3 -->
+    <rect x="600" y="96" width="250" height="160" rx="8" fill="#0d1117" stroke="#f85149" stroke-width="2"/>
+    <text x="725" y="122" fill="#f85149" font-size="15" font-weight="600" text-anchor="middle">3 · atacante: backRun</text>
+    <text x="725" y="150" fill="#f0f6fc" font-size="13" text-anchor="middle">vende sus 333,3 GOV</text>
+    <text x="725" y="174" fill="#8b949e" font-size="13" text-anchor="middle">recibe 556 521 USD</text>
+    <text x="725" y="214" fill="#3fb950" font-size="13" font-weight="600" text-anchor="middle">+56 521 USD</text>
+    <text x="725" y="238" fill="#8b949e" font-size="12" text-anchor="middle">propina más baja que Alice</text>
+
+    <!-- Precio -->
+    <text x="46" y="290" fill="#e3b341" font-size="13">precio de 1 GOV en el pool, en USD</text>
+    <g font-size="14" font-weight="600" text-anchor="middle" fill="#e3b341">
+      <text x="72" y="330">1000</text>
+      <text x="312" y="330">2250</text>
+      <text x="588" y="330">2560</text>
+      <text x="822" y="330">≈ 1089</text>
+    </g>
+    <g stroke="#e3b341" stroke-width="2">
+      <line x1="102" y1="325" x2="282" y2="325"/>
+      <line x1="342" y1="325" x2="558" y2="325"/>
+      <line x1="618" y1="325" x2="780" y2="325"/>
+    </g>
+
+    <!-- Defensa -->
+    <rect x="30" y="380" width="840" height="110" rx="10" fill="none" stroke="#3fb950" stroke-width="2"/>
+    <text x="50" y="410" fill="#3fb950" font-size="15" font-weight="600">Con minAmountOut = 90,0 GOV (el precio visto, menos un 1 %)</text>
+    <text x="50" y="440" fill="#f0f6fc" font-size="13">El swap de Alice revierte con InsufficientOutput: el atacante solo puede empeorar su precio un 1 %.</text>
+    <text x="50" y="466" fill="#8b949e" font-size="13">Sin la víctima en medio, comprar y vender le devuelve lo suyo menos el redondeo: no gana nada.</text>
+  </g>
+</svg>
