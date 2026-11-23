@@ -43,7 +43,7 @@ Versiones exactas y política para cambiarlas: [`docs/stack-versions.md`](../doc
 | | 20 | `week-20-oraculos_y_datos_offchain` | Chainlink price feeds y VRF, IPFS con kubo, `tokenURI` con `ipfs://` |
 | 5 · Seguridad | 21 | `week-21-vulnerabilidades_clasicas` | Reentrancy, control de acceso, `tx.origin`, DoS, `unchecked` |
 | | 22 | `week-22-vulnerabilidades_economicas` | Manipulación de oráculos, flash loans, front-running y MEV, redondeo |
-| | 23 | `week-23-analisis_estatico` | Slither (uv), Aderyn, detectores propios |
+| | 23 | `week-23-analisis_estatico` | Slither (uv), forge lint, detectores propios en Python |
 | | 24 | `week-24-fuzzing_de_invariantes` | Invariant testing en Foundry, handlers, Medusa |
 | | 25 | `week-25-verificacion_formal` | SMTChecker, Halmos, ejecución simbólica |
 | | 26 | `week-26-auditoria` | Metodología, modelado de amenazas, informe, CTF local |
@@ -154,6 +154,9 @@ function greet() external pure returns (string memory) {
 - Las líneas de solución empiezan con `//> `. Los comentarios explicativos usan `//`.
 - El starter compila (se toleran warnings de parámetros sin usar); resuelto, pasa
   `forge test --deny warnings`.
+- Cuando el paso **sustituye** código que tiene que estar activo en el starter (para que un
+  analizador lo encuentre, semana 23), la línea vieja acaba en `// <- Paso N` y la nueva va
+  debajo en `//> `. Al resolver, `compilar-starters.sh` borra las líneas `// <- Paso N`.
 
 **Terminal** (semanas 01-02 y pasos de `cast`; trae `pasos.sh` y `test.sh`):
 
@@ -215,6 +218,9 @@ def get_block(url: str, number: int) -> Block:
   `uv sync --offline --frozen`. Otra dependencia exige cambiar `docker/py/`, `uv lock`,
   reconstruir la imagen y copiar los dos archivos a todos los starters de Python.
 - `pyproject.toml` configura pytest: `pythonpath = ["src"]` y `filterwarnings = ["error"]`.
+- **Detectores de Slither** (desde la semana 23) no llevan `pyproject.toml` ni `uv.lock`: corren
+  sobre el Python de Slither de la imagen (`$SLITHER_PYTHON`, con pytest). `test.sh` ejecuta
+  `"$SLITHER_PYTHON" -m pytest -q -p no:cacheprovider -W error tests`.
 - `test.sh` arranca su anvil en el 8546 y, si hace falta, un PostgreSQL con `initdb` en una
   carpeta temporal, solo por el socket de `/tmp`. Los tests que cambian la cadena toman un
   `evm_snapshot` en una fixture y vuelven a él al acabar; un reorg se simula con

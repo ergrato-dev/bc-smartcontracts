@@ -20,6 +20,8 @@ starter que compilaba ayer; en un contrato, además, cambia el bytecode que se d
 | OpenZeppelin Contracts | `v5.7.0` | `ARG OZ_VERSION` (en `/opt/lib` de la imagen) y remapping `@openzeppelin/contracts/` | Última estable con más de dos semanas publicada; sin avisos de seguridad abiertos |
 | Chainlink Contracts | `1.4.0` (paquete de npm `@chainlink/contracts`) | `ARG CHAINLINK_VERSION` y `ARG CHAINLINK_SHA512` (solo `src/`, en `/opt/lib/chainlink-contracts`) | Anterior a la última estable (1.5.0); trae `AggregatorV3Interface`, VRF v2.5 y sus mocks. Se instala sin pnpm, verificado con el sha512 de npm |
 | kubo (`ipfs`) | `v0.43.0` | `ARG KUBO_VERSION` | Anterior a la última (v0.43.1); verificado con su sha512 |
+| Slither (`slither-analyzer`) | `0.11.5` | `ARG SLITHER_VERSION`, con `uv tool install` en `/opt/uv-tools` | Anterior a la última (0.11.6); su Python, con pytest, en `$SLITHER_PYTHON` |
+| crytic-compile | `0.3.11` | `ARG CRYTIC_COMPILE_VERSION` | La última que admite Slither 0.11.5 (`<0.4.0`); compila con forge |
 
 ## Dependencias por semana
 
@@ -49,6 +51,8 @@ verificada ese día. Hasta entonces no se fija nada.
 | httpx2 | `2.16.0` | 19 | Cliente HTTP para JSON-RPC y para el `TestClient` de FastAPI, que avisa de que `httpx` queda obsoleto; no la 2.16.2, la última |
 | pytest | `9.1.1` | 19 | Tests de los starters de Python; no la 9.2.0, la última |
 | Chainlink Contracts | `1.4.0` | 20 | `AggregatorV3Interface`, `MockV3Aggregator`, `VRFConsumerBaseV2Plus` y `VRFCoordinatorV2_5Mock`; en la imagen, con el remapping `@chainlink/contracts/` |
+| Slither | `0.11.5` | 23 | Análisis estático y detectores propios; en la imagen, con sus dependencias fijadas por `ARG SLITHER_EXCLUDE_NEWER` (2026-11-16) |
+| pytest (en el entorno de Slither) | `9.1.1` | 23 | Tests de los detectores propios; la misma que la de la semana 19 |
 
 Las de TypeScript están en `docker/web/package.json` y su `pnpm-lock.yaml`, que fija también las
 dependencias indirectas. La imagen descarga ese lockfile (`pnpm fetch`) y **todos** los starters

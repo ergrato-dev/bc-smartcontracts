@@ -12,7 +12,8 @@
 #   2. Con los pasos resueltos (líneas `//> ` o `#> ` descomentadas y marcas
 #      `revert("TODO: Paso N")`, `throw new Error("TODO: Paso N")`,
 #      `raise NotImplementedError("TODO: Paso N")` y `todo "Paso N"`
-#      quitadas), los tests PASAN sin warnings.
+#      quitadas, y borradas las líneas que acaban en `// <- Paso N`, las que el paso sustituye),
+#      los tests PASAN sin warnings.
 # ¿Impacto? Un starter que no cumple las dos cosas no se publica.
 # Uso: ./scripts/compilar-starters.sh week-01
 set -euo pipefail
@@ -61,7 +62,7 @@ while IFS= read -r starter; do
     cp -r "$solution"/. "$tmp"/
   else
     find "$tmp" -type f \( -name '*.sol' -o -name '*.sh' -o -name '*.ts' -o -name '*.py' \) -not -path '*/out/*' -not -path '*/node_modules/*' -not -path '*/.venv/*' -print0 \
-      | xargs -0 sed -i -E '/(revert|throw new Error)\("TODO: Paso [0-9]+"\);/d; /^[[:space:]]*todo "Paso [0-9]+"$/d; /^[[:space:]]*raise NotImplementedError\("TODO: Paso [0-9]+"\)$/d; s#^([[:space:]]*)(//|\#)> ?#\1#'
+      | xargs -0 sed -i -E '/(revert|throw new Error)\("TODO: Paso [0-9]+"\);/d; /\/\/ <- Paso [0-9]+$/d; /^[[:space:]]*todo "Paso [0-9]+"$/d; /^[[:space:]]*raise NotImplementedError\("TODO: Paso [0-9]+"\)$/d; s#^([[:space:]]*)(//|\#)> ?#\1#'
   fi
   if check "$tmp" strict; then
     echo "✅ $name"

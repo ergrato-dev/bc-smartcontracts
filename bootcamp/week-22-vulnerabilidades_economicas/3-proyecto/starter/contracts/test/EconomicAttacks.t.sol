@@ -61,7 +61,9 @@ contract EconomicAttacksTest is Test {
             )
         );
         bytes32 structHash = keccak256(
-            abi.encode(registry.REGISTRATION_TYPEHASH(), member, keccak256(bytes(label)), registry.nonces(member), deadline)
+            abi.encode(
+                registry.REGISTRATION_TYPEHASH(), member, keccak256(bytes(label)), registry.nonces(member), deadline
+            )
         );
         (uint8 v, bytes32 r, bytes32 s) =
             vm.sign(memberKey, keccak256(abi.encodePacked("\x19\x01", domainSeparator, structHash)));

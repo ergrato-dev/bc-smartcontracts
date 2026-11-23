@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" role="img" aria-label="Lo que encontró cada control en el staking del ejercicio 02: los dos analizadores encuentran la división antes de multiplicar y la llamada sin comprobar; solo forge lint encuentra las tres conversiones que truncan; solo Slither da cuatro falsos positivos; ninguno encuentra que unstake borra la posición sin pagar la recompensa, y eso lo encuentra un test">
+  <title>Lo que ve cada control</title>
+  <rect width="900" height="450" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Lo que encontró cada control en el staking del ejercicio 02</text>
+
+    <!-- forge lint -->
+    <rect x="40" y="70" width="460" height="230" rx="12" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="60" y="98" fill="#8fa4f0" font-size="16" font-weight="600">forge lint</text>
+    <text x="60" y="140" fill="#f0f6fc" font-size="14">3 × unsafe-typecast</text>
+    <text x="60" y="162" fill="#8b949e" font-size="13">uint96(amount) trunca;</text>
+    <text x="60" y="182" fill="#8b949e" font-size="13">Slither no tiene ese detector</text>
+
+    <!-- Slither -->
+    <rect x="400" y="70" width="460" height="230" rx="12" fill="none" stroke="#d29922" stroke-width="2"/>
+    <text x="840" y="98" fill="#d29922" font-size="16" font-weight="600" text-anchor="end">Slither</text>
+    <text x="840" y="140" fill="#f0f6fc" font-size="14" text-anchor="end">4 falsos positivos</text>
+    <text x="840" y="162" fill="#8b949e" font-size="13" text-anchor="end">arbitrary-send-eth: msg.sender cobra lo suyo</text>
+    <text x="840" y="182" fill="#8b949e" font-size="13" text-anchor="end">incorrect-equality y 2 × timestamp sobre amount</text>
+
+    <!-- Intersección -->
+    <rect x="410" y="210" width="80" height="80" rx="6" fill="#0d1117" stroke="#3fb950" stroke-width="2"/>
+    <text x="450" y="236" fill="#3fb950" font-size="13" font-weight="600" text-anchor="middle">los dos</text>
+    <text x="450" y="258" fill="#f0f6fc" font-size="12" text-anchor="middle">división</text>
+    <text x="450" y="274" fill="#f0f6fc" font-size="12" text-anchor="middle">call sin ok</text>
+
+    <text x="270" y="246" fill="#8b949e" font-size="13" text-anchor="middle">dividir antes de multiplicar</text>
+    <text x="270" y="266" fill="#8b949e" font-size="13" text-anchor="middle">y la llamada sin comprobar</text>
+    <line x1="370" y1="252" x2="404" y2="252" stroke="#3fb950" stroke-width="2"/>
+
+    <!-- Ninguno -->
+    <rect x="40" y="326" width="820" height="100" rx="12" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+    <text x="60" y="354" fill="#f85149" font-size="16" font-weight="600">Ninguno de los dos</text>
+    <text x="60" y="382" fill="#f0f6fc" font-size="14">unstake borra la posición sin pagar lo generado: Alice pierde 10 ETH.</text>
+    <text x="60" y="406" fill="#8b949e" font-size="13">No es un patrón peligroso, es una regla del negocio. Lo encuentra test_Paso4_UnstakePaysReward.</text>
+  </g>
+</svg>

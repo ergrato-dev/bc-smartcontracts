@@ -2,7 +2,7 @@
 # ¿Para qué? Que todos los aprendices compilen, prueben y desplieguen con las mismas versiones,
 #            sin instalar nada en su máquina.
 # ¿Impacto? Si un ejercicio pasa aquí, pasa en la corrección. Las herramientas que llegan
-#           más adelante (Node y pnpm, uv y PostgreSQL) se añaden en la semana que las introduce.
+#           más adelante (Node y pnpm, uv y PostgreSQL, Slither) se añaden en la semana que las introduce.
 FROM ubuntu:24.04
 
 ARG FOUNDRY_VERSION=v1.9.0
@@ -15,6 +15,10 @@ ARG UV_VERSION=0.13.8
 ARG CHAINLINK_VERSION=1.4.0
 ARG CHAINLINK_SHA512=4a93422744cf388ea96b697bd365a4e1620ff1c730e4045c44fd44fd94ea6857df5cda19785d375a1b152fc7f797739344503d678d0ee4a719ce626665092814
 ARG KUBO_VERSION=v0.43.0
+ARG SLITHER_VERSION=0.11.5
+ARG CRYTIC_COMPILE_VERSION=0.3.11
+ARG PYTEST_VERSION=9.1.1
+ARG SLITHER_EXCLUDE_NEWER=2026-11-16T00:00:00Z
 # ¿Qué? Arquitectura que Docker inyecta al construir (amd64 o arm64).
 ARG TARGETARCH
 
@@ -117,6 +121,20 @@ RUN arch="${TARGETARCH:-amd64}" \
     && (cd /tmp && sha512sum -c kubo.sha512) \
     && tar -xzf "/tmp/${file}" -C /usr/local/bin --strip-components=1 kubo/ipfs \
     && rm /tmp/kubo*
+
+# ¿Qué? Slither, el analizador estático de Trail of Bits, como herramienta de uv con su propio
+#   entorno de Python en /opt/uv-tools, desde la semana 23. Con pytest en el mismo entorno.
+# ¿Para qué? `slither` en el PATH para cualquier proyecto Foundry, y `$SLITHER_PYTHON` para los
+#   detectores propios, que importan `slither` como biblioteca y se prueban con pytest.
+# ¿Impacto? `--exclude-newer` impide versiones con menos de una semana también en las
+#   dependencias indirectas (web3, eth-abi...), como el `exclude-newer` de `py/pyproject.toml`.
+RUN UV_TOOL_DIR=/opt/uv-tools UV_TOOL_BIN_DIR=/usr/local/bin uv tool install --quiet \
+        "slither-analyzer==${SLITHER_VERSION}" \
+        --with "crytic-compile==${CRYTIC_COMPILE_VERSION}" \
+        --with "pytest==${PYTEST_VERSION}" \
+        --exclude-newer "${SLITHER_EXCLUDE_NEWER}" \
+    && rm -rf /root/.cache/uv
+ENV SLITHER_PYTHON=/opt/uv-tools/slither-analyzer/bin/python
 
 # ¿Qué? Usuario sin privilegios `ubuntu` (UID 1000), que ya trae la imagen base.
 # ¿Impacto? Los archivos que crea forge en el volumen montado no quedan como root.
