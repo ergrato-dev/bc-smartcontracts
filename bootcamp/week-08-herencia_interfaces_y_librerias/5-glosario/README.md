@@ -24,4 +24,4 @@
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | Semana 09 (próximamente) |
+| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | [Semana 09 — Testing con Foundry →](../../week-09-testing_con_foundry/README.md) |

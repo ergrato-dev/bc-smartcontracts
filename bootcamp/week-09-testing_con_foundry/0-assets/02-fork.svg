@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" role="img" aria-label="Fork de anvil. A la izquierda, el nodo anvil con su cadena hasta el bloque 2 y el Faucet con 1 ether. En el centro, forge test con la copia local del fork. Primera lectura de una cuenta o un slot: forge la pide al nodo por JSON-RPC en el bloque elegido y la guarda en la copia. Escrituras del test, como el drip de dave: solo en la copia, no vuelven a la red. Al terminar, la copia se descarta y el nodo sigue con el Faucet en 1 ether.">
+  <title>Cómo funciona un fork</title>
+  <rect width="900" height="380" fill="#0d1117"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">Un fork lee de la red y escribe en su copia</text>
+
+    <rect x="30" y="64" width="300" height="270" rx="10" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="180" y="92" font-size="16" font-weight="700" fill="#f0f6fc" text-anchor="middle">Nodo: anvil</text>
+    <text x="180" y="112" font-size="13" fill="#8b949e" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">http://127.0.0.1:8545</text>
+    <g font-size="13" text-anchor="middle">
+      <rect x="54" y="132" width="76" height="40" rx="6" fill="#0d1117" stroke="#30363d"/>
+      <text x="92" y="157" fill="#f0f6fc">bloque 0</text>
+      <rect x="142" y="132" width="76" height="40" rx="6" fill="#0d1117" stroke="#30363d"/>
+      <text x="180" y="157" fill="#f0f6fc">bloque 1</text>
+      <rect x="230" y="132" width="76" height="40" rx="6" fill="#0d1117" stroke="#8fa4f0" stroke-width="2"/>
+      <text x="268" y="157" fill="#f0f6fc">bloque 2</text>
+    </g>
+    <text x="92" y="190" font-size="12" fill="#8b949e" text-anchor="middle">génesis</text>
+    <text x="180" y="190" font-size="12" fill="#8b949e" text-anchor="middle">despliegue</text>
+    <text x="268" y="190" font-size="12" fill="#8b949e" text-anchor="middle">+1 ether</text>
+    <rect x="54" y="216" width="252" height="56" rx="6" fill="#0d1117" stroke="#30363d"/>
+    <text x="180" y="240" font-size="14" fill="#f0f6fc" text-anchor="middle">Faucet: 1 ether</text>
+    <text x="180" y="260" font-size="12" fill="#8b949e" text-anchor="middle">antes y después del test</text>
+    <text x="180" y="310" font-size="13" fill="#8b949e" text-anchor="middle">Nadie escribe aquí desde el test</text>
+
+    <rect x="570" y="64" width="300" height="270" rx="10" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <text x="720" y="92" font-size="16" font-weight="700" fill="#f0f6fc" text-anchor="middle">forge test: copia local</text>
+    <text x="720" y="112" font-size="13" fill="#8b949e" text-anchor="middle">del bloque 2, en memoria</text>
+    <rect x="594" y="132" width="252" height="56" rx="6" fill="#0d1117" stroke="#30363d"/>
+    <text x="720" y="156" font-size="14" fill="#f0f6fc" text-anchor="middle">Faucet: 1 ether → 0,9 ether</text>
+    <text x="720" y="176" font-size="12" fill="#8b949e" text-anchor="middle">tras el drip de dave</text>
+    <rect x="594" y="200" width="252" height="40" rx="6" fill="#0d1117" stroke="#30363d"/>
+    <text x="720" y="225" font-size="14" fill="#f0f6fc" text-anchor="middle">dave: 0,1 ether</text>
+    <text x="720" y="270" font-size="13" fill="#8b949e" text-anchor="middle">prank, deal y warp funcionan aquí</text>
+    <text x="720" y="310" font-size="13" fill="#f0883e" text-anchor="middle">Al terminar el test, se descarta</text>
+
+    <path d="M332 150 L566 150" stroke="#58a6ff" stroke-width="2" fill="none" marker-end="url(#b)"/>
+    <text x="450" y="136" font-size="13" fill="#58a6ff" text-anchor="middle">1.ª lectura de una cuenta o slot</text>
+    <text x="450" y="172" font-size="12" fill="#8b949e" text-anchor="middle">JSON-RPC, en el bloque elegido</text>
+
+    <path d="M566 250 L340 250" stroke="#f85149" stroke-width="2" stroke-dasharray="6 5" fill="none"/>
+    <path d="M442 240 L458 260 M458 240 L442 260" stroke="#f85149" stroke-width="3"/>
+    <text x="450" y="230" font-size="13" fill="#f85149" text-anchor="middle">Las escrituras del test</text>
+    <text x="450" y="282" font-size="13" fill="#f85149" text-anchor="middle">no vuelven a la red</text>
+  </g>
+</svg>
