@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" role="img" aria-label="Los estados de una transacción en la página. Lista: el botón está activo. Al pulsar, la página simula; si la simulación revierte, el estado pasa a fallida con el nombre del error, sin gastar gas ni abrir la wallet. Si pasa, el estado es firmando: la wallet muestra la transacción. Si la persona rechaza, fallida con UserRejectedRequestError, sin gas. Si firma, el estado es confirmando: la transacción espera en el mempool hasta entrar en un bloque. Si el recibo dice reverted, fallida y el gas se pagó. Si dice success, confirmada: la página invalida la caché y vuelve a leer. Mientras firma o confirma, el botón está desactivado.">
+  <title>Los estados de una transacción</title>
+  <rect width="900" height="400" fill="#0d1117"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f85149"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">De pulsar el botón al recibo</text>
+
+    <rect x="30" y="70" width="150" height="70" rx="10" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="105" y="100" font-size="16" font-weight="700" fill="#f0f6fc" text-anchor="middle">lista</text>
+    <text x="105" y="122" font-size="13" fill="#8b949e" text-anchor="middle">botón activo</text>
+
+    <rect x="250" y="70" width="170" height="70" rx="10" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+    <text x="335" y="100" font-size="16" font-weight="700" fill="#f0f6fc" text-anchor="middle">firmando</text>
+    <text x="335" y="122" font-size="13" fill="#8b949e" text-anchor="middle">ventana de la wallet</text>
+
+    <rect x="490" y="70" width="170" height="70" rx="10" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+    <text x="575" y="100" font-size="16" font-weight="700" fill="#f0f6fc" text-anchor="middle">confirmando</text>
+    <text x="575" y="122" font-size="13" fill="#8b949e" text-anchor="middle">en el mempool</text>
+
+    <rect x="730" y="70" width="150" height="70" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="805" y="100" font-size="16" font-weight="700" fill="#3fb950" text-anchor="middle">confirmada</text>
+    <text x="805" y="122" font-size="13" fill="#8b949e" text-anchor="middle">invalida la caché</text>
+
+    <line x1="180" y1="105" x2="246" y2="105" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <text x="213" y="96" font-size="12" fill="#58a6ff" text-anchor="middle">simula OK</text>
+    <line x1="420" y1="105" x2="486" y2="105" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <text x="453" y="96" font-size="12" fill="#58a6ff" text-anchor="middle">firma</text>
+    <line x1="660" y1="105" x2="726" y2="105" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <text x="693" y="96" font-size="12" fill="#58a6ff" text-anchor="middle">success</text>
+
+    <rect x="250" y="250" width="410" height="60" rx="10" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+    <text x="455" y="286" font-size="16" font-weight="700" fill="#f85149" text-anchor="middle">fallida</text>
+
+    <line x1="105" y1="140" x2="300" y2="246" stroke="#f85149" stroke-width="2" marker-end="url(#r)"/>
+    <line x1="335" y1="140" x2="400" y2="246" stroke="#f85149" stroke-width="2" marker-end="url(#r)"/>
+    <line x1="575" y1="140" x2="540" y2="246" stroke="#f85149" stroke-width="2" marker-end="url(#r)"/>
+
+    <text x="30" y="200" font-size="13" fill="#f0f6fc">la simulación revierte</text>
+    <text x="30" y="218" font-size="12" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">InvalidLabel · sin gas</text>
+    <text x="390" y="172" font-size="13" fill="#f0f6fc">rechaza en la wallet</text>
+    <text x="390" y="190" font-size="12" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">UserRejectedRequestError · sin gas</text>
+    <text x="600" y="214" font-size="13" fill="#f0f6fc">el recibo dice reverted</text>
+    <text x="600" y="232" font-size="12" fill="#e3b341">el gas se pagó</text>
+
+    <text x="450" y="352" font-size="13" fill="#e3b341" text-anchor="middle">Mientras firma o confirma, el botón está desactivado: dos clics serían dos transacciones.</text>
+    <text x="450" y="376" font-size="13" fill="#8b949e" text-anchor="middle">Lo que vale es el recibo: la simulación usa el último bloque y otro puede adelantarse.</text>
+  </g>
+</svg>

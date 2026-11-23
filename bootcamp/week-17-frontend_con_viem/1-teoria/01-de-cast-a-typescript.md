@@ -152,12 +152,15 @@ alto de un módulo. `Promise.all([a, b])` espera varias a la vez.
 
 ### pnpm, package.json y pnpm-lock.yaml
 
-`package.json` dice qué bibliotecas usa el proyecto, con versión exacta:
+`package.json` dice qué bibliotecas usa el proyecto, con versión exacta. Las de esta semana:
 
 ```json
 "dependencies": { "viem": "2.57.20" },
 "devDependencies": { "@types/node": "24.19.2", "typescript": "6.0.3", "vite": "8.3.7" }
 ```
+
+Los starters traen además las de la semana 18 (React y wagmi): todas las semanas comparten el
+mismo `package.json` para que la imagen las tenga descargadas.
 
 `pnpm-lock.yaml` fija además cada dependencia de esas dependencias, con su hash. viem trae otras
 ocho (`ox`, `abitype`, `@noble/curves`...). `pnpm install --frozen-lockfile` instala

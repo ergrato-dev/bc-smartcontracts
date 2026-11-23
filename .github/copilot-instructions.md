@@ -178,11 +178,18 @@ export async function ethBalance(client: PublicClient, account: Address): Promis
 - `throw new Error("TODO: Paso N");` va solo en su línea; la solución, en líneas `//> `.
 - `package.json` y `pnpm-lock.yaml` son copia de `docker/web/`: la imagen trae ese almacén y
   `test.sh` instala con `pnpm install --offline --frozen-lockfile`. Otra dependencia u otra
-  versión exige cambiar `docker/web/` y reconstruir la imagen.
+  versión exige cambiar `docker/web/`, reconstruir la imagen y copiar los dos archivos a los
+  starters de **todas** las semanas: sin red, pnpm solo acepta el lockfile que la imagen
+  verificó.
 - `test.sh` arranca su anvil en el 8546, despliega con `forge script --slow` (una transacción
   por bloque, direcciones y bloques fijos), ejecuta `node --test --test-concurrency=1` y
   después `tsc`. Los tests de `watch*` llaman a `unwatch` en un `finally`, o el proceso no
   termina.
+- Hooks de React (desde la semana 18): siguen en archivos `.ts` (Node no ejecuta JSX) y los
+  tests los montan con `renderHook` desde `test/render.ts`, que registra happy-dom, conecta una
+  wallet `mock` y envuelve en `WagmiProvider` y `QueryClientProvider`. Cada test llama a
+  `unmount` en un `finally`. La red de anvil de la configuración lleva el RPC del test en
+  `rpcUrls`: `mock` firma por ahí, no por el transporte.
 - Las funciones cuyo resultado usan otros archivos llevan el tipo de retorno escrito: con solo
   el `throw`, TypeScript infiere `void` y el starter daría errores de tipos ajenos al paso.
 

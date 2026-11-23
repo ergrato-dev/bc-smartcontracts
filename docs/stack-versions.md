@@ -29,10 +29,22 @@ verificada ese día. Hasta entonces no se fija nada.
 | TypeScript | `6.0.3` | 17 | `tsc` revisa tipos; no la 7.0.2, que es la última publicada |
 | Vite | `8.3.7` | 17 | Servidor de desarrollo y `vite build` de la página |
 | @types/node | `24.19.2` | 17 | Tipos de `node:test` y `process` para `tsc` |
+| React y React DOM | `19.3.0` | 18 | Componentes de la página; no la 19.3.1, la última, que solo cambia React Server Components |
+| wagmi | `3.7.10` | 18 | Hooks de React sobre viem: wallet, lecturas en caché y escrituras |
+| @wagmi/core | `3.6.8` | 18 | Las acciones de wagmi sin React (ejercicios 01 y 02); la versión que pide wagmi 3.7.10 |
+| @tanstack/react-query | `5.107.1` | 18 | La caché de consultas que usa wagmi |
+| @vitejs/plugin-react | `6.2.1` | 18 | JSX y recarga en caliente en Vite |
+| @types/react, @types/react-dom | `19.2.18`, `19.2.7` | 18 | Tipos de React para `tsc` |
+| @testing-library/react, @testing-library/dom | `16.3.2`, `10.4.1` | 18 | `renderHook` y `waitFor` para probar hooks |
+| happy-dom, @happy-dom/global-registrator | `21.0.3` | 18 | DOM falso en Node para los tests de hooks |
 
-Las cuatro de la semana 17 están en `docker/web/package.json` y su `pnpm-lock.yaml`, que fija
-también las dependencias indirectas. La imagen descarga ese lockfile (`pnpm fetch`) y cada
-starter de TypeScript lleva una copia exacta de los dos archivos.
+Todas están en `docker/web/package.json` y su `pnpm-lock.yaml`, que fija también las
+dependencias indirectas. La imagen descarga ese lockfile (`pnpm fetch`) y **todos** los starters
+de TypeScript llevan una copia exacta del lockfile y de las dependencias, de cualquier semana.
+pnpm verifica cada lockfile contra su política de cadena de suministro antes de instalar, y sin
+red solo pasa el que la imagen verificó al construirse: un lockfile distinto falla con
+`ERR_PNPM_NO_OFFLINE_META`. Al cambiar `docker/web/`, se copian los dos archivos a todos los
+starters (en los proyectos, solo `dependencies` y `devDependencies` del `package.json`).
 
 ## Política
 

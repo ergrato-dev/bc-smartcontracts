@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-label="Conectar una wallet, en el tiempo. La página habla con la wallet a través de window.ethereum, el proveedor EIP-1193. Paso 1: la página pide eth_requestAccounts; la wallet abre su ventana y la persona acepta o rechaza; si acepta, la página recibe la dirección de la cuenta. Paso 2: la página pide eth_chainId y recibe 0x7a69, que es 31337, anvil. Paso 3: cuando la persona cambia de cuenta o de red en la wallet, la wallet avisa con los eventos accountsChanged y chainChanged. Paso 4: para escribir, la página pide eth_sendTransaction; la wallet muestra la transacción, la persona firma o rechaza, y la wallet la envía al nodo. La clave nunca sale de la wallet.">
+  <title>Conectar una wallet</title>
+  <rect width="900" height="420" fill="#0d1117"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/>
+    </marker>
+    <marker id="y" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">Conectar: la página pregunta, la wallet decide</text>
+
+    <rect x="40" y="56" width="200" height="50" rx="10" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="140" y="87" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Página</text>
+    <rect x="350" y="56" width="200" height="50" rx="10" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="450" y="80" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Wallet</text>
+    <text x="450" y="98" font-size="12" fill="#8fa4f0" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">window.ethereum</text>
+    <rect x="660" y="56" width="200" height="50" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <text x="760" y="87" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Nodo</text>
+
+    <line x1="140" y1="106" x2="140" y2="400" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+    <line x1="450" y1="106" x2="450" y2="400" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+    <line x1="760" y1="106" x2="760" y2="400" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">
+      <line x1="140" y1="140" x2="444" y2="140" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+      <text x="150" y="132" fill="#58a6ff">1 eth_requestAccounts</text>
+      <text x="462" y="146" fill="#e3b341" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">la persona acepta o rechaza</text>
+      <line x1="450" y1="168" x2="146" y2="168" stroke="#3fb950" stroke-width="2" marker-end="url(#g)"/>
+      <text x="200" y="186" fill="#3fb950">["0x7099…79C8"]</text>
+
+      <line x1="140" y1="216" x2="444" y2="216" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+      <text x="150" y="208" fill="#58a6ff">2 eth_chainId</text>
+      <line x1="450" y1="238" x2="146" y2="238" stroke="#3fb950" stroke-width="2" marker-end="url(#g)"/>
+      <text x="200" y="256" fill="#3fb950">"0x7a69" (31337)</text>
+
+      <line x1="450" y1="286" x2="146" y2="286" stroke="#e3b341" stroke-width="2" marker-end="url(#y)"/>
+      <text x="150" y="278" fill="#e3b341">3 accountsChanged · chainChanged</text>
+
+      <line x1="140" y1="330" x2="444" y2="330" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+      <text x="150" y="322" fill="#58a6ff">4 eth_sendTransaction</text>
+      <text x="462" y="336" fill="#e3b341" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">muestra, firma o rechaza</text>
+      <line x1="450" y1="362" x2="754" y2="362" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+      <text x="470" y="384" fill="#58a6ff">transacción firmada</text>
+    </g>
+    <text x="780" y="230" font-size="13" fill="#8b949e">Las lecturas</text>
+    <text x="780" y="250" font-size="13" fill="#8b949e">de la página</text>
+    <text x="780" y="270" font-size="13" fill="#8b949e">van directas</text>
+    <text x="780" y="290" font-size="13" fill="#8b949e">al nodo.</text>
+    <text x="462" y="412" font-size="13" fill="#e3b341">La clave nunca sale de la wallet.</text>
+  </g>
+</svg>

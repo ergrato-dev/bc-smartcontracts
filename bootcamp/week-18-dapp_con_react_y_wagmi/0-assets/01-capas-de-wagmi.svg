@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" role="img" aria-label="Las capas de una página con wagmi. Arriba, los componentes de React llaman a hooks como useReadContract y useWriteContract. Los hooks usan la caché de TanStack Query, que guarda cada lectura bajo su queryKey, y las acciones de @wagmi/core, que usan viem. Desde viem salen dos caminos. Las lecturas van por el transporte http al nodo de la página, por ejemplo VITE_RPC_URL. Las escrituras van por el conector a la wallet, que guarda la clave, pide permiso a la persona, firma y envía por su propio RPC.">
+  <title>Las capas de una página con wagmi</title>
+  <rect width="900" height="440" fill="#0d1117"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8fa4f0"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">Una página con wagmi, capa a capa</text>
+
+    <rect x="250" y="56" width="400" height="56" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <text x="450" y="80" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Componentes de React</text>
+    <text x="450" y="100" font-size="13" fill="#8b949e" text-anchor="middle">pintan lo que devuelven los hooks</text>
+
+    <line x1="450" y1="112" x2="450" y2="134" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+
+    <rect x="210" y="138" width="480" height="56" rx="10" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="450" y="162" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Hooks de wagmi</text>
+    <text x="450" y="182" font-size="13" fill="#8fa4f0" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">useReadContract · useWriteContract · useConnection</text>
+
+    <line x1="350" y1="194" x2="230" y2="222" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <line x1="550" y1="194" x2="670" y2="222" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+
+    <rect x="40" y="226" width="380" height="64" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <text x="230" y="250" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Caché de TanStack Query</text>
+    <text x="230" y="272" font-size="13" fill="#8b949e" text-anchor="middle">cada lectura, guardada bajo su queryKey</text>
+
+    <rect x="480" y="226" width="380" height="64" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <text x="670" y="250" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Acciones de @wagmi/core, sobre viem</text>
+    <text x="670" y="272" font-size="13" fill="#8b949e" text-anchor="middle">readContract · simulateContract · writeContract</text>
+
+    <line x1="420" y1="258" x2="476" y2="258" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+
+    <line x1="600" y1="290" x2="560" y2="320" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <line x1="740" y1="290" x2="780" y2="320" stroke="#8fa4f0" stroke-width="2" marker-end="url(#v)"/>
+
+    <rect x="400" y="324" width="230" height="96" rx="10" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="515" y="348" font-size="14" font-weight="700" fill="#58a6ff" text-anchor="middle">Lecturas: transporte</text>
+    <text x="515" y="370" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">http(VITE_RPC_URL)</text>
+    <text x="515" y="392" font-size="13" fill="#8b949e" text-anchor="middle">el nodo que elige la página</text>
+    <text x="515" y="410" font-size="13" fill="#8b949e" text-anchor="middle">sin cuenta y sin firma</text>
+
+    <rect x="650" y="324" width="230" height="96" rx="10" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="765" y="348" font-size="14" font-weight="700" fill="#8fa4f0" text-anchor="middle">Escrituras: conector</text>
+    <text x="765" y="370" font-size="13" fill="#f0f6fc" text-anchor="middle">la wallet guarda la clave,</text>
+    <text x="765" y="390" font-size="13" fill="#f0f6fc" text-anchor="middle">pide permiso y firma</text>
+    <text x="765" y="410" font-size="13" fill="#8b949e" text-anchor="middle">envía por su propio RPC</text>
+
+    <text x="40" y="330" font-size="13" fill="#e3b341">La página nunca ve la clave.</text>
+    <text x="40" y="352" font-size="13" fill="#8b949e">Una lectura repetida sale de la</text>
+    <text x="40" y="372" font-size="13" fill="#8b949e">caché, no del nodo, hasta que</text>
+    <text x="40" y="392" font-size="13" fill="#8b949e">la invalidas.</text>
+  </g>
+</svg>
