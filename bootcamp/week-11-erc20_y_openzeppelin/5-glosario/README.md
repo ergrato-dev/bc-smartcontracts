@@ -28,4 +28,4 @@
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | Semana 12 (próximamente) |
+| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | [Semana 12 — NFTs: ERC-721 y ERC-1155 →](../../week-12-nfts_erc721_y_erc1155/README.md) |

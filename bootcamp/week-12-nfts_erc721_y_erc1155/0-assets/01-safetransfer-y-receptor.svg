@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" role="img" aria-label="Una sola transacción. alice llama a safeTransferFrom(alice, holder, 1) en la colección Ticket. La colección mueve el token, que ya es de Holder, y emite Transfer. Después llama a onERC721Received(alice, alice, 1, vacío) en Holder, con msg.sender igual a Ticket. Holder devuelve 0x150b7a02 y la transferencia termina. Si devuelve otra cosa, revierte o no tiene la función, toda la transacción revierte con ERC721InvalidReceiver. Si el destino no tiene código, no hay llamada.">
+  <title>safeTransferFrom y el receptor</title>
+  <rect width="900" height="440" fill="#0d1117"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/>
+    </marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="32" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">safeTransferFrom: mover el token y preguntar al destino</text>
+
+    <rect x="40" y="60" width="160" height="44" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="120" y="88" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">alice</text>
+    <rect x="370" y="60" width="160" height="44" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="450" y="88" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Ticket (colección)</text>
+    <rect x="700" y="60" width="160" height="44" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="780" y="88" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Holder (receptor)</text>
+    <line x1="120" y1="104" x2="120" y2="330" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+    <line x1="450" y1="104" x2="450" y2="330" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+    <line x1="780" y1="104" x2="780" y2="330" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+
+    <text x="30" y="140" font-size="13" font-weight="700" fill="#58a6ff">1</text>
+    <line x1="120" y1="150" x2="442" y2="150" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <text x="140" y="142" font-size="13" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">safeTransferFrom(alice, holder, 1)</text>
+
+    <text x="30" y="186" font-size="13" font-weight="700" fill="#58a6ff">2</text>
+    <rect x="320" y="166" width="260" height="50" rx="8" fill="#161b22" stroke="#58a6ff"/>
+    <text x="450" y="187" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">ownerOf(1) = holder</text>
+    <text x="450" y="206" font-size="12" fill="#8b949e" text-anchor="middle">emit Transfer · el token ya se movió</text>
+
+    <text x="30" y="250" font-size="13" font-weight="700" fill="#f0883e">3</text>
+    <line x1="450" y1="246" x2="772" y2="246" stroke="#f0883e" stroke-width="2" marker-end="url(#o)"/>
+    <text x="466" y="238" font-size="13" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">onERC721Received(alice, alice, 1, "")</text>
+    <text x="466" y="264" font-size="12" fill="#8b949e">msg.sender = Ticket · solo si holder tiene código</text>
+
+    <text x="30" y="304" font-size="13" font-weight="700" fill="#3fb950">4</text>
+    <line x1="780" y1="300" x2="458" y2="300" stroke="#3fb950" stroke-width="2" marker-end="url(#g)"/>
+    <text x="560" y="292" font-size="13" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">0x150b7a02</text>
+
+    <rect x="40" y="350" width="400" height="70" rx="8" fill="#161b22" stroke="#3fb950"/>
+    <text x="60" y="377" font-size="14" font-weight="700" fill="#3fb950">Devuelve el selector</text>
+    <text x="60" y="401" font-size="13" fill="#f0f6fc">La transferencia termina. El token es de Holder.</text>
+
+    <rect x="460" y="350" width="400" height="70" rx="8" fill="#161b22" stroke="#f85149"/>
+    <text x="480" y="377" font-size="14" font-weight="700" fill="#f85149">Otra cosa, revierte o no tiene la función</text>
+    <text x="480" y="401" font-size="13" fill="#f0f6fc">Toda la transacción revierte: <tspan font-family="ui-monospace, SFMono-Regular, Menlo, monospace">ERC721InvalidReceiver</tspan></text>
+  </g>
+</svg>

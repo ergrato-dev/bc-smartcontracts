@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" role="img" aria-label="Una wallet llama a tokenURI(1) en la colección. Hay tres respuestas posibles. Una URL https a un servidor, que guarda el JSON y lo puede cambiar quien controle el servidor. Una URI ipfs con el hash del contenido, que no cambia sin cambiar la URI, aunque alguien tiene que mantener el archivo. O una URI data con el JSON en Base64, construido por el contrato con su estado al llamar. En los tres casos el resultado es el mismo JSON con name, description, image y attributes.">
+  <title>Dónde vive la metadata</title>
+  <rect width="900" height="400" fill="#0d1117"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="s" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="32" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">tokenURI dice dónde está la metadata</text>
+
+    <rect x="40" y="170" width="150" height="60" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="115" y="198" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Wallet</text>
+    <text x="115" y="217" font-size="12" fill="#8b949e" text-anchor="middle">o mercado</text>
+    <line x1="190" y1="200" x2="242" y2="200" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <rect x="250" y="170" width="150" height="60" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="325" y="198" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Colección</text>
+    <text x="325" y="217" font-size="12" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">tokenURI(1)</text>
+
+    <line x1="400" y1="190" x2="442" y2="100" stroke="#8b949e" stroke-width="2" marker-end="url(#s)"/>
+    <line x1="400" y1="200" x2="442" y2="200" stroke="#8b949e" stroke-width="2" marker-end="url(#s)"/>
+    <line x1="400" y1="210" x2="442" y2="300" stroke="#8b949e" stroke-width="2" marker-end="url(#s)"/>
+
+    <rect x="450" y="64" width="300" height="72" rx="8" fill="#161b22" stroke="#f0883e"/>
+    <text x="466" y="88" font-size="13" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">https://tickets.example/meta/1</text>
+    <text x="466" y="109" font-size="12" fill="#8b949e">Un servidor guarda el JSON.</text>
+    <text x="466" y="126" font-size="12" fill="#f0883e">Lo cambia quien controle el servidor.</text>
+
+    <rect x="450" y="164" width="300" height="72" rx="8" fill="#161b22" stroke="#a371f7"/>
+    <text x="466" y="188" font-size="13" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">ipfs://&lt;hash&gt;/1</text>
+    <text x="466" y="209" font-size="12" fill="#8b949e">La dirección es el hash del contenido.</text>
+    <text x="466" y="226" font-size="12" fill="#a371f7">No cambia sin cambiar la URI (semana 20).</text>
+
+    <rect x="450" y="264" width="300" height="72" rx="8" fill="#161b22" stroke="#3fb950"/>
+    <text x="466" y="288" font-size="13" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">data:application/json;base64,…</text>
+    <text x="466" y="309" font-size="12" fill="#8b949e">El contrato construye el JSON al llamar.</text>
+    <text x="466" y="326" font-size="12" fill="#3fb950">Sigue al estado del contrato.</text>
+
+    <rect x="770" y="140" width="110" height="120" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="825" y="164" font-size="13" font-weight="700" fill="#f0f6fc" text-anchor="middle">JSON</text>
+    <text x="825" y="188" font-size="12" fill="#8b949e" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">name</text>
+    <text x="825" y="206" font-size="12" fill="#8b949e" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">description</text>
+    <text x="825" y="224" font-size="12" fill="#8b949e" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">image</text>
+    <text x="825" y="242" font-size="12" fill="#8b949e" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">attributes</text>
+
+    <text x="450" y="380" font-size="13" fill="#8b949e" text-anchor="middle">Para la EVM, la respuesta es un string: el contrato nunca lee el JSON.</text>
+  </g>
+</svg>
