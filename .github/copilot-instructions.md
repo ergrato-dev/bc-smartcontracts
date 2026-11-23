@@ -104,6 +104,8 @@ bootcamp/week-NN-slug_snake_case/
 
 Plantilla de proyecto Foundry: [`docs/plantillas/starter-foundry/`](../docs/plantillas/starter-foundry/).
 Su `foundry.toml` usa la forge-std de la imagen (`/opt/lib`); se copia entero.
+Desde la semana 16, el proyecto semanal llega a `/opt/lib` por un enlace simbólico `lib` dentro del
+proyecto (remappings `lib/...`): con rutas fuera del proyecto, el JSON de verificación no recompila.
 
 ## 1-teoria
 

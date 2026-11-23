@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" role="img" aria-label="forge script trabaja en tres fases. Fase 1: ejecuta run() en una EVM local y anota como transacciones las llamadas y creaciones que van entre startBroadcast y stopBroadcast. Fase 2, con --rpc-url: repite esas transacciones sobre el estado real de la red y pide al nodo la estimación de gas; si alguna revierte, el script se para y no se envía nada. Fase 3, solo con --broadcast y una cuenta: firma cada transacción con el keystore, la envía al nodo y espera su recibo. Al final escribe broadcast/Script.s.sol/chainId/run-latest.json con las transacciones y los recibos. Sin --broadcast, el archivo va a la carpeta dry-run.">
+  <title>Simular y emitir con forge script</title>
+  <rect width="900" height="440" fill="#0d1117"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f85149"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">forge script: primero simula, después (si se lo pides) emite</text>
+
+    <rect x="30" y="70" width="250" height="190" rx="10" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="155" y="98" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">1. Ejecutar run()</text>
+    <text x="155" y="118" font-size="12" fill="#8b949e" text-anchor="middle">EVM local, siempre</text>
+    <rect x="50" y="134" width="210" height="104" rx="6" fill="#0d1117" stroke="#30363d"/>
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">
+      <text x="62" y="156" fill="#8b949e">vm.startBroadcast();</text>
+      <text x="62" y="178" fill="#f0883e">new Box(signer);   → tx 1</text>
+      <text x="62" y="200" fill="#f0883e">box.store(7);      → tx 2</text>
+      <text x="62" y="222" fill="#8b949e">vm.stopBroadcast();</text>
+    </g>
+
+    <line x1="280" y1="165" x2="326" y2="165" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+
+    <rect x="330" y="70" width="250" height="190" rx="10" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="455" y="98" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">2. Simular en la red</text>
+    <text x="455" y="118" font-size="12" fill="#8b949e" text-anchor="middle">con --rpc-url</text>
+    <text x="455" y="150" font-size="13" fill="#f0f6fc" text-anchor="middle">Repite tx 1 y tx 2 sobre</text>
+    <text x="455" y="170" font-size="13" fill="#f0f6fc" text-anchor="middle">el estado real: nonce, saldo,</text>
+    <text x="455" y="190" font-size="13" fill="#f0f6fc" text-anchor="middle">contratos ya desplegados</text>
+    <text x="455" y="222" font-size="13" fill="#e3b341" text-anchor="middle">El nodo estima el gas</text>
+    <text x="455" y="242" font-size="12" fill="#e3b341" text-anchor="middle">y el ETH que hace falta</text>
+
+    <line x1="580" y1="165" x2="626" y2="165" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+
+    <rect x="630" y="70" width="240" height="190" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="750" y="98" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">3. Emitir</text>
+    <text x="750" y="118" font-size="12" fill="#8b949e" text-anchor="middle">solo con --broadcast y una cuenta</text>
+    <text x="750" y="150" font-size="13" fill="#f0f6fc" text-anchor="middle">Firma con el keystore</text>
+    <text x="750" y="170" font-size="13" fill="#f0f6fc" text-anchor="middle">Envía tx 1, tx 2</text>
+    <text x="750" y="190" font-size="13" fill="#f0f6fc" text-anchor="middle">Espera cada recibo</text>
+    <text x="750" y="232" font-size="13" fill="#3fb950" text-anchor="middle">ONCHAIN EXECUTION</text>
+    <text x="750" y="250" font-size="13" fill="#3fb950" text-anchor="middle">COMPLETE &amp; SUCCESSFUL</text>
+
+    <line x1="455" y1="260" x2="455" y2="316" stroke="#f85149" stroke-width="2" marker-end="url(#r)"/>
+    <rect x="330" y="320" width="250" height="60" rx="8" fill="#161b22" stroke="#f85149"/>
+    <text x="455" y="345" font-size="13" fill="#f85149" text-anchor="middle">Algo revierte: script failed</text>
+    <text x="455" y="365" font-size="12" fill="#8b949e" text-anchor="middle">no se envía nada, no se gasta gas</text>
+
+    <line x1="750" y1="260" x2="750" y2="316" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <rect x="620" y="320" width="260" height="60" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="750" y="342" font-size="12" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">broadcast/…/11155111/</text>
+    <text x="750" y="362" font-size="12" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">run-latest.json</text>
+
+    <rect x="30" y="320" width="250" height="60" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="155" y="342" font-size="12" fill="#8b949e" text-anchor="middle">Sin --broadcast, el registro va a</text>
+    <text x="155" y="362" font-size="12" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">…/dry-run/run-latest.json</text>
+
+    <text x="450" y="416" font-size="13" fill="#8b949e" text-anchor="middle">Lo que va fuera de startBroadcast/stopBroadcast se ejecuta en la simulación, pero nunca llega a la red.</text>
+  </g>
+</svg>

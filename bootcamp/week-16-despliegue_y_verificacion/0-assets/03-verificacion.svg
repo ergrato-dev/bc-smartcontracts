@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" role="img" aria-label="Verificar un contrato. Tú envías al verificador el código fuente y los ajustes del compilador: versión de solc, optimizador y versión de la EVM, más los argumentos del constructor. El verificador compila de nuevo y compara su bytecode con el código que hay en la dirección. Los dos tienen tres partes: el código de las funciones, los huecos de los immutables y los metadatos que solc añade al final. En el compilado, los huecos de los immutables van a cero; en la cadena, llevan el valor que puso el constructor, así que se comparan aparte. Si el resto coincide, el explorador publica el código fuente y la ABI junto a la dirección. Con otros ajustes, el bytecode sale distinto y la verificación falla.">
+  <title>Qué hace un verificador</title>
+  <rect width="900" height="430" fill="#0d1117"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">Verificar es recompilar y comparar con lo que hay en la cadena</text>
+
+    <rect x="30" y="70" width="230" height="150" rx="10" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="145" y="96" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Lo que envías</text>
+    <text x="48" y="122" font-size="13" fill="#f0f6fc">Código fuente (.sol)</text>
+    <text x="48" y="144" font-size="13" fill="#f0f6fc">solc 0.8.38</text>
+    <text x="48" y="166" font-size="13" fill="#f0f6fc">Optimizador: no</text>
+    <text x="48" y="188" font-size="13" fill="#f0f6fc">EVM: osaka</text>
+    <text x="48" y="210" font-size="13" fill="#e3b341">Args del constructor</text>
+
+    <line x1="260" y1="145" x2="316" y2="145" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+
+    <rect x="320" y="105" width="150" height="80" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="395" y="138" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Verificador</text>
+    <text x="395" y="160" font-size="12" fill="#8b949e" text-anchor="middle">compila de nuevo</text>
+
+    <line x1="470" y1="130" x2="526" y2="104" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+
+    <text x="530" y="80" font-size="13" fill="#8b949e">Compilado por el verificador</text>
+    <rect x="530" y="88" width="210" height="34" fill="#161b22" stroke="#627eea"/>
+    <text x="635" y="110" font-size="12" fill="#f0f6fc" text-anchor="middle">código de las funciones</text>
+    <rect x="740" y="88" width="60" height="34" fill="#161b22" stroke="#f0883e"/>
+    <text x="770" y="110" font-size="12" fill="#f0883e" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">00…00</text>
+    <rect x="800" y="88" width="70" height="34" fill="#161b22" stroke="#30363d"/>
+    <text x="835" y="110" font-size="12" fill="#8b949e" text-anchor="middle">CBOR</text>
+
+    <text x="530" y="182" font-size="13" fill="#8b949e">En la dirección (cast code)</text>
+    <rect x="530" y="190" width="210" height="34" fill="#161b22" stroke="#627eea"/>
+    <text x="635" y="212" font-size="12" fill="#f0f6fc" text-anchor="middle">código de las funciones</text>
+    <rect x="740" y="190" width="60" height="34" fill="#161b22" stroke="#f0883e"/>
+    <text x="770" y="212" font-size="12" fill="#f0883e" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">90f7…</text>
+    <rect x="800" y="190" width="70" height="34" fill="#161b22" stroke="#30363d"/>
+    <text x="835" y="212" font-size="12" fill="#8b949e" text-anchor="middle">CBOR</text>
+
+    <text x="635" y="152" font-size="13" fill="#3fb950" text-anchor="middle">= byte a byte</text>
+    <text x="770" y="152" font-size="12" fill="#f0883e" text-anchor="middle">immutable</text>
+    <text x="770" y="168" font-size="12" fill="#f0883e" text-anchor="middle">aparte</text>
+    <text x="835" y="152" font-size="12" fill="#8b949e" text-anchor="middle">metadatos</text>
+
+    <rect x="30" y="270" width="400" height="110" rx="10" fill="#161b22" stroke="#3fb950"/>
+    <text x="230" y="298" font-size="15" font-weight="700" fill="#3fb950" text-anchor="middle">Coincide: contrato verificado</text>
+    <text x="230" y="324" font-size="13" fill="#f0f6fc" text-anchor="middle">El explorador publica el código y la ABI.</text>
+    <text x="230" y="346" font-size="13" fill="#f0f6fc" text-anchor="middle">Cualquiera puede leer y llamar al contrato</text>
+    <text x="230" y="366" font-size="13" fill="#f0f6fc" text-anchor="middle">sabiendo qué hace de verdad.</text>
+
+    <rect x="470" y="270" width="400" height="110" rx="10" fill="#161b22" stroke="#f85149"/>
+    <text x="670" y="298" font-size="15" font-weight="700" fill="#f85149" text-anchor="middle">No coincide: falla</text>
+    <text x="670" y="324" font-size="13" fill="#f0f6fc" text-anchor="middle">Otra versión de solc, otro optimizador,</text>
+    <text x="670" y="346" font-size="13" fill="#f0f6fc" text-anchor="middle">otra EVM u otros argumentos dan otro</text>
+    <text x="670" y="366" font-size="13" fill="#f0f6fc" text-anchor="middle">bytecode, aunque el .sol sea el mismo.</text>
+
+    <text x="450" y="414" font-size="13" fill="#8b949e" text-anchor="middle">Los args del constructor no están en el código desplegado: van al final de la transacción que lo creó.</text>
+  </g>
+</svg>
