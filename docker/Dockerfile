@@ -8,6 +8,7 @@ FROM ubuntu:24.04
 ARG FOUNDRY_VERSION=v1.9.0
 ARG SOLC_VERSION=0.8.38
 ARG FORGE_STD_VERSION=v1.17.0
+ARG OZ_VERSION=v5.7.0
 # ¿Qué? Arquitectura que Docker inyecta al construir (amd64 o arm64).
 ARG TARGETARCH
 
@@ -36,6 +37,13 @@ RUN arch="${TARGETARCH:-amd64}" \
 RUN git clone -q --depth 1 --branch "${FORGE_STD_VERSION}" \
         https://github.com/foundry-rs/forge-std /opt/lib/forge-std \
     && rm -rf /opt/lib/forge-std/.git
+
+# ¿Qué? OpenZeppelin Contracts (contratos estándar auditados) en /opt/lib, desde la semana 11.
+# ¿Para qué? Lo mismo que forge-std: los starters lo importan como `@openzeppelin/contracts/...`
+#            con un remapping, sin `forge install` ni submódulos en cada carpeta.
+RUN git clone -q --depth 1 --branch "${OZ_VERSION}" \
+        https://github.com/OpenZeppelin/openzeppelin-contracts /opt/lib/openzeppelin-contracts \
+    && rm -rf /opt/lib/openzeppelin-contracts/.git
 
 # ¿Qué? Usuario sin privilegios `ubuntu` (UID 1000), que ya trae la imagen base.
 # ¿Impacto? Los archivos que crea forge en el volumen montado no quedan como root.

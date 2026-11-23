@@ -34,7 +34,7 @@ La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está p
 
 | Semana | Tema | Estado |
 |:--:|---|:--:|
-| 11 | ERC-20 y OpenZeppelin | ⬜ |
+| [11](week-11-erc20_y_openzeppelin/README.md) | [ERC-20 y OpenZeppelin](week-11-erc20_y_openzeppelin/README.md) | ✅ |
 | 12 | NFTs: ERC-721 y ERC-1155 | ⬜ |
 | 13 | Control de acceso | ⬜ |
 | 14 | Firmas: EIP-712 y permit | ⬜ |

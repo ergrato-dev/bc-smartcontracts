@@ -23,4 +23,4 @@
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | Semana 11 (próximamente) |
+| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | [Semana 11 — ERC-20 y OpenZeppelin →](../../week-11-erc20_y_openzeppelin/README.md) |

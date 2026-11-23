@@ -1,0 +1,3 @@
+# ¿Qué? Lo que genera forge: se reconstruye con forge build, no se versiona.
+out/
+cache/

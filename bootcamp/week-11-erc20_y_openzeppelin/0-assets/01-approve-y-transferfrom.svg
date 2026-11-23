@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-label="Dos transacciones. En la primera, alice llama a approve(shop, 5) en el token, que apunta allowance de alice para shop igual a 5 y no mueve tokens. En la segunda, alice llama a buy() en la tienda, y la tienda llama a transferFrom(alice, shop, 5) en el token: msg.sender es la tienda, el token resta el permiso a 0 y mueve 5 tokens de alice a la tienda.">
+  <title>approve y transferFrom</title>
+  <rect width="900" height="420" fill="#0d1117"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="32" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">Cobrar en tokens: permiso primero, cobro después</text>
+
+    <!-- columnas -->
+    <rect x="40" y="60" width="160" height="44" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="120" y="88" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">alice</text>
+    <rect x="370" y="60" width="160" height="44" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="450" y="88" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Shop</text>
+    <rect x="700" y="60" width="160" height="44" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="780" y="88" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Coin (el token)</text>
+    <line x1="120" y1="104" x2="120" y2="400" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+    <line x1="450" y1="104" x2="450" y2="400" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+    <line x1="780" y1="104" x2="780" y2="400" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+
+    <!-- transacción 1 -->
+    <text x="30" y="140" font-size="13" font-weight="700" fill="#58a6ff">Transacción 1</text>
+    <line x1="120" y1="160" x2="772" y2="160" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <text x="300" y="152" font-size="13" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">approve(shop, 5)</text>
+    <rect x="590" y="172" width="290" height="58" rx="8" fill="#161b22" stroke="#58a6ff"/>
+    <text x="735" y="196" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">allowance[alice][shop] = 5</text>
+    <text x="735" y="218" font-size="12" fill="#8b949e" text-anchor="middle">emit Approval · no se mueve nada</text>
+
+    <!-- transacción 2 -->
+    <text x="30" y="266" font-size="13" font-weight="700" fill="#f0883e">Transacción 2</text>
+    <line x1="120" y1="286" x2="442" y2="286" stroke="#f0883e" stroke-width="2" marker-end="url(#o)"/>
+    <text x="230" y="278" font-size="13" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">buy()</text>
+    <line x1="450" y1="316" x2="772" y2="316" stroke="#f0883e" stroke-width="2" marker-end="url(#o)"/>
+    <text x="470" y="308" font-size="13" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">transferFrom(alice, shop, 5)</text>
+    <text x="470" y="334" font-size="12" fill="#8b949e">msg.sender = Shop (el spender)</text>
+    <rect x="590" y="346" width="290" height="58" rx="8" fill="#161b22" stroke="#f0883e"/>
+    <text x="735" y="370" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">allowance 5 → 0</text>
+    <text x="735" y="392" font-size="13" fill="#3fb950" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">alice −5 · shop +5</text>
+  </g>
+</svg>

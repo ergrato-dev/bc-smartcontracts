@@ -4,9 +4,12 @@
 src = "src"
 test = "test"
 out = "out"
-# ¿Qué? forge-std vive en la imagen (/opt/lib), no dentro del proyecto.
+# ¿Qué? forge-std y, desde la semana 11, OpenZeppelin viven en la imagen (/opt/lib), no dentro del proyecto.
 libs = ["/opt/lib"]
-remappings = ["forge-std/=/opt/lib/forge-std/src/"]
+remappings = [
+    "forge-std/=/opt/lib/forge-std/src/",
+    "@openzeppelin/contracts/=/opt/lib/openzeppelin-contracts/contracts/",
+]
 solc_version = "0.8.38"
 # ¿Qué? Sin red: solc ya está en la imagen.
 # ¿Impacto? Un número de versión mal escrito falla al instante en vez de intentar descargar.
