@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" role="img" aria-label="A la izquierda, el proxy transparent. La usuaria llama al TransparentUpgradeableProxy y su llamada se reenvía siempre a la implementación, que no sabe nada de actualizaciones. Tu cuenta es dueña de un ProxyAdmin; el ProxyAdmin es el administrador del proxy y solo puede llamar a upgradeToAndCall, que está en el proxy; cualquier otra llamada suya revierte con ProxyDeniedAdminAccess. A la derecha, UUPS. El ERC1967Proxy solo tiene constructor y fallback y lo reenvía todo. La implementación hereda de UUPSUpgradeable: upgradeToAndCall está en ella y llama a _authorizeUpgrade, que en el registro exige DEFAULT_ADMIN_ROLE, en manos del timelock.">
+  <title>Transparent frente a UUPS</title>
+  <rect width="900" height="440" fill="#0d1117"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="y" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/>
+    </marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f85149"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="32" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">¿Dónde está la función que actualiza?</text>
+    <line x1="450" y1="52" x2="450" y2="420" stroke="#30363d"/>
+
+    <text x="225" y="64" font-size="16" font-weight="700" fill="#f0f6fc" text-anchor="middle">Transparent: en el proxy</text>
+    <g font-size="13" fill="#f0f6fc" text-anchor="middle">
+      <rect x="20" y="84" width="120" height="44" rx="8" fill="#161b22" stroke="#627eea"/>
+      <text x="80" y="111">Tu cuenta</text>
+      <rect x="170" y="84" width="120" height="44" rx="8" fill="#161b22" stroke="#30363d"/>
+      <text x="230" y="111">ProxyAdmin</text>
+      <rect x="20" y="190" width="120" height="44" rx="8" fill="#161b22" stroke="#627eea"/>
+      <text x="80" y="217">Usuaria</text>
+      <rect x="170" y="170" width="250" height="84" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+      <text x="295" y="196" font-weight="700">TransparentUpgradeableProxy</text>
+      <text x="295" y="218" fill="#e3b341">upgradeToAndCall (solo el admin)</text>
+      <text x="295" y="238" fill="#8b949e">fallback → delegatecall</text>
+      <rect x="170" y="310" width="250" height="56" rx="8" fill="#161b22" stroke="#30363d"/>
+      <text x="295" y="334">Implementación</text>
+      <text x="295" y="353" fill="#8b949e">initialize, sin código de actualizar</text>
+    </g>
+    <line x1="140" y1="106" x2="166" y2="106" stroke="#e3b341" stroke-width="2" marker-end="url(#y)"/>
+    <text x="155" y="80" font-size="12" fill="#e3b341" text-anchor="middle">dueño</text>
+    <line x1="230" y1="128" x2="230" y2="166" stroke="#e3b341" stroke-width="2" marker-end="url(#y)"/>
+    <text x="300" y="152" font-size="12" fill="#e3b341">upgradeAndCall</text>
+    <line x1="140" y1="212" x2="166" y2="212" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <line x1="295" y1="254" x2="295" y2="306" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <text x="305" y="285" font-size="12" fill="#58a6ff">todo lo demás</text>
+    <text x="225" y="396" font-size="12" fill="#f85149" text-anchor="middle">ProxyAdmin → members(): ProxyDeniedAdminAccess</text>
+    <text x="225" y="414" font-size="12" fill="#8b949e" text-anchor="middle">despliegue: implementación + proxy + ProxyAdmin</text>
+
+    <text x="675" y="64" font-size="16" font-weight="700" fill="#f0f6fc" text-anchor="middle">UUPS: en la implementación</text>
+    <g font-size="13" fill="#f0f6fc" text-anchor="middle">
+      <rect x="480" y="84" width="140" height="44" rx="8" fill="#161b22" stroke="#627eea"/>
+      <text x="550" y="111">Timelock (admin)</text>
+      <rect x="480" y="190" width="140" height="44" rx="8" fill="#161b22" stroke="#627eea"/>
+      <text x="550" y="217">Usuaria</text>
+      <rect x="650" y="140" width="220" height="64" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+      <text x="760" y="166" font-weight="700">ERC1967Proxy</text>
+      <text x="760" y="188" fill="#8b949e">solo fallback → delegatecall</text>
+      <rect x="650" y="270" width="220" height="96" rx="8" fill="#161b22" stroke="#30363d"/>
+      <text x="760" y="294">Implementación</text>
+      <text x="760" y="314" fill="#8b949e">initialize, la lógica</text>
+      <text x="760" y="334" fill="#e3b341">upgradeToAndCall</text>
+      <text x="760" y="354" fill="#e3b341">→ _authorizeUpgrade</text>
+    </g>
+    <path d="M620 106 L760 106 L760 136" fill="none" stroke="#e3b341" stroke-width="2" marker-end="url(#y)"/>
+    <text x="690" y="98" font-size="12" fill="#e3b341" text-anchor="middle">upgradeToAndCall</text>
+    <line x1="620" y1="212" x2="646" y2="196" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <line x1="760" y1="204" x2="760" y2="266" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <text x="770" y="230" font-size="12" fill="#58a6ff">todo, también</text>
+    <text x="770" y="246" font-size="12" fill="#58a6ff">upgradeToAndCall</text>
+    <text x="675" y="396" font-size="12" fill="#f85149" text-anchor="middle">_authorizeUpgrade vacío: cualquiera actualiza</text>
+    <text x="675" y="414" font-size="12" fill="#8b949e" text-anchor="middle">despliegue: implementación + proxy</text>
+  </g>
+</svg>

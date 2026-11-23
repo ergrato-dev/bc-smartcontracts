@@ -45,6 +45,13 @@ RUN git clone -q --depth 1 --branch "${OZ_VERSION}" \
         https://github.com/OpenZeppelin/openzeppelin-contracts /opt/lib/openzeppelin-contracts \
     && rm -rf /opt/lib/openzeppelin-contracts/.git
 
+# ¿Qué? OpenZeppelin Contracts Upgradeable, la misma versión, desde la semana 15.
+# ¿Para qué? Las versiones con `initialize` en vez de constructor, para contratos detrás de un proxy.
+# ¿Impacto? Importa `@openzeppelin/contracts/...` para las interfaces: tiene que ser la misma versión.
+RUN git clone -q --depth 1 --branch "${OZ_VERSION}" \
+        https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable /opt/lib/openzeppelin-contracts-upgradeable \
+    && rm -rf /opt/lib/openzeppelin-contracts-upgradeable/.git
+
 # ¿Qué? Usuario sin privilegios `ubuntu` (UID 1000), que ya trae la imagen base.
 # ¿Impacto? Los archivos que crea forge en el volumen montado no quedan como root.
 USER ubuntu

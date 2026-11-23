@@ -22,6 +22,7 @@ verificada ese día. Hasta entonces no se fija nada.
 | Biblioteca | Versión | Desde la semana | Uso |
 | ---------- | ------- | --------------- | --- |
 | OpenZeppelin Contracts | `v5.7.0` | 11 | `ERC20`, `ERC20Burnable`, `ERC20Capped`, `SafeERC20`; en la imagen, no en cada proyecto |
+| OpenZeppelin Contracts Upgradeable | `v5.7.0` | 15 | `Initializable`, `UUPSUpgradeable` y las bases `*Upgradeable`; en la imagen (`ARG OZ_VERSION`, la misma que Contracts) y remapping `@openzeppelin/contracts-upgradeable/` |
 
 ## Política
 
