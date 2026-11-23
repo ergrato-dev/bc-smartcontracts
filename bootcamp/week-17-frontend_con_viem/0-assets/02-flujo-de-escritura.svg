@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" role="img" aria-label="Escribir con viem en tres pasos. Paso 1, simulateContract: el nodo ejecuta la llamada sobre el último bloque sin guardar nada y no cuesta gas. Si revierte, el error se decodifica con la ABI, por ejemplo ERC20InsufficientBalance, y no se envía nada. Si no revierte, devuelve result y request. Paso 2, writeContract(request): la cartera firma y envía; devuelve el hash y la transacción queda pendiente. Paso 3, waitForTransactionReceipt(hash): espera a que la transacción entre en un bloque y devuelve el recibo con status success o reverted, el bloque, el gas usado y los logs.">
+  <title>Simular, enviar y esperar el recibo</title>
+  <rect width="900" height="380" fill="#0d1117"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f85149"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">Escribir: simular gratis, enviar firmado, esperar el recibo</text>
+
+    <rect x="30" y="70" width="250" height="160" rx="10" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="155" y="98" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">1. Simular</text>
+    <text x="155" y="120" font-size="12" fill="#58a6ff" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">simulateContract</text>
+    <text x="155" y="148" font-size="13" fill="#8b949e" text-anchor="middle">el nodo ejecuta sobre</text>
+    <text x="155" y="166" font-size="13" fill="#8b949e" text-anchor="middle">el último bloque</text>
+    <text x="155" y="194" font-size="13" fill="#3fb950" text-anchor="middle">sin guardar, sin gas</text>
+    <text x="155" y="214" font-size="12" fill="#8b949e" text-anchor="middle">→ result y request</text>
+
+    <rect x="325" y="70" width="250" height="160" rx="10" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+    <text x="450" y="98" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">2. Enviar</text>
+    <text x="450" y="120" font-size="12" fill="#e3b341" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">writeContract(request)</text>
+    <text x="450" y="148" font-size="13" fill="#8b949e" text-anchor="middle">la cartera firma y envía</text>
+    <text x="450" y="176" font-size="13" fill="#8b949e" text-anchor="middle">→ hash</text>
+    <text x="450" y="204" font-size="13" fill="#e3b341" text-anchor="middle">pendiente: aún no se ejecutó</text>
+
+    <rect x="620" y="70" width="250" height="160" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="745" y="98" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">3. Esperar</text>
+    <text x="745" y="120" font-size="12" fill="#3fb950" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">waitForTransactionReceipt</text>
+    <text x="745" y="148" font-size="13" fill="#8b949e" text-anchor="middle">entra en un bloque</text>
+    <text x="745" y="176" font-size="13" fill="#8b949e" text-anchor="middle">→ recibo: status, bloque,</text>
+    <text x="745" y="194" font-size="13" fill="#8b949e" text-anchor="middle">gasUsed y logs</text>
+
+    <line x1="280" y1="150" x2="321" y2="150" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <line x1="575" y1="150" x2="616" y2="150" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+
+    <line x1="155" y1="230" x2="155" y2="276" stroke="#f85149" stroke-width="2" marker-end="url(#r)"/>
+    <rect x="30" y="280" width="545" height="74" rx="10" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+    <text x="50" y="308" font-size="14" font-weight="700" fill="#f85149">Si revierte: no se envía nada</text>
+    <text x="50" y="332" font-size="12" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">ERC20InsufficientBalance(sender, balance, needed)</text>
+    <text x="50" y="348" font-size="12" fill="#8b949e">decodificado con la ABI: nombre y argumentos</text>
+
+    <rect x="620" y="280" width="250" height="74" rx="10" fill="#161b22" stroke="#30363d"/>
+    <text x="745" y="308" font-size="13" fill="#f0f6fc" text-anchor="middle">Lo que manda es el recibo:</text>
+    <text x="745" y="330" font-size="13" fill="#8b949e" text-anchor="middle">otra transacción pudo entrar</text>
+    <text x="745" y="346" font-size="13" fill="#8b949e" text-anchor="middle">antes y cambiar el resultado</text>
+  </g>
+</svg>

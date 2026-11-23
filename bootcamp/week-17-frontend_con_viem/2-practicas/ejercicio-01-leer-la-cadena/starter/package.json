@@ -1,0 +1,17 @@
+{
+  "name": "ejercicio-01-leer-la-cadena",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.28.12",
+  "dependencies": {
+    "viem": "2.57.20"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "typescript": "6.0.3",
+    "vite": "8.3.7"
+  },
+  "scripts": {
+    "check": "tsc"
+  }
+}

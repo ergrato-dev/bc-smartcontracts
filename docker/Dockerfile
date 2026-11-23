@@ -9,6 +9,8 @@ ARG FOUNDRY_VERSION=v1.9.0
 ARG SOLC_VERSION=0.8.38
 ARG FORGE_STD_VERSION=v1.17.0
 ARG OZ_VERSION=v5.7.0
+ARG NODE_VERSION=v24.22.3
+ARG PNPM_VERSION=11.28.12
 # ¿Qué? Arquitectura que Docker inyecta al construir (amd64 o arm64).
 ARG TARGETARCH
 
@@ -52,6 +54,19 @@ RUN git clone -q --depth 1 --branch "${OZ_VERSION}" \
         https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable /opt/lib/openzeppelin-contracts-upgradeable \
     && rm -rf /opt/lib/openzeppelin-contracts-upgradeable/.git
 
+# ¿Qué? Node.js oficial desde nodejs.org, verificado con su sha256, desde la semana 17.
+# ¿Para qué? Ejecutar TypeScript (Node 24 quita los tipos al cargar un `.ts`) y viem.
+# ¿Impacto? `corepack` (incluido en Node 24) instala pnpm a la versión fija del `packageManager`.
+RUN arch="$([ "${TARGETARCH:-amd64}" = arm64 ] && echo arm64 || echo x64)" \
+    && file="node-${NODE_VERSION}-linux-${arch}.tar.xz" \
+    && curl -fsSL -o "/tmp/${file}" "https://nodejs.org/dist/${NODE_VERSION}/${file}" \
+    && curl -fsSL "https://nodejs.org/dist/${NODE_VERSION}/SHASUMS256.txt" -o /tmp/node.sha256 \
+    && (cd /tmp && grep " ${file}$" node.sha256 | sha256sum -c -) \
+    && apt-get update && apt-get install -y --no-install-recommends xz-utils && rm -rf /var/lib/apt/lists/* \
+    && tar -xJf "/tmp/${file}" -C /usr/local --strip-components=1 --exclude CHANGELOG.md --exclude README.md --exclude LICENSE \
+    && rm /tmp/node* \
+    && corepack enable pnpm
+
 # ¿Qué? Usuario sin privilegios `ubuntu` (UID 1000), que ya trae la imagen base.
 # ¿Impacto? Los archivos que crea forge en el volumen montado no quedan como root.
 USER ubuntu
@@ -64,9 +79,23 @@ RUN mkdir /tmp/warm && cd /tmp/warm \
     && forge build --use "${SOLC_VERSION}" --contracts . >/dev/null \
     && cd / && rm -rf /tmp/warm
 
+# ¿Qué? pnpm a la versión fija y su almacén con las dependencias web del bootcamp (viem,
+#   TypeScript, Vite), las de `web/pnpm-lock.yaml`.
+# ¿Para qué? Que `pnpm install --offline` funcione en cada starter sin red y con las mismas
+#   versiones exactas, sin descargar nada en cada contenedor.
+# ¿Impacto? El almacén vive en la imagen y el proyecto en el volumen: sin enlaces duros entre los
+#   dos, pnpm copia los paquetes (`package_import_method=copy`) en vez de crear otro almacén.
+ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0 \
+    pnpm_config_store_dir=/home/ubuntu/.local/share/pnpm/store \
+    pnpm_config_package_import_method=copy
+COPY --chown=ubuntu web /tmp/web
+RUN corepack install -g "pnpm@${PNPM_VERSION}" \
+    && cd /tmp/web && pnpm fetch --frozen-lockfile >/dev/null \
+    && cd / && rm -rf /tmp/web
+
 # ¿Qué? anvil escucha en todas las interfaces dentro del contenedor.
 # ¿Para qué? Que el puerto 8545 publicado con `-p 8545:8545` llegue desde tu máquina.
 ENV ANVIL_IP_ADDR=0.0.0.0
-EXPOSE 8545
+EXPOSE 8545 5173
 
 CMD ["bash"]

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" role="img" aria-label="Tu código llama a una acción del cliente, por ejemplo readContract con la dirección, la ABI, la función balanceOf y sus argumentos. El cliente usa la ABI para codificar la llamada en bytes (selector 0x70a08231 y la dirección) y la red para saber a qué chain id habla. El transporte http manda la petición JSON-RPC eth_call al nodo, anvil o Sepolia. El nodo ejecuta la función sobre su copia de la cadena y devuelve bytes. El cliente los decodifica con la ABI y tu código recibe un bigint, 100000000000000000000n. El cliente público lee y simula; el cliente de cartera añade una cuenta que firma.">
+  <title>Cliente, transporte y nodo en viem</title>
+  <rect width="900" height="400" fill="#0d1117"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">Una lectura con viem: de tu código al nodo y de vuelta</text>
+
+    <rect x="30" y="70" width="220" height="170" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <text x="140" y="98" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Tu código</text>
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8b949e">
+      <text x="46" y="128">readContract({</text>
+      <text x="58" y="148">address, abi,</text>
+      <text x="58" y="168">functionName:</text>
+      <text x="70" y="188" fill="#8fa4f0">"balanceOf",</text>
+      <text x="58" y="208">args: [cuenta] })</text>
+    </g>
+
+    <rect x="290" y="70" width="250" height="170" rx="10" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="415" y="98" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Cliente</text>
+    <text x="415" y="124" font-size="13" fill="#8b949e" text-anchor="middle">ABI → codifica y decodifica</text>
+    <text x="415" y="144" font-size="13" fill="#8b949e" text-anchor="middle">chain → foundry (31337)</text>
+    <rect x="310" y="164" width="210" height="56" rx="6" fill="#0d1117" stroke="#58a6ff"/>
+    <text x="415" y="186" font-size="13" font-weight="700" fill="#58a6ff" text-anchor="middle">Transporte http(url)</text>
+    <text x="415" y="206" font-size="12" fill="#8b949e" text-anchor="middle">una petición JSON-RPC</text>
+
+    <rect x="580" y="70" width="290" height="170" rx="10" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <text x="725" y="98" font-size="15" font-weight="700" fill="#f0f6fc" text-anchor="middle">Nodo (anvil o Sepolia)</text>
+    <text x="725" y="124" font-size="13" fill="#8b949e" text-anchor="middle">ejecuta la función en su copia</text>
+    <text x="725" y="144" font-size="13" fill="#8b949e" text-anchor="middle">de la cadena, sin guardar nada</text>
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" text-anchor="middle">
+      <text x="725" y="186" fill="#f0883e">eth_call 0x70a08231…</text>
+      <text x="725" y="208" fill="#f0883e">→ 0x…056bc75e2d63100000</text>
+    </g>
+
+    <line x1="250" y1="130" x2="286" y2="130" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <line x1="520" y1="180" x2="576" y2="180" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <line x1="576" y1="214" x2="524" y2="214" stroke="#3fb950" stroke-width="2" marker-end="url(#g)"/>
+    <path d="M 310 232 C 260 270, 180 270, 140 244" fill="none" stroke="#3fb950" stroke-width="2" marker-end="url(#g)"/>
+    <text x="210" y="290" font-size="13" fill="#3fb950" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">100000000000000000000n</text>
+
+    <rect x="30" y="316" width="400" height="60" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="230" y="342" font-size="14" font-weight="700" fill="#f0f6fc" text-anchor="middle">Cliente público</text>
+    <text x="230" y="362" font-size="12" fill="#8b949e" text-anchor="middle">lee y simula: sin cuenta, sin gas</text>
+    <rect x="470" y="316" width="400" height="60" rx="8" fill="#161b22" stroke="#e3b341"/>
+    <text x="670" y="342" font-size="14" font-weight="700" fill="#f0f6fc" text-anchor="middle">Cliente de cartera</text>
+    <text x="670" y="362" font-size="12" fill="#8b949e" text-anchor="middle">añade una cuenta que firma transacciones</text>
+  </g>
+</svg>

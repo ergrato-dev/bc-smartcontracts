@@ -45,7 +45,7 @@ La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está p
 | Semana | Tema | Estado |
 |:--:|---|:--:|
 | [16](week-16-despliegue_y_verificacion/README.md) | [Despliegue y verificación](week-16-despliegue_y_verificacion/README.md) | ✅ |
-| 17 | Frontend con viem | ⬜ |
+| [17](week-17-frontend_con_viem/README.md) | [Frontend con viem](week-17-frontend_con_viem/README.md) | ✅ |
 | 18 | dApp con React y wagmi | ⬜ |
 | 19 | Indexación con FastAPI y PostgreSQL | ⬜ |
 | 20 | Oráculos y datos off-chain | ⬜ |

@@ -3,10 +3,13 @@
 #   Hay dos tipos de starter:
 #   - Foundry (trae foundry.toml): `forge test`.
 #   - Terminal (trae test.sh): `bash test.sh`, que comprueba los comandos de pasos.sh.
+#   - TypeScript (trae test.sh y package.json, desde la semana 17): `bash test.sh`, que
+#     comprueba los tipos y ejecuta los tests de Node.
 # ¿Para qué? Garantizar dos cosas de cada ejercicio y proyecto:
 #   1. Tal cual se publica, compila y sus tests FALLAN (el aprendiz tiene trabajo).
 #   2. Con los pasos resueltos (líneas `//> ` o `#> ` descomentadas y marcas
-#      `revert("TODO: Paso N")` / `todo "Paso N"` quitadas), los tests PASAN sin warnings.
+#      `revert("TODO: Paso N")`, `throw new Error("TODO: Paso N")` y `todo "Paso N"`
+#      quitadas), los tests PASAN sin warnings.
 # ¿Impacto? Un starter que no cumple las dos cosas no se publica.
 # Uso: ./scripts/compilar-starters.sh week-01
 set -euo pipefail
@@ -54,8 +57,8 @@ while IFS= read -r starter; do
     fi
     cp -r "$solution"/. "$tmp"/
   else
-    find "$tmp" \( -name '*.sol' -o -name '*.sh' \) -not -path '*/out/*' -print0 \
-      | xargs -0 sed -i -E '/revert\("TODO: Paso [0-9]+"\);/d; /^[[:space:]]*todo "Paso [0-9]+"$/d; s#^([[:space:]]*)(//|\#)> ?#\1#'
+    find "$tmp" -type f \( -name '*.sol' -o -name '*.sh' -o -name '*.ts' \) -not -path '*/out/*' -not -path '*/node_modules/*' -print0 \
+      | xargs -0 sed -i -E '/(revert|throw new Error)\("TODO: Paso [0-9]+"\);/d; /^[[:space:]]*todo "Paso [0-9]+"$/d; s#^([[:space:]]*)(//|\#)> ?#\1#'
   fi
   if check "$tmp" strict; then
     echo "✅ $name"
@@ -63,7 +66,7 @@ while IFS= read -r starter; do
     echo "❌ $name: con los pasos resueltos los tests no pasan"; tail -n 20 /tmp/starter-$$.log; fail=1
   fi
   rm -rf "$tmp"
-done < <(find "$dir" -type d -name starter -not -path '*/out/*' | sort)
+done < <(find "$dir" -type d -name starter -not -path '*/out/*' -not -path '*/node_modules/*' | sort)
 
 rm -f /tmp/starter-$$.log
 exit "$fail"

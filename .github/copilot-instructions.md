@@ -163,7 +163,30 @@ step2() {
 - `todo` (definido en `pasos.sh`) imprime `TODO: Paso N` y sale con error.
 - `test.sh` ejecuta cada paso y compara la salida con la esperada.
 
-Para ambos: los **tests van escritos** y son el contrato del ejercicio. Cada paso del
+**TypeScript** (desde la semana 17; trae `package.json`, `pnpm-lock.yaml`, `tsconfig.json`,
+`test.sh` y tests en `test/*.test.ts`):
+
+```ts
+// PASO 2: el saldo de ETH de `account`, en ETH y como texto.
+export async function ethBalance(client: PublicClient, account: Address): Promise<string> {
+  throw new Error("TODO: Paso 2");
+  //> const wei = await client.getBalance({ address: account });
+  //> return formatEther(wei);
+}
+```
+
+- `throw new Error("TODO: Paso N");` va solo en su línea; la solución, en líneas `//> `.
+- `package.json` y `pnpm-lock.yaml` son copia de `docker/web/`: la imagen trae ese almacén y
+  `test.sh` instala con `pnpm install --offline --frozen-lockfile`. Otra dependencia u otra
+  versión exige cambiar `docker/web/` y reconstruir la imagen.
+- `test.sh` arranca su anvil en el 8546, despliega con `forge script --slow` (una transacción
+  por bloque, direcciones y bloques fijos), ejecuta `node --test --test-concurrency=1` y
+  después `tsc`. Los tests de `watch*` llaman a `unwatch` en un `finally`, o el proceso no
+  termina.
+- Las funciones cuyo resultado usan otros archivos llevan el tipo de retorno escrito: con solo
+  el `throw`, TypeScript infiere `void` y el starter daría errores de tipos ajenos al paso.
+
+Para todos: los **tests van escritos** y son el contrato del ejercicio. Cada paso del
 README: `## Paso N: título` → **Por qué** → código → **Abre** el archivo → **Verifica**
 con el comando exacto y la salida esperada (qué tests pasan, cuáles siguen en rojo y
 por qué).
