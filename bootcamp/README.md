@@ -28,7 +28,7 @@ La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está p
 | [07](week-07-eventos_y_ether/README.md) | [Eventos y ether](week-07-eventos_y_ether/README.md) | ✅ |
 | [08](week-08-herencia_interfaces_y_librerias/README.md) | [Herencia, interfaces y librerías](week-08-herencia_interfaces_y_librerias/README.md) | ✅ |
 | [09](week-09-testing_con_foundry/README.md) | [Testing con Foundry](week-09-testing_con_foundry/README.md) | ✅ |
-| 10 | Llamadas entre contratos | ⬜ |
+| [10](week-10-llamadas_entre_contratos/README.md) | [Llamadas entre contratos](week-10-llamadas_entre_contratos/README.md) | ✅ |
 
 ### Fase 3 — Estándares y patrones (S11-15, 70 h)
 

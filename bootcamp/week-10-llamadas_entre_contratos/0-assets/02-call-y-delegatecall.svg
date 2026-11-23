@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" role="img" aria-label="Comparación. Con call, alice llama a Host y Host llama a Logic: Logic ve msg.sender igual a Host y escribe en el storage de Logic. Con delegatecall, alice llama a Host y Host ejecuta el código de Logic: el código ve msg.sender igual a alice y escribe en el storage de Host. El storage de Logic no cambia.">
+  <title>call frente a delegatecall</title>
+  <rect width="900" height="430" fill="#0d1117"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="32" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">Mismo código, distinto contexto</text>
+
+    <text x="225" y="66" font-size="16" font-weight="700" fill="#58a6ff" text-anchor="middle">call</text>
+    <text x="675" y="66" font-size="16" font-weight="700" fill="#f0883e" text-anchor="middle">delegatecall</text>
+    <line x1="450" y1="52" x2="450" y2="410" stroke="#30363d" stroke-width="2"/>
+
+    <!-- call -->
+    <rect x="30" y="84" width="120" height="40" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="90" y="109" font-size="14" fill="#f0f6fc" text-anchor="middle">alice</text>
+    <line x1="150" y1="104" x2="186" y2="104" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <rect x="190" y="84" width="230" height="40" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="305" y="109" font-size="14" fill="#f0f6fc" text-anchor="middle">Host.viaCall()</text>
+    <line x1="305" y1="124" x2="305" y2="160" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <text x="315" y="148" font-size="12" fill="#58a6ff">call</text>
+    <rect x="190" y="164" width="230" height="110" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="305" y="188" font-size="14" font-weight="700" fill="#f0f6fc" text-anchor="middle">Logic: su código</text>
+    <text x="305" y="214" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">msg.sender = Host</text>
+    <text x="305" y="240" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">address(this) = Logic</text>
+    <line x1="305" y1="274" x2="305" y2="306" stroke="#58a6ff" stroke-width="2" marker-end="url(#b)"/>
+    <rect x="30" y="310" width="180" height="84" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="120" y="336" font-size="13" font-weight="700" fill="#8b949e" text-anchor="middle">Storage de Host</text>
+    <text x="120" y="362" font-size="13" fill="#8b949e" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">count = 0</text>
+    <text x="120" y="382" font-size="12" fill="#8b949e" text-anchor="middle">sin cambios</text>
+    <rect x="230" y="310" width="190" height="84" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="325" y="336" font-size="13" font-weight="700" fill="#3fb950" text-anchor="middle">Storage de Logic</text>
+    <text x="325" y="362" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">count = 1</text>
+    <text x="325" y="382" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">lastCaller = Host</text>
+
+    <!-- delegatecall -->
+    <rect x="480" y="84" width="120" height="40" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="540" y="109" font-size="14" fill="#f0f6fc" text-anchor="middle">alice</text>
+    <line x1="600" y1="104" x2="636" y2="104" stroke="#f0883e" stroke-width="2" marker-end="url(#o)"/>
+    <rect x="640" y="84" width="230" height="40" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="755" y="109" font-size="14" fill="#f0f6fc" text-anchor="middle">Host.viaDelegatecall()</text>
+    <line x1="755" y1="124" x2="755" y2="160" stroke="#f0883e" stroke-width="2" marker-end="url(#o)"/>
+    <text x="765" y="148" font-size="12" fill="#f0883e">delegatecall</text>
+    <rect x="640" y="164" width="230" height="110" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <text x="755" y="188" font-size="14" font-weight="700" fill="#f0f6fc" text-anchor="middle">Código de Logic, en Host</text>
+    <text x="755" y="214" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">msg.sender = alice</text>
+    <text x="755" y="240" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">address(this) = Host</text>
+    <line x1="700" y1="274" x2="600" y2="306" stroke="#f0883e" stroke-width="2" marker-end="url(#o)"/>
+    <rect x="480" y="310" width="190" height="84" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="575" y="336" font-size="13" font-weight="700" fill="#3fb950" text-anchor="middle">Storage de Host</text>
+    <text x="575" y="362" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">count = 1</text>
+    <text x="575" y="382" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">lastCaller = alice</text>
+    <rect x="690" y="310" width="180" height="84" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="780" y="336" font-size="13" font-weight="700" fill="#8b949e" text-anchor="middle">Storage de Logic</text>
+    <text x="780" y="362" font-size="13" fill="#8b949e" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">count = 0</text>
+    <text x="780" y="382" font-size="12" fill="#8b949e" text-anchor="middle">sin cambios</text>
+  </g>
+</svg>

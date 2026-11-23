@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" role="img" aria-label="Calldata de buy(7, &quot;hola&quot;): 4 bytes de selector b7dc3b18 y cuatro palabras de 32 bytes. Palabra 0x00: el 7. Palabra 0x20: el offset 0x40, que apunta a la palabra 0x40. Palabra 0x40: la longitud del string, 4. Palabra 0x60: los bytes de hola, 686f6c61, rellenos con ceros a la derecha.">
+  <title>Calldata de una llamada con un string</title>
+  <rect width="900" height="400" fill="#0d1117"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/>
+    </marker>
+  </defs>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" font-size="19" font-weight="700" fill="#f0f6fc" text-anchor="middle">buy(7, "hola"): selector y cuatro palabras de 32 bytes</text>
+
+    <rect x="40" y="62" width="820" height="44" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="60" y="89" font-size="14" fill="#8fa4f0" font-weight="700">Selector</text>
+    <text x="200" y="89" font-size="15" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">b7dc3b18</text>
+    <text x="840" y="89" font-size="13" fill="#8b949e" text-anchor="end">keccak256("buy(uint256,string)"), 4 bytes</text>
+
+    <text x="60" y="140" font-size="13" fill="#8b949e" font-weight="700">Cabeza: un hueco por argumento</text>
+    <rect x="40" y="150" width="820" height="44" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="60" y="177" font-size="14" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">0x00</text>
+    <text x="130" y="177" font-size="14" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">000…0007</text>
+    <text x="840" y="177" font-size="13" fill="#f0f6fc" text-anchor="end">uint256 id = 7, en su sitio</text>
+
+    <rect x="40" y="202" width="820" height="44" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="60" y="229" font-size="14" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">0x20</text>
+    <text x="130" y="229" font-size="14" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">000…0040</text>
+    <text x="840" y="229" font-size="13" fill="#58a6ff" text-anchor="end">string note: offset, su contenido empieza en 0x40</text>
+
+    <text x="60" y="280" font-size="13" fill="#8b949e" font-weight="700">Cola: el contenido de los dinámicos</text>
+    <rect x="40" y="290" width="820" height="44" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <text x="60" y="317" font-size="14" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">0x40</text>
+    <text x="130" y="317" font-size="14" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">000…0004</text>
+    <text x="840" y="317" font-size="13" fill="#f0883e" text-anchor="end">longitud del string: 4 bytes</text>
+
+    <rect x="40" y="342" width="820" height="44" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <text x="60" y="369" font-size="14" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">0x60</text>
+    <text x="130" y="369" font-size="14" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">686f6c61000…000</text>
+    <text x="840" y="369" font-size="13" fill="#f0883e" text-anchor="end">"hola" en UTF-8, ceros a la derecha</text>
+
+    <path d="M 30 224 C 8 224 8 312 34 312" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/>
+  </g>
+</svg>
