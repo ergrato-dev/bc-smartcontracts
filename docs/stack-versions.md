@@ -14,6 +14,9 @@ starter que compilaba ayer; en un contrato, además, cambia el bytecode que se d
 | forge-std | `v1.17.0` | `ARG FORGE_STD_VERSION` (en `/opt/lib` de la imagen) | Alineada con Foundry 1.9 |
 | Node.js | `v24.22.2` | `ARG NODE_VERSION` | LTS 24, anterior a la última (24.22.3, parche de seguridad del 2026-11-10); subir cuando salga la siguiente |
 | pnpm | `11.28.12` | `ARG PNPM_VERSION` y `packageManager` en `docker/web/package.json` | Rama 11 estable con más de una semana publicada; la instala `corepack` |
+| Python | `3.12` (paquete de Ubuntu 24.04) | `apt-get install python3` en el `Dockerfile` y `requires-python` en `docker/py/pyproject.toml` | El Python de la imagen base; Ubuntu publica sus parches de seguridad dentro de la 3.12 |
+| uv | `0.13.8` | `ARG UV_VERSION` | Con más de una semana publicada y anterior a la última (0.13.9) |
+| PostgreSQL | `16` (paquete de Ubuntu 24.04) | `apt-get install postgresql-16` en el `Dockerfile` | La versión mayor de Ubuntu 24.04; Ubuntu publica sus parches de seguridad dentro de la 16 |
 | OpenZeppelin Contracts | `v5.7.0` | `ARG OZ_VERSION` (en `/opt/lib` de la imagen) y remapping `@openzeppelin/contracts/` | Última estable con más de dos semanas publicada; sin avisos de seguridad abiertos |
 
 ## Dependencias por semana
@@ -38,13 +41,25 @@ verificada ese día. Hasta entonces no se fija nada.
 | @testing-library/react, @testing-library/dom | `16.3.2`, `10.4.1` | 18 | `renderHook` y `waitFor` para probar hooks |
 | happy-dom, @happy-dom/global-registrator | `21.0.3` | 18 | DOM falso en Node para los tests de hooks |
 
-Todas están en `docker/web/package.json` y su `pnpm-lock.yaml`, que fija también las
+| FastAPI | `0.163.1` | 19 | Rutas, validación y modelos de la API del indexador; no la 0.165.0, la última |
+| uvicorn | `0.53.0` | 19 | Servidor de la API; no la 0.54.0, la última |
+| psycopg (`binary`) | `3.3.8` | 19 | Conector de PostgreSQL; no la 3.3.9, la última |
+| httpx2 | `2.16.0` | 19 | Cliente HTTP para JSON-RPC y para el `TestClient` de FastAPI, que avisa de que `httpx` queda obsoleto; no la 2.16.2, la última |
+| pytest | `9.1.1` | 19 | Tests de los starters de Python; no la 9.2.0, la última |
+
+Las de TypeScript están en `docker/web/package.json` y su `pnpm-lock.yaml`, que fija también las
 dependencias indirectas. La imagen descarga ese lockfile (`pnpm fetch`) y **todos** los starters
 de TypeScript llevan una copia exacta del lockfile y de las dependencias, de cualquier semana.
 pnpm verifica cada lockfile contra su política de cadena de suministro antes de instalar, y sin
 red solo pasa el que la imagen verificó al construirse: un lockfile distinto falla con
 `ERR_PNPM_NO_OFFLINE_META`. Al cambiar `docker/web/`, se copian los dos archivos a todos los
 starters (en los proyectos, solo `dependencies` y `devDependencies` del `package.json`).
+
+Las de Python están en `docker/py/pyproject.toml` y su `uv.lock`, que fija las indirectas.
+`exclude-newer` impide a uv elegir versiones con menos de una semana, también las indirectas: al
+cambiar una dependencia se mueve esa fecha a hace una semana y se ejecuta `uv lock`. La imagen
+descarga el lockfile en la caché de uv (`uv sync --frozen`) y cada starter de Python lleva una
+copia exacta de los dos archivos: `test.sh` instala con `uv sync --offline --frozen`.
 
 ## Política
 

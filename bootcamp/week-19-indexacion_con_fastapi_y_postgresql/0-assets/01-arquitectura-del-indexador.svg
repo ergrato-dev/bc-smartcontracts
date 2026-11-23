@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" role="img" aria-label="La cadena emite eventos; el indexador los pide por JSON-RPC y los guarda en PostgreSQL; la API de FastAPI los sirve a la página con consultas rápidas">
+  <title>Arquitectura del indexador</title>
+  <rect width="960" height="400" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="480" y="38" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Del evento a la consulta</text>
+
+    <rect x="30" y="90" width="190" height="200" rx="10" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="125" y="120" fill="#8fa4f0" font-size="16" font-weight="600" text-anchor="middle">Cadena</text>
+    <text x="125" y="145" fill="#8b949e" font-size="13" text-anchor="middle">anvil o Sepolia</text>
+    <rect x="50" y="165" width="150" height="34" rx="6" fill="#0d1117" stroke="#30363d"/>
+    <text x="125" y="187" fill="#f0f6fc" font-size="13" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">ItemRegistered</text>
+    <rect x="50" y="210" width="150" height="34" rx="6" fill="#0d1117" stroke="#30363d"/>
+    <text x="125" y="232" fill="#f0f6fc" font-size="13" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">ItemRetired</text>
+    <text x="125" y="272" fill="#8b949e" font-size="12" text-anchor="middle">bloques con hash y padre</text>
+
+    <rect x="270" y="90" width="190" height="200" rx="10" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="365" y="120" fill="#58a6ff" font-size="16" font-weight="600" text-anchor="middle">Indexador</text>
+    <text x="365" y="145" fill="#8b949e" font-size="13" text-anchor="middle">main.py, cada 2 s</text>
+    <text x="365" y="180" fill="#f0f6fc" font-size="13" text-anchor="middle">1. ¿reorg? deshace</text>
+    <text x="365" y="205" fill="#f0f6fc" font-size="13" text-anchor="middle">2. pide logs por tramos</text>
+    <text x="365" y="230" fill="#f0f6fc" font-size="13" text-anchor="middle">3. decodifica</text>
+    <text x="365" y="255" fill="#f0f6fc" font-size="13" text-anchor="middle">4. guarda, todo o nada</text>
+
+    <rect x="510" y="90" width="190" height="200" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="605" y="120" fill="#3fb950" font-size="16" font-weight="600" text-anchor="middle">PostgreSQL</text>
+    <rect x="530" y="145" width="150" height="50" rx="6" fill="#0d1117" stroke="#30363d"/>
+    <text x="605" y="167" fill="#f0f6fc" font-size="13" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">blocks</text>
+    <text x="605" y="185" fill="#8b949e" font-size="12" text-anchor="middle">número y hash</text>
+    <rect x="530" y="210" width="150" height="50" rx="6" fill="#0d1117" stroke="#30363d"/>
+    <text x="605" y="232" fill="#f0f6fc" font-size="13" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">items</text>
+    <text x="605" y="250" fill="#8b949e" font-size="12" text-anchor="middle">estado ya calculado</text>
+
+    <rect x="750" y="90" width="180" height="200" rx="10" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+    <text x="840" y="120" fill="#e3b341" font-size="16" font-weight="600" text-anchor="middle">API FastAPI</text>
+    <text x="840" y="160" fill="#f0f6fc" font-size="13" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">GET /status</text>
+    <text x="840" y="190" fill="#f0f6fc" font-size="13" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">GET /items</text>
+    <text x="840" y="220" fill="#f0f6fc" font-size="13" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">GET /items/{id}</text>
+    <text x="840" y="260" fill="#8b949e" font-size="12" text-anchor="middle">solo lectura</text>
+
+    <g stroke="#8b949e" stroke-width="2" fill="none">
+      <path d="M222 190 H264"/><path d="M462 190 H504"/><path d="M702 190 H744"/>
+    </g>
+    <g fill="#8b949e">
+      <path d="M268 190 l-8 -5 v10 z"/><path d="M508 190 l-8 -5 v10 z"/><path d="M748 190 l-8 -5 v10 z"/>
+    </g>
+    <text x="243" y="315" fill="#58a6ff" font-size="12" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">eth_getLogs</text>
+    <text x="243" y="333" fill="#58a6ff" font-size="12" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">eth_getBlockByNumber</text>
+    <text x="483" y="315" fill="#3fb950" font-size="12" text-anchor="middle">INSERT en una</text>
+    <text x="483" y="333" fill="#3fb950" font-size="12" text-anchor="middle">transacción</text>
+    <text x="723" y="315" fill="#e3b341" font-size="12" text-anchor="middle">SELECT con</text>
+    <text x="723" y="333" fill="#e3b341" font-size="12" text-anchor="middle">parámetros</text>
+    <text x="480" y="378" fill="#8b949e" font-size="13" text-anchor="middle">La cadena sigue siendo la fuente de verdad: si la base de datos se borra, el indexador la rehace desde los eventos.</text>
+  </g>
+</svg>

@@ -1,0 +1,32 @@
+# ¿Qué? Dependencias de Python del bootcamp (desde la semana 19), compartidas por todos los
+#   starters de Python, que llevan una copia exacta de este archivo y de uv.lock.
+# ¿Para qué? La imagen descarga uv.lock en su caché y `uv sync --offline` instala sin red.
+# ¿Impacto? Otra dependencia o versión exige cambiar este archivo, `uv lock`, reconstruir la
+#   imagen y copiar los dos archivos a todos los starters de Python.
+[project]
+name = "bootcamp-indexer"
+version = "0.1.0"
+requires-python = "==3.12.*"
+dependencies = [
+    "fastapi==0.163.1",
+    "httpx2==2.16.0",
+    "psycopg[binary]==3.3.8",
+    "uvicorn==0.53.0",
+]
+
+[dependency-groups]
+dev = ["pytest==9.1.1"]
+
+[tool.uv]
+# ¿Qué? uv solo elige versiones publicadas antes de esta fecha, también las indirectas.
+# ¿Para qué? Ninguna dependencia con menos de una semana: ataques a la cadena de suministro.
+exclude-newer = "2026-11-16T00:00:00Z"
+
+[tool.pytest.ini_options]
+# ¿Qué? El código de cada starter vive en src/ y sus tests en tests/.
+pythonpath = ["src"]
+testpaths = ["tests"]
+# ¿Qué? Sin caché de pytest en tu carpeta, y un warning es un error: el starter resuelto pasa
+#   sin warnings.
+addopts = "-p no:cacheprovider"
+filterwarnings = ["error"]

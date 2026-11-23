@@ -31,4 +31,4 @@
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | Semana 19 (próximamente) |
+| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | [Semana 19 — Indexación con FastAPI y PostgreSQL →](../../week-19-indexacion_con_fastapi_y_postgresql/README.md) |

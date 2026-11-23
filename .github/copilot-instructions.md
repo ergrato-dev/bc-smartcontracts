@@ -193,6 +193,27 @@ export async function ethBalance(client: PublicClient, account: Address): Promis
 - Las funciones cuyo resultado usan otros archivos llevan el tipo de retorno escrito: con solo
   el `throw`, TypeScript infiere `void` y el starter daría errores de tipos ajenos al paso.
 
+**Python** (desde la semana 19; trae `pyproject.toml`, `uv.lock`, `test.sh`, el código en
+`src/` y los tests en `tests/test_*.py`):
+
+```python
+# PASO 2: el bloque `number`, con su hash y el de su padre.
+def get_block(url: str, number: int) -> Block:
+    raise NotImplementedError("TODO: Paso 2")
+    #> block = rpc(url, "eth_getBlockByNumber", [hex(number), False])
+    #> return Block(number=int(block["number"], 16), hash=block["hash"], parent_hash=block["parentHash"])
+```
+
+- `raise NotImplementedError("TODO: Paso N")` va solo en su línea; la solución, en líneas `#> `.
+- `pyproject.toml` y `uv.lock` son copia de `docker/py/`; `test.sh` instala con
+  `uv sync --offline --frozen`. Otra dependencia exige cambiar `docker/py/`, `uv lock`,
+  reconstruir la imagen y copiar los dos archivos a todos los starters de Python.
+- `pyproject.toml` configura pytest: `pythonpath = ["src"]` y `filterwarnings = ["error"]`.
+- `test.sh` arranca su anvil en el 8546 y, si hace falta, un PostgreSQL con `initdb` en una
+  carpeta temporal, solo por el socket de `/tmp`. Los tests que cambian la cadena toman un
+  `evm_snapshot` en una fixture y vuelven a él al acabar; un reorg se simula con
+  `evm_snapshot`, `evm_revert` y otra transacción.
+
 Para todos: los **tests van escritos** y son el contrato del ejercicio. Cada paso del
 README: `## Paso N: título` → **Por qué** → código → **Abre** el archivo → **Verifica**
 con el comando exacto y la salida esperada (qué tests pasan, cuáles siguen en rojo y
@@ -239,7 +260,8 @@ proyecto completo, mismo árbol que el starter).
   comentario que ya dijo lo mismo más arriba; nunca comentes lo que el código ya dice.
 - Herramientas: **Docker** con base `ubuntu:24.04`; **PostgreSQL** como única base de
   datos relacional (nunca MySQL); **pnpm** para todo lo de Node (nunca npm, ni `npx`:
-  `pnpm dlx`); **uv** para todo lo de Python (nunca pip).
+  `pnpm dlx`); **uv** para todo lo de Python (nunca pip). SQL siempre con parámetros
+  (`%s`), nunca con f-strings de valores.
 
 ## Escritura
 

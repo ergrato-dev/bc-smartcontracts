@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" role="img" aria-label="Reorg: los bloques 102 y 103 guardados ya no están en la cadena; el indexador compara hashes desde el último hacia atrás, borra 103 y 102, para en 101 que coincide y vuelve a indexar desde 102">
+  <title>Un reorg y cómo se deshace</title>
+  <rect width="960" height="420" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="480" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Un reorg y cómo se deshace</text>
+
+    <text x="30" y="98" fill="#8b949e" font-size="14">Guardado</text>
+    <text x="30" y="198" fill="#8b949e" font-size="14">Cadena ahora</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" text-anchor="middle">
+      <rect x="150" y="70" width="130" height="50" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+      <text x="215" y="92" fill="#f0f6fc">100</text><text x="215" y="110" fill="#8b949e">0x1f…</text>
+      <rect x="320" y="70" width="130" height="50" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+      <text x="385" y="92" fill="#f0f6fc">101</text><text x="385" y="110" fill="#8b949e">0x7c…</text>
+      <rect x="490" y="70" width="130" height="50" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+      <text x="555" y="92" fill="#f0f6fc">102</text><text x="555" y="110" fill="#f85149">0xa3…</text>
+      <rect x="660" y="70" width="130" height="50" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+      <text x="725" y="92" fill="#f0f6fc">103</text><text x="725" y="110" fill="#f85149">0x5e…</text>
+
+      <rect x="150" y="170" width="130" height="50" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+      <text x="215" y="192" fill="#f0f6fc">100</text><text x="215" y="210" fill="#8b949e">0x1f…</text>
+      <rect x="320" y="170" width="130" height="50" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+      <text x="385" y="192" fill="#f0f6fc">101</text><text x="385" y="210" fill="#8b949e">0x7c…</text>
+      <rect x="490" y="170" width="130" height="50" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+      <text x="555" y="192" fill="#f0f6fc">102</text><text x="555" y="210" fill="#8fa4f0">0xd9…</text>
+      <rect x="660" y="170" width="130" height="50" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+      <text x="725" y="192" fill="#f0f6fc">103</text><text x="725" y="210" fill="#8fa4f0">0x02…</text>
+      <rect x="830" y="170" width="110" height="50" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+      <text x="885" y="192" fill="#f0f6fc">104</text><text x="885" y="210" fill="#8fa4f0">0x6b…</text>
+    </g>
+    <g stroke="#30363d" stroke-width="2">
+      <path d="M280 95 H320"/><path d="M450 95 H490"/><path d="M620 95 H660"/>
+      <path d="M280 195 H320"/><path d="M450 195 H490"/><path d="M620 195 H660"/><path d="M790 195 H830"/>
+    </g>
+
+    <g font-size="13" text-anchor="middle">
+      <text x="725" y="148" fill="#f85149">1. distinto: borra</text>
+      <text x="555" y="148" fill="#f85149">2. distinto: borra</text>
+      <text x="385" y="148" fill="#3fb950">3. igual: para</text>
+    </g>
+
+    <rect x="150" y="260" width="790" height="130" rx="10" fill="#161b22" stroke="#30363d"/>
+    <g font-size="14" fill="#f0f6fc">
+      <text x="175" y="292">Cada bloque guarda el hash de su padre: si cambia el 102, cambian todos los que vienen detrás.</text>
+      <text x="175" y="320">Por eso basta con comparar desde el último guardado hacia atrás hasta el primero que coincide.</text>
+      <text x="175" y="348">Borrar un bloque borra sus altas (ON DELETE CASCADE) y deshace sus bajas (ON DELETE SET NULL).</text>
+      <text x="175" y="376" fill="#3fb950">Después, el indexador sigue desde el 102 de la cadena nueva, como siempre.</text>
+    </g>
+  </g>
+</svg>

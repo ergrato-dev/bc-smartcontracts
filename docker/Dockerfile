@@ -2,7 +2,7 @@
 # ¿Para qué? Que todos los aprendices compilen, prueben y desplieguen con las mismas versiones,
 #            sin instalar nada en su máquina.
 # ¿Impacto? Si un ejercicio pasa aquí, pasa en la corrección. Las herramientas que llegan
-#           más adelante (pnpm, uv, PostgreSQL) se añaden en la semana que las introduce.
+#           más adelante (Node y pnpm, uv y PostgreSQL) se añaden en la semana que las introduce.
 FROM ubuntu:24.04
 
 ARG FOUNDRY_VERSION=v1.9.0
@@ -11,6 +11,7 @@ ARG FORGE_STD_VERSION=v1.17.0
 ARG OZ_VERSION=v5.7.0
 ARG NODE_VERSION=v24.22.2
 ARG PNPM_VERSION=11.28.12
+ARG UV_VERSION=0.13.8
 # ¿Qué? Arquitectura que Docker inyecta al construir (amd64 o arm64).
 ARG TARGETARCH
 
@@ -67,6 +68,28 @@ RUN arch="$([ "${TARGETARCH:-amd64}" = arm64 ] && echo arm64 || echo x64)" \
     && rm /tmp/node* \
     && corepack enable pnpm
 
+# ¿Qué? Python 3.12 y PostgreSQL 16 de Ubuntu 24.04, y uv desde su release de GitHub, verificado
+#   con su sha256, desde la semana 19.
+# ¿Para qué? El indexador: FastAPI y psycopg corren sobre ese Python, y cada test arranca su propio
+#   PostgreSQL con `initdb`. Sin servicio de sistema: no arranca nada al abrir el contenedor.
+# ¿Impacto? Ubuntu publica las correcciones de seguridad de los dos paquetes dentro de la misma
+#   versión mayor; uv no descarga otro Python (`UV_PYTHON_DOWNLOADS=never`).
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends python3 postgresql-16 \
+    && rm -rf /var/lib/apt/lists/* \
+    && arch="$([ "${TARGETARCH:-amd64}" = arm64 ] && echo aarch64 || echo x86_64)" \
+    && file="uv-${arch}-unknown-linux-gnu.tar.gz" \
+    && base="https://github.com/astral-sh/uv/releases/download/${UV_VERSION}" \
+    && curl -fsSL -o "/tmp/${file}" "${base}/${file}" \
+    && curl -fsSL -o /tmp/uv.sha256 "${base}/${file}.sha256" \
+    && (cd /tmp && sha256sum -c uv.sha256) \
+    && tar -xzf "/tmp/${file}" -C /usr/local/bin --strip-components=1 \
+    && rm /tmp/uv*
+ENV PATH="/usr/lib/postgresql/16/bin:${PATH}" \
+    UV_PYTHON_DOWNLOADS=never \
+    UV_LINK_MODE=copy \
+    PYTHONDONTWRITEBYTECODE=1
+
 # ¿Qué? Usuario sin privilegios `ubuntu` (UID 1000), que ya trae la imagen base.
 # ¿Impacto? Los archivos que crea forge en el volumen montado no quedan como root.
 USER ubuntu
@@ -93,9 +116,16 @@ RUN corepack install -g "pnpm@${PNPM_VERSION}" \
     && cd /tmp/web && pnpm fetch --frozen-lockfile >/dev/null \
     && cd / && rm -rf /tmp/web
 
+# ¿Qué? La caché de uv con las dependencias de Python del bootcamp, las de `py/uv.lock`.
+# ¿Para qué? Lo mismo que el almacén de pnpm: `uv sync --offline --frozen` instala en cada starter
+#   sin red. `UV_LINK_MODE=copy` copia de la caché al volumen en vez de intentar enlaces duros.
+COPY --chown=ubuntu py /tmp/py
+RUN cd /tmp/py && uv sync --frozen --quiet \
+    && cd / && rm -rf /tmp/py
+
 # ¿Qué? anvil escucha en todas las interfaces dentro del contenedor.
 # ¿Para qué? Que el puerto 8545 publicado con `-p 8545:8545` llegue desde tu máquina.
 ENV ANVIL_IP_ADDR=0.0.0.0
-EXPOSE 8545 5173
+EXPOSE 8545 5173 8000
 
 CMD ["bash"]
