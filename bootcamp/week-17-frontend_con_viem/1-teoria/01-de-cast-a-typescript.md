@@ -29,7 +29,7 @@ Las piezas, todas dentro del contenedor del bootcamp:
 
 | Pieza | Qué es | Versión |
 | ----- | ------ | ------- |
-| **Node** | El programa que ejecuta JavaScript fuera del navegador | `v24.22.3` |
+| **Node** | El programa que ejecuta JavaScript fuera del navegador | `v24.22.2` |
 | **pnpm** | El gestor de paquetes: descarga bibliotecas y fija sus versiones | `11.28.12` |
 | **TypeScript** (`tsc`) | El comprobador de tipos | `6.0.3` |
 | **viem** | La biblioteca que habla con el nodo | `2.57.20` |

@@ -12,7 +12,7 @@ starter que compilaba ayer; en un contrato, además, cambia el bytecode que se d
 | Foundry (forge, cast, anvil, chisel) | `v1.9.0` | `ARG FOUNDRY_VERSION` | Última estable con más de dos semanas publicada |
 | Solidity (solc) | `0.8.38` | `ARG SOLC_VERSION`, `solc_version` en `foundry.toml` y `pragma solidity 0.8.38;` | Última estable con más de dos semanas publicada |
 | forge-std | `v1.17.0` | `ARG FORGE_STD_VERSION` (en `/opt/lib` de la imagen) | Alineada con Foundry 1.9 |
-| Node.js | `v24.22.3` | `ARG NODE_VERSION` | LTS 24 con más de una semana publicada; parche de seguridad sobre la 24.22.2 |
+| Node.js | `v24.22.2` | `ARG NODE_VERSION` | LTS 24, anterior a la última (24.22.3, parche de seguridad del 2026-11-10); subir cuando salga la siguiente |
 | pnpm | `11.28.12` | `ARG PNPM_VERSION` y `packageManager` en `docker/web/package.json` | Rama 11 estable con más de una semana publicada; la instala `corepack` |
 | OpenZeppelin Contracts | `v5.7.0` | `ARG OZ_VERSION` (en `/opt/lib` de la imagen) y remapping `@openzeppelin/contracts/` | Última estable con más de dos semanas publicada; sin avisos de seguridad abiertos |
 
