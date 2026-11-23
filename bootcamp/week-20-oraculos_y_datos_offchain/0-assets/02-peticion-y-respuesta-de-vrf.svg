@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" role="img" aria-label="Secuencia de Chainlink VRF: en el bloque N tu contrato llama a requestRandomWords y el coordinador emite un evento; el nodo de VRF espera tres confirmaciones, calcula número y prueba; en el bloque N+3 o después llama al coordinador, que verifica la prueba y llama a fulfillRandomWords de tu contrato">
+  <title>Petición y respuesta de Chainlink VRF</title>
+  <rect width="960" height="500" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <!-- Cabeceras -->
+    <g font-size="15" text-anchor="middle" fill="#f0f6fc">
+      <rect x="70" y="24" width="180" height="44" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+      <text x="160" y="52">Tu contrato</text>
+      <rect x="390" y="24" width="180" height="44" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+      <text x="480" y="52">Coordinador VRF</text>
+      <rect x="710" y="24" width="180" height="44" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+      <text x="800" y="52">Nodo de VRF</text>
+    </g>
+    <text x="800" y="86" font-size="12" fill="#8b949e" text-anchor="middle">fuera de la cadena</text>
+    <g stroke="#30363d" stroke-width="2" stroke-dasharray="4 6">
+      <line x1="160" y1="68" x2="160" y2="480"/>
+      <line x1="480" y1="68" x2="480" y2="480"/>
+      <line x1="800" y1="96" x2="800" y2="480"/>
+    </g>
+
+    <!-- Transacción 1 -->
+    <rect x="20" y="106" width="590" height="104" rx="8" fill="none" stroke="#e3b341" stroke-dasharray="6 4"/>
+    <text x="34" y="126" font-size="13" fill="#e3b341">Transacción 1 · bloque N</text>
+    <path d="M160 150 L470 150" stroke="#3fb950" stroke-width="2"/>
+    <path d="M460 144 L470 150 L460 156" stroke="#3fb950" stroke-width="2" fill="none"/>
+    <text x="315" y="142" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">requestRandomWords(...)</text>
+    <path d="M470 186 L170 186" stroke="#8b949e" stroke-width="2"/>
+    <path d="M180 180 L170 186 L180 192" stroke="#8b949e" stroke-width="2" fill="none"/>
+    <text x="315" y="178" font-size="13" fill="#8b949e" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">requestId</text>
+
+    <!-- Evento -->
+    <path d="M490 168 L790 168" stroke="#58a6ff" stroke-width="2" stroke-dasharray="6 4"/>
+    <path d="M780 162 L790 168 L780 174" stroke="#58a6ff" stroke-width="2" fill="none"/>
+    <text x="640" y="160" font-size="13" fill="#58a6ff" text-anchor="middle">evento RandomWordsRequested</text>
+
+    <!-- Espera -->
+    <rect x="690" y="226" width="220" height="92" rx="8" fill="#161b22" stroke="#58a6ff"/>
+    <text x="800" y="252" font-size="13" fill="#f0f6fc" text-anchor="middle">espera 3 confirmaciones</text>
+    <text x="800" y="276" font-size="13" fill="#f0f6fc" text-anchor="middle">número + prueba</text>
+    <text x="800" y="300" font-size="12" fill="#8b949e" text-anchor="middle">con su clave privada</text>
+    <rect x="84" y="250" width="152" height="44" fill="#0d1117"/>
+    <text x="160" y="268" font-size="13" fill="#e3b341" text-anchor="middle">cerrado: nadie entra</text>
+    <text x="160" y="288" font-size="12" fill="#8b949e" text-anchor="middle">bloques N+1, N+2...</text>
+
+    <!-- Transacción 2 -->
+    <rect x="20" y="334" width="920" height="142" rx="8" fill="none" stroke="#e3b341" stroke-dasharray="6 4"/>
+    <text x="34" y="354" font-size="13" fill="#e3b341">Transacción 2 · bloque N+3 o después</text>
+    <path d="M800 380 L490 380" stroke="#58a6ff" stroke-width="2"/>
+    <path d="M500 374 L490 380 L500 386" stroke="#58a6ff" stroke-width="2" fill="none"/>
+    <text x="645" y="372" font-size="13" fill="#f0f6fc" text-anchor="middle">número + prueba</text>
+    <rect x="410" y="394" width="140" height="30" rx="6" fill="#161b22" stroke="#3fb950"/>
+    <text x="480" y="414" font-size="12" fill="#3fb950" text-anchor="middle">verifica la prueba</text>
+    <path d="M470 446 L170 446" stroke="#627eea" stroke-width="2"/>
+    <path d="M180 440 L170 446 L180 452" stroke="#627eea" stroke-width="2" fill="none"/>
+    <text x="315" y="438" font-size="13" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">fulfillRandomWords(id, words)</text>
+    <text x="315" y="466" font-size="12" fill="#f85149" text-anchor="middle">si revierte, no se reintenta</text>
+  </g>
+</svg>

@@ -12,6 +12,9 @@ ARG OZ_VERSION=v5.7.0
 ARG NODE_VERSION=v24.22.2
 ARG PNPM_VERSION=11.28.12
 ARG UV_VERSION=0.13.8
+ARG CHAINLINK_VERSION=1.4.0
+ARG CHAINLINK_SHA512=4a93422744cf388ea96b697bd365a4e1620ff1c730e4045c44fd44fd94ea6857df5cda19785d375a1b152fc7f797739344503d678d0ee4a719ce626665092814
+ARG KUBO_VERSION=v0.43.0
 # ¿Qué? Arquitectura que Docker inyecta al construir (amd64 o arm64).
 ARG TARGETARCH
 
@@ -90,6 +93,31 @@ ENV PATH="/usr/lib/postgresql/16/bin:${PATH}" \
     UV_LINK_MODE=copy \
     PYTHONDONTWRITEBYTECODE=1
 
+# ¿Qué? Los contratos de Chainlink (interfaces de price feeds, VRF y sus mocks) en /opt/lib, desde
+#   la semana 20. Del paquete de npm `@chainlink/contracts`, verificado con su sha512.
+# ¿Para qué? Lo mismo que OpenZeppelin: los starters los importan como
+#   `@chainlink/contracts/src/v0.8/...`, la ruta de la documentación de Chainlink, sin pnpm ni red.
+# ¿Impacto? Solo se copia `src/`: el paquete trae además ABIs y dependencias de npm que Solidity no usa.
+RUN curl -fsSL -o /tmp/chainlink.tgz \
+        "https://registry.npmjs.org/@chainlink/contracts/-/contracts-${CHAINLINK_VERSION}.tgz" \
+    && echo "${CHAINLINK_SHA512}  /tmp/chainlink.tgz" | sha512sum -c - \
+    && mkdir -p /opt/lib/chainlink-contracts \
+    && tar -xzf /tmp/chainlink.tgz -C /opt/lib/chainlink-contracts --strip-components=1 package/src \
+    && rm /tmp/chainlink.tgz
+
+# ¿Qué? kubo, el nodo de IPFS de referencia (comando `ipfs`), desde su release de GitHub,
+#   verificado con su sha512, desde la semana 20.
+# ¿Para qué? Calcular el CID de un archivo, guardarlo en un nodo propio y leerlo por su gateway,
+#   todo sin conectarse a la red de IPFS (`--offline`).
+RUN arch="${TARGETARCH:-amd64}" \
+    && file="kubo_${KUBO_VERSION}_linux-${arch}.tar.gz" \
+    && base="https://github.com/ipfs/kubo/releases/download/${KUBO_VERSION}" \
+    && curl -fsSL -o "/tmp/${file}" "${base}/${file}" \
+    && curl -fsSL -o /tmp/kubo.sha512 "${base}/${file}.sha512" \
+    && (cd /tmp && sha512sum -c kubo.sha512) \
+    && tar -xzf "/tmp/${file}" -C /usr/local/bin --strip-components=1 kubo/ipfs \
+    && rm /tmp/kubo*
+
 # ¿Qué? Usuario sin privilegios `ubuntu` (UID 1000), que ya trae la imagen base.
 # ¿Impacto? Los archivos que crea forge en el volumen montado no quedan como root.
 USER ubuntu
@@ -124,8 +152,9 @@ RUN cd /tmp/py && uv sync --frozen --quiet \
     && cd / && rm -rf /tmp/py
 
 # ¿Qué? anvil escucha en todas las interfaces dentro del contenedor.
-# ¿Para qué? Que el puerto 8545 publicado con `-p 8545:8545` llegue desde tu máquina.
+# ¿Para qué? Que el puerto 8545 publicado con `-p 8545:8545` llegue desde tu máquina. Los demás
+#   puertos: 5173 para Vite, 8000 para la API del indexador y 8080 para el gateway de IPFS.
 ENV ANVIL_IP_ADDR=0.0.0.0
-EXPOSE 8545 5173 8000
+EXPOSE 8545 5173 8000 8080
 
 CMD ["bash"]

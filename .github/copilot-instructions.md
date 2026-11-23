@@ -13,7 +13,7 @@ No deduzcas el patrón mirando archivos sueltos.
 | Nivel de entrada | Cero en blockchain. **Sí** se exige programación previa: variables, funciones, condicionales, bucles, clases, terminal y git básicos, en cualquier lenguaje |
 | Nivel de salida | Avanzado: Solidity a fondo, EVM y Yul, estándares ERC, proxies, dApps full-stack, auditoría de seguridad (análisis estático, fuzzing de invariantes, verificación formal), DeFi, account abstraction y L2 |
 | Fuera de alcance | Trading y especulación; cadenas no EVM (Solana, Cosmos); Vyper más allá de una mención |
-| Stack | Solidity 0.8.38, Foundry 1.9 (forge, cast, anvil, chisel), forge-std, OpenZeppelin Contracts 5, Docker `ubuntu:24.04`; desde la fase 4: TypeScript + viem + wagmi (pnpm), FastAPI (uv) + PostgreSQL |
+| Stack | Solidity 0.8.38, Foundry 1.9 (forge, cast, anvil, chisel), forge-std, OpenZeppelin Contracts 5, Docker `ubuntu:24.04`; desde la fase 4: TypeScript + viem + wagmi (pnpm), FastAPI (uv) + PostgreSQL, Chainlink Contracts y kubo (IPFS) |
 
 Versiones exactas y política para cambiarlas: [`docs/stack-versions.md`](../docs/stack-versions.md).
 
@@ -40,7 +40,7 @@ Versiones exactas y política para cambiarlas: [`docs/stack-versions.md`](../doc
 | | 17 | `week-17-frontend_con_viem` | TypeScript, viem, leer, escribir y escuchar eventos (pnpm, Vite) |
 | | 18 | `week-18-dapp_con_react_y_wagmi` | React, wagmi, conectar wallet, estado de transacciones |
 | | 19 | `week-19-indexacion_con_fastapi_y_postgresql` | Indexar eventos con FastAPI + uv + PostgreSQL, reorgs |
-| | 20 | `week-20-oraculos_y_datos_offchain` | Chainlink price feeds y VRF, IPFS |
+| | 20 | `week-20-oraculos_y_datos_offchain` | Chainlink price feeds y VRF, IPFS con kubo, `tokenURI` con `ipfs://` |
 | 5 · Seguridad | 21 | `week-21-vulnerabilidades_clasicas` | Reentrancy, control de acceso, `tx.origin`, DoS, `unchecked` |
 | | 22 | `week-22-vulnerabilidades_economicas` | Manipulación de oráculos, flash loans, front-running y MEV, redondeo |
 | | 23 | `week-23-analisis_estatico` | Slither (uv), Aderyn, detectores propios |
@@ -106,6 +106,12 @@ Plantilla de proyecto Foundry: [`docs/plantillas/starter-foundry/`](../docs/plan
 Su `foundry.toml` usa la forge-std de la imagen (`/opt/lib`); se copia entero.
 Desde la semana 16, el proyecto semanal llega a `/opt/lib` por un enlace simbólico `lib` dentro del
 proyecto (remappings `lib/...`): con rutas fuera del proyecto, el JSON de verificación no recompila.
+Desde la semana 20, los contratos de Chainlink están en `/opt/lib/chainlink-contracts` con el
+remapping `@chainlink/contracts/` (los `import` de la documentación de Chainlink funcionan tal
+cual). Un proyecto que compile sus contratos de VRF añade
+`ignored_warnings_from = ["/opt/lib/chainlink-contracts"]`: su copia de OpenZeppelin 4.7 da un
+warning de solc 0.8.38. El proyecto semanal activa el optimizador desde la semana 20
+(`optimizer = true`, 200 ejecuciones): RegistryV3 sin él pasa de 24 576 bytes.
 
 ## 1-teoria
 

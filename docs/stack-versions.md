@@ -18,6 +18,8 @@ starter que compilaba ayer; en un contrato, además, cambia el bytecode que se d
 | uv | `0.13.8` | `ARG UV_VERSION` | Con más de una semana publicada y anterior a la última (0.13.9) |
 | PostgreSQL | `16` (paquete de Ubuntu 24.04) | `apt-get install postgresql-16` en el `Dockerfile` | La versión mayor de Ubuntu 24.04; Ubuntu publica sus parches de seguridad dentro de la 16 |
 | OpenZeppelin Contracts | `v5.7.0` | `ARG OZ_VERSION` (en `/opt/lib` de la imagen) y remapping `@openzeppelin/contracts/` | Última estable con más de dos semanas publicada; sin avisos de seguridad abiertos |
+| Chainlink Contracts | `1.4.0` (paquete de npm `@chainlink/contracts`) | `ARG CHAINLINK_VERSION` y `ARG CHAINLINK_SHA512` (solo `src/`, en `/opt/lib/chainlink-contracts`) | Anterior a la última estable (1.5.0); trae `AggregatorV3Interface`, VRF v2.5 y sus mocks. Se instala sin pnpm, verificado con el sha512 de npm |
+| kubo (`ipfs`) | `v0.43.0` | `ARG KUBO_VERSION` | Anterior a la última (v0.43.1); verificado con su sha512 |
 
 ## Dependencias por semana
 
@@ -46,6 +48,7 @@ verificada ese día. Hasta entonces no se fija nada.
 | psycopg (`binary`) | `3.3.8` | 19 | Conector de PostgreSQL; no la 3.3.9, la última |
 | httpx2 | `2.16.0` | 19 | Cliente HTTP para JSON-RPC y para el `TestClient` de FastAPI, que avisa de que `httpx` queda obsoleto; no la 2.16.2, la última |
 | pytest | `9.1.1` | 19 | Tests de los starters de Python; no la 9.2.0, la última |
+| Chainlink Contracts | `1.4.0` | 20 | `AggregatorV3Interface`, `MockV3Aggregator`, `VRFConsumerBaseV2Plus` y `VRFCoordinatorV2_5Mock`; en la imagen, con el remapping `@chainlink/contracts/` |
 
 Las de TypeScript están en `docker/web/package.json` y su `pnpm-lock.yaml`, que fija también las
 dependencias indirectas. La imagen descarga ese lockfile (`pnpm fetch`) y **todos** los starters

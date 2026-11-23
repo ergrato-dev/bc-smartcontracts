@@ -48,7 +48,7 @@ La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está p
 | [17](week-17-frontend_con_viem/README.md) | [Frontend con viem](week-17-frontend_con_viem/README.md) | ✅ |
 | [18](week-18-dapp_con_react_y_wagmi/README.md) | [dApp con React y wagmi](week-18-dapp_con_react_y_wagmi/README.md) | ✅ |
 | [19](week-19-indexacion_con_fastapi_y_postgresql/README.md) | [Indexación con FastAPI y PostgreSQL](week-19-indexacion_con_fastapi_y_postgresql/README.md) | ✅ |
-| 20 | Oráculos y datos off-chain | ⬜ |
+| [20](week-20-oraculos_y_datos_offchain/README.md) | [Oráculos y datos off-chain](week-20-oraculos_y_datos_offchain/README.md) | ✅ |
 
 ### Fase 5 — Seguridad (S21-26, 84 h)
 
