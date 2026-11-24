@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" role="img" aria-label="Dos arrays de tres elementos en memoria. A la izquierda, el assembly mueve el puntero de memoria libre: range ocupa de 0x80 a 0xff con longitud 3 y los valores 0, 1 y 2; el puntero pasa a 0x100 y sevens empieza ahí, con 7, 7 y 7. A la derecha, el assembly no mueve el puntero: sigue en 0x80, así que new uint256 de 3 empieza en 0x80, encima de range. Los sietes sobrescriben 0, 1 y 2, y range devuelve 7, 7 y 7.">
+  <title>Memoria pisada por un puntero sin mover</title>
+  <rect width="960" height="470" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="480" y="38" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">_range(3) y después new uint256[](3)</text>
+
+    <text x="60" y="80" fill="#3fb950" font-size="16" font-weight="600">Con mstore(0x40, …) al final</text>
+    <text x="520" y="80" fill="#f85149" font-size="16" font-weight="600">Sin mover el puntero</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#8b949e">
+      <text x="60" y="122">0x80</text><text x="60" y="162">0xa0</text><text x="60" y="202">0xc0</text><text x="60" y="242">0xe0</text>
+      <text x="60" y="282">0x100</text><text x="60" y="322">0x120</text><text x="60" y="362">0x140</text><text x="60" y="402">0x160</text>
+      <text x="520" y="122">0x80</text><text x="520" y="162">0xa0</text><text x="520" y="202">0xc0</text><text x="520" y="242">0xe0</text>
+    </g>
+
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">
+      <rect x="120" y="102" width="200" height="32" rx="6" fill="#161b22" stroke="#627eea"/><text x="136" y="123" fill="#8fa4f0">3   longitud</text>
+      <rect x="120" y="142" width="200" height="32" rx="6" fill="#161b22" stroke="#627eea"/><text x="136" y="163" fill="#f0f6fc">0</text>
+      <rect x="120" y="182" width="200" height="32" rx="6" fill="#161b22" stroke="#627eea"/><text x="136" y="203" fill="#f0f6fc">1</text>
+      <rect x="120" y="222" width="200" height="32" rx="6" fill="#161b22" stroke="#627eea"/><text x="136" y="243" fill="#f0f6fc">2</text>
+      <rect x="120" y="262" width="200" height="32" rx="6" fill="#161b22" stroke="#3fb950"/><text x="136" y="283" fill="#8fa4f0">3   longitud</text>
+      <rect x="120" y="302" width="200" height="32" rx="6" fill="#161b22" stroke="#3fb950"/><text x="136" y="323" fill="#f0f6fc">7</text>
+      <rect x="120" y="342" width="200" height="32" rx="6" fill="#161b22" stroke="#3fb950"/><text x="136" y="363" fill="#f0f6fc">7</text>
+      <rect x="120" y="382" width="200" height="32" rx="6" fill="#161b22" stroke="#3fb950"/><text x="136" y="403" fill="#f0f6fc">7</text>
+
+      <rect x="580" y="102" width="200" height="32" rx="6" fill="#161b22" stroke="#f85149" stroke-width="2"/><text x="596" y="123" fill="#8fa4f0">3   longitud</text>
+      <rect x="580" y="142" width="200" height="32" rx="6" fill="#161b22" stroke="#f85149" stroke-width="2"/><text x="596" y="163" fill="#f0f6fc">7  <tspan fill="#8b949e">(era 0)</tspan></text>
+      <rect x="580" y="182" width="200" height="32" rx="6" fill="#161b22" stroke="#f85149" stroke-width="2"/><text x="596" y="203" fill="#f0f6fc">7  <tspan fill="#8b949e">(era 1)</tspan></text>
+      <rect x="580" y="222" width="200" height="32" rx="6" fill="#161b22" stroke="#f85149" stroke-width="2"/><text x="596" y="243" fill="#f0f6fc">7  <tspan fill="#8b949e">(era 2)</tspan></text>
+    </g>
+
+    <text x="336" y="182" fill="#8fa4f0" font-size="14">range</text>
+    <text x="336" y="342" fill="#3fb950" font-size="14">sevens</text>
+    <text x="336" y="364" fill="#8b949e" font-size="13">empieza donde</text>
+    <text x="336" y="382" fill="#8b949e" font-size="13">apunta 0x40 = 0x100</text>
+
+    <text x="796" y="172" fill="#f85149" font-size="14">range y sevens</text>
+    <text x="796" y="192" fill="#f85149" font-size="14">son los mismos</text>
+    <text x="796" y="212" fill="#f85149" font-size="14">bytes</text>
+
+    <text x="520" y="300" fill="#8b949e" font-size="14">0x40 sigue valiendo 0x80: Solidity cree</text>
+    <text x="520" y="322" fill="#8b949e" font-size="14">que esa memoria está libre y la reutiliza.</text>
+    <text x="520" y="358" fill="#f0f6fc" font-size="14">El test del paso 4 lo ve:</text>
+    <text x="520" y="382" fill="#f85149" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">assertion failed: 7 != 0</text>
+  </g>
+</svg>

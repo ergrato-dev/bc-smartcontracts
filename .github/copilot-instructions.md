@@ -163,6 +163,10 @@ function greet() external pure returns (string memory) {
   `ast = true`: sin ellos Halmos no encuentra el `setUp` o los tests. Se verifica a mano con
   `bash test.sh` en la copia resuelta, como Medusa. `halmos.toml` solo si el solver por defecto
   falla o tarda en mediciones repetidas.
+- Un objeto Yul (desde la semana 28) va en `src/*.yul`: la línea del starter que el paso sustituye
+  acaba en `// <- Paso N` y la solución va en `//> `. `foundry.toml` lleva `lint_on_build = false`
+  en `[lint]` (el linter no entiende Yul) y `fs_permissions` de lectura sobre `./out`: sin ABI,
+  `deployCode` no lo acepta y el test lee el bytecode del artefacto.
 - Cuando el paso **sustituye** código que tiene que estar activo en el starter (para que un
   analizador lo encuentre, semana 23), la línea vieja acaba en `// <- Paso N` y la nueva va
   debajo en `//> `. Al resolver, `compilar-starters.sh` borra las líneas `// <- Paso N`.

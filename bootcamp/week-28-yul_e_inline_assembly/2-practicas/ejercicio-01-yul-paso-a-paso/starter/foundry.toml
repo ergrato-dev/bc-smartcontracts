@@ -1,0 +1,28 @@
+# ¿Qué? Configuración de Foundry de un ejercicio o proyecto del bootcamp.
+# ¿Para qué? Fijar compilador y bibliotecas para que el resultado sea idéntico en cualquier contenedor.
+[profile.default]
+src = "src"
+test = "test"
+out = "out"
+# ¿Qué? forge-std y, desde la semana 11, OpenZeppelin viven en la imagen (/opt/lib), no dentro del proyecto.
+libs = ["/opt/lib"]
+remappings = [
+    "forge-std/=/opt/lib/forge-std/src/",
+    "@openzeppelin/contracts/=/opt/lib/openzeppelin-contracts/contracts/",
+]
+solc_version = "0.8.38"
+# ¿Qué? Sin red: solc ya está en la imagen.
+# ¿Impacto? Un número de versión mal escrito falla al instante en vez de intentar descargar.
+offline = true
+# ¿Qué? Permiso de lectura sobre out/, donde forge deja lo que compila.
+# ¿Para qué? Un objeto Yul no tiene ABI y `deployCode` no lo acepta: el test lee su bytecode del
+#   artefacto (`out/Counter.yul/Counter.json`) y lo despliega él.
+# ¿Impacto? Los tests leen archivos de out/ y de nada más.
+fs_permissions = [{ access = "read", path = "./out" }]
+
+# ¿Qué? Sin `forge lint` al compilar.
+# ¿Para qué? El linter de forge solo entiende Solidity: con `src/Counter.yul`, `forge build` acaba
+#   con "post-build lint step failed" aunque el compilador termine bien.
+# ¿Impacto? `forge build` y `forge test` compilan igual; el linter no se ejecuta solo.
+[lint]
+lint_on_build = false

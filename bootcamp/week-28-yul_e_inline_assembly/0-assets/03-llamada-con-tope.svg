@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" role="img" aria-label="Una return bomb de 192 000 bytes contra dos formas de llamar. Arriba, try y catch con bytes memory reason: la EVM deja los 192 000 bytes en el búfer de returndata y Solidity los copia todos a la memoria del registro, que crece y cobra la ampliación fuera del tope del hook. El alta pasa de 244 296 a 436 689 de gas. Abajo, call en assembly con salida de tamaño 0 y returndatacopy de 4 bytes al scratch space: el búfer sigue teniendo 192 000 bytes, pero el registro solo copia el selector. El alta gasta 329 674, menos que el de 4 bytes más HOOK_GAS.">
+  <title>Llamar a un hook sin copiar su returndata</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#58a6ff"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="480" y="38" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">La return bomb de 192 000 bytes, dos formas de recibirla</text>
+
+    <rect x="40" y="70" width="250" height="360" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <text x="60" y="100" fill="#f0883e" font-size="15" font-weight="600">Búfer de returndata</text>
+    <text x="60" y="122" fill="#8b949e" font-size="13">lo deja el hook al revertir</text>
+    <text x="60" y="160" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">192 000 bytes</text>
+    <text x="60" y="184" fill="#8b949e" font-size="13">el hook paga su memoria,</text>
+    <text x="60" y="204" fill="#8b949e" font-size="13">dentro de HOOK_GAS</text>
+    <text x="60" y="400" fill="#8b949e" font-size="13">no es memoria de nadie:</text>
+    <text x="60" y="418" fill="#8b949e" font-size="13">se lee con returndatacopy</text>
+
+    <path d="M290 160 L400 160" stroke="#f85149" stroke-width="2" fill="none" marker-end="url(#a)"/>
+    <text x="300" y="148" fill="#f85149" font-size="13">copia todo</text>
+    <rect x="406" y="80" width="514" height="150" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+    <text x="426" y="108" fill="#f85149" font-size="15" font-weight="600">try … catch (bytes memory reason)</text>
+    <text x="426" y="136" fill="#f0f6fc" font-size="14">Memoria del registro: 192 000 bytes más</text>
+    <text x="426" y="160" fill="#8b949e" font-size="13">la ampliación la paga quien registra, fuera del tope del hook</text>
+    <text x="426" y="196" fill="#f0f6fc" font-size="14">alta: <tspan font-family="ui-monospace, SFMono-Regular, Menlo, monospace">244 296</tspan> → <tspan fill="#f85149" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">436 689</tspan> de gas</text>
+
+    <path d="M290 330 L400 330" stroke="#3fb950" stroke-width="2" fill="none" marker-end="url(#a)"/>
+    <text x="300" y="318" fill="#3fb950" font-size="13">copia 4 bytes</text>
+    <rect x="406" y="250" width="514" height="180" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="426" y="278" fill="#3fb950" font-size="15" font-weight="600">assembly: call(…, 0, 0) + returndatacopy(0, 0, 4)</text>
+    <text x="426" y="306" fill="#f0f6fc" font-size="14">Scratch space 0x00: solo el selector</text>
+    <text x="426" y="330" fill="#8b949e" font-size="13">la memoria del registro no crece</text>
+    <text x="426" y="366" fill="#f0f6fc" font-size="14">alta: <tspan fill="#3fb950" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">329 674</tspan> de gas</text>
+    <text x="426" y="390" fill="#8b949e" font-size="13">lo que gastó el hook, y nada más: menos que</text>
+    <text x="426" y="410" fill="#8b949e" font-size="13">un revert de 4 bytes + HOOK_GAS (100 000)</text>
+  </g>
+</svg>

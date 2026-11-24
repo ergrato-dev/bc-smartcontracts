@@ -61,7 +61,7 @@ while IFS= read -r starter; do
     fi
     cp -r "$solution"/. "$tmp"/
   else
-    find "$tmp" -type f \( -name '*.sol' -o -name '*.sh' -o -name '*.ts' -o -name '*.py' \) -not -path '*/out/*' -not -path '*/node_modules/*' -not -path '*/.venv/*' -print0 \
+    find "$tmp" -type f \( -name '*.sol' -o -name '*.yul' -o -name '*.sh' -o -name '*.ts' -o -name '*.py' \) -not -path '*/out/*' -not -path '*/node_modules/*' -not -path '*/.venv/*' -print0 \
       | xargs -0 sed -i -E '/(revert|throw new Error)\("TODO: Paso [0-9]+"\);/d; /\/\/ <- Paso [0-9]+$/d; /^[[:space:]]*todo "Paso [0-9]+"$/d; /^[[:space:]]*raise NotImplementedError\("TODO: Paso [0-9]+"\)$/d; s#^([[:space:]]*)(//|\#)> ?#\1#'
   fi
   if check "$tmp" strict; then
