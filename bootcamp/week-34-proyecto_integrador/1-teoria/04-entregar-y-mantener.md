@@ -33,6 +33,20 @@ versión del código corresponde a cada versión desplegada.
 Una etiqueta **anotada** (`git tag -a`) guarda además quién la creó, cuándo y un mensaje. Es la que
 se usa para entregas: la auditoría externa cita su commit y la etiqueta lo nombra.
 
+### Las notas de la versión
+
+Una etiqueta dice qué commit es la versión; las **notas de la versión** (*release notes*) dicen qué
+contiene. En GitHub van en la *release* de la etiqueta, y para un protocolo responden cuatro cosas:
+
+- **Qué hace**: las capas, en una lista corta (registro actualizable, puntos, vault, DAO, altas
+  patrocinadas, L2).
+- **Dónde está desplegada**: cada red, con sus direcciones y la versión de `version()` en cada una.
+- **Qué se auditó**: el commit de la auditoría cruzada, los hallazgos y su estado.
+- **Qué cambia respecto a la anterior**: lo incompatible primero. En `v1.0.0` no hay anterior; en
+  `v1.1.0`, lo que la DAO tiene que aprobar para llevarla a la red.
+
+Quien vaya a usar o auditar el protocolo empieza por aquí, no por el código.
+
 ### El README de un portfolio
 
 Quien abre tu repositorio tiene dos minutos. El `README.md` de la raíz le dice, en este orden: qué
@@ -197,6 +211,7 @@ programa de recompensas.
 ## ✅ Checklist
 
 - [ ] Sé crear una etiqueta anotada y por qué una entrega cita una etiqueta y no una rama.
+- [ ] Sé qué cuentan las notas de una versión.
 - [ ] Sé qué lleva el README de un portfolio y en qué orden.
 - [ ] Sé preparar una demo con guion, script y plan B.
 - [ ] Sé qué eventos vigilar y sacar de ellos quién tiene cada rol.
