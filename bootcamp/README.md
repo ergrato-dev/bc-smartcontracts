@@ -72,7 +72,7 @@ La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está p
 | [31](week-31-gobernanza_y_daos/README.md) | [Gobernanza y DAOs](week-31-gobernanza_y_daos/README.md) | ✅ |
 | [32](week-32-account_abstraction/README.md) | [Account abstraction](week-32-account_abstraction/README.md) | ✅ |
 | [33](week-33-l2_y_cross_chain/README.md) | [L2 y cross-chain](week-33-l2_y_cross_chain/README.md) | ✅ |
-| 34 | Proyecto integrador | ⬜ |
+| [34](week-34-proyecto_integrador/README.md) | [Proyecto integrador](week-34-proyecto_integrador/README.md) | ✅ |
 
 ---
 

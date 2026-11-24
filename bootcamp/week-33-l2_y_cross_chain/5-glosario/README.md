@@ -36,4 +36,4 @@
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | Semana 34 (próximamente) |
+| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | [Semana 34 — Integración final y auditoría cruzada →](../../week-34-proyecto_integrador/README.md) |

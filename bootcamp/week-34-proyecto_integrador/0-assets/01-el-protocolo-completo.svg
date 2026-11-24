@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 610" role="img" aria-label="Mapa del protocolo en L1 y en la L2 con quién administra cada contrato">
+  <title>El protocolo completo: quién administra cada contrato</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8b949e"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f85149"/></marker></defs>
+  <rect width="1000" height="610" fill="#0d1117"/>
+  <text x="500" y="34" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#f0f6fc" font-weight="600">Tu protocolo al terminar: quién actúa sobre cada contrato</text>
+  <rect x="20" y="56" width="600" height="500" rx="10" fill="none" stroke="#30363d" stroke-width="1.5"/>
+  <text x="34" y="78" text-anchor="start" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#8b949e" font-weight="600">L1 (Ethereum o Sepolia)</text>
+  <rect x="640" y="56" width="340" height="500" rx="10" fill="none" stroke="#30363d" stroke-width="1.5"/>
+  <text x="654" y="78" text-anchor="start" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#8b949e" font-weight="600">L2 (OP Stack)</text>
+  <rect x="40" y="96" width="150" height="64" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="115.0" y="120.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">Guardián</text>
+  <text x="115.0" y="138.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">solo PAUSER_ROLE</text>
+  <rect x="235" y="96" width="170" height="64" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+  <text x="320.0" y="120.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">Registry</text>
+  <text x="320.0" y="138.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">proxy · V3</text>
+  <rect x="450" y="96" width="150" height="64" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+  <text x="525.0" y="120.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">Timelock</text>
+  <text x="525.0" y="138.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">2 días · admin</text>
+  <rect x="40" y="220" width="170" height="56" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="125.0" y="240.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">LoyaltyToken</text>
+  <text x="125.0" y="258.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">hook: puntos</text>
+  <rect x="235" y="220" width="170" height="56" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="320.0" y="240.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">Certificate</text>
+  <text x="320.0" y="258.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">un NFT por alta</text>
+  <rect x="450" y="220" width="150" height="56" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+  <text x="525.0" y="240.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">Governor</text>
+  <text x="525.0" y="258.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">PROPOSER_ROLE</text>
+  <rect x="40" y="340" width="170" height="56" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="125.0" y="360.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">PointsVault</text>
+  <text x="125.0" y="378.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">shares = votos</text>
+  <rect x="450" y="460" width="150" height="56" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="525.0" y="480.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">Paymaster</text>
+  <text x="525.0" y="498.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">dueño: timelock</text>
+  <rect x="235" y="460" width="170" height="56" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="320.0" y="480.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">Quien desplegó</text>
+  <text x="320.0" y="498.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">ningún rol</text>
+  <path d="M190 128 L233 128" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="212" y="90" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#e3b341">pausa</text>
+  <path d="M450 128 L407 128" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="428" y="90" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">admin</text>
+  <path d="M270 160 L150 218" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="190" y="182" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">hook</text>
+  <path d="M320 160 L320 218" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="345" y="196" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">emite</text>
+  <path d="M525 220 L525 162" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="558" y="196" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">propone</text>
+  <path d="M125 276 L125 338" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="150" y="312" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">bonus</text>
+  <path d="M210 368 L470 368 L470 278" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="330" y="360" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">votos</text>
+  <path d="M600 146 L615 146 L615 488 L602 488" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="607" y="430" text-anchor="end" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">dueño</text>
+  <text x="320" y="540" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#f85149">sin admin, sin minter, sin proponente</text>
+  <rect x="720" y="96" width="200" height="64" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+  <text x="820.0" y="120.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">L2Executor</text>
+  <text x="820.0" y="138.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">solo el timelock de L1</text>
+  <rect x="720" y="220" width="200" height="56" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+  <text x="820.0" y="240.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">Registry (L2)</text>
+  <text x="820.0" y="258.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">admin: ejecutor</text>
+  <rect x="720" y="340" width="200" height="56" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="820.0" y="373.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">SequencerAwareFeed</text>
+  <rect x="720" y="460" width="200" height="56" rx="8" fill="#161b22" stroke="#8b949e" stroke-width="2"/>
+  <text x="820.0" y="480.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">Chainlink</text>
+  <text x="820.0" y="498.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">precio y secuenciador</text>
+  <path d="M600 108 L718 108" fill="none" stroke="#f0883e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="660" y="98" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#f0883e">mensaje</text>
+  <path d="M820 160 L820 218" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="845" y="196" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">admin</text>
+  <path d="M820 276 L820 338" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="880" y="312" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">lee el precio</text>
+  <path d="M820 396 L820 458" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="865" y="432" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">envuelve</text>
+  <text x="500" y="590" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#8b949e">Cada flecha es una lectura que CheckDeployment comprueba; la caja roja, que no queda ninguna</text>
+</svg>

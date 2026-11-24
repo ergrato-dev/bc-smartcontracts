@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Ciclo de una auditoría cruzada del alcance a la revisión de correcciones">
+  <title>El ciclo de una auditoría cruzada</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8b949e"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f85149"/></marker></defs>
+  <rect width="960" height="540" fill="#0d1117"/>
+  <text x="480" y="34" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" fill="#f0f6fc" font-weight="600">Una auditoría cruzada, de un commit a sus correcciones</text>
+  <rect x="20" y="56" width="920" height="150" rx="10" fill="none" stroke="#30363d" stroke-width="1.5"/>
+  <text x="34" y="78" text-anchor="start" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#8b949e" font-weight="600">Quien audita</text>
+  <rect x="40" y="96" width="180" height="64" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="130.0" y="120.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">1. Alcance</text>
+  <text x="130.0" y="138.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">commit fijo</text>
+  <path d="M220 128 L263 128" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="265" y="96" width="180" height="64" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="355.0" y="120.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">2. Entender</text>
+  <text x="355.0" y="138.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">informe y tests</text>
+  <path d="M445 128 L488 128" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="490" y="96" width="180" height="64" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="580.0" y="120.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">3. Tabla</text>
+  <text x="580.0" y="138.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">de funciones</text>
+  <path d="M670 128 L713 128" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="715" y="96" width="180" height="64" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="805.0" y="120.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">4. Hipótesis</text>
+  <text x="805.0" y="138.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">clases y asimetrías</text>
+  <rect x="715" y="230" width="200" height="64" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+  <text x="815.0" y="254.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">5. Prueba de concepto</text>
+  <text x="815.0" y="272.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">un test sin tocar su código</text>
+  <path d="M805 160 L805 228" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="410" y="230" width="200" height="64" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="510.0" y="254.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">6. Severidad</text>
+  <text x="510.0" y="272.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">impacto × probabilidad</text>
+  <rect x="105" y="230" width="200" height="64" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="205.0" y="254.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">7. Informe</text>
+  <text x="205.0" y="272.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">C-01, C-02...</text>
+  <path d="M715 262 L612 262" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="663" y="252" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#3fb950">pasa: hallazgo</text>
+  <path d="M410 262 L307 262" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M865 294 L865 330" fill="none" stroke="#8b949e" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#a)"/>
+  <text x="820" y="350" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">no pasa: sospecha descartada,</text>
+  <text x="820" y="366" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">y el test se queda</text>
+  <rect x="20" y="390" width="920" height="136" rx="10" fill="none" stroke="#30363d" stroke-width="1.5"/>
+  <text x="225" y="412" text-anchor="start" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#8b949e" font-weight="600">La autora responde cada hallazgo</text>
+  <path d="M205 294 L205 428" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="105" y="430" width="200" height="44" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="205.0" y="444.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">Corregido</text>
+  <text x="205.0" y="462.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">+ test de regresión</text>
+  <rect x="330" y="430" width="170" height="44" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="415.0" y="444.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">Reconocido</text>
+  <text x="415.0" y="462.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">+ riesgo aceptado</text>
+  <rect x="525" y="430" width="170" height="44" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="610.0" y="444.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">En disputa</text>
+  <text x="610.0" y="462.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">+ argumentos</text>
+  <rect x="720" y="430" width="200" height="44" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+  <text x="820.0" y="444.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">Revisión de correcciones</text>
+  <text x="820.0" y="462.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">el PoC invertido</text>
+  <path d="M205 474 L205 504 L820 504 L820 476" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="512" y="498" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">la corrección</text>
+</svg>
