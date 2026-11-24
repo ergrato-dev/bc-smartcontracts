@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460" role="img" aria-label="Depósito: alice bloquea 40 puntos en el puente de L1, que envía un mensaje; en minutos el rollup lo entrega en la L2 y el puente de L2 acuña 40 para bob. Retirada: el puente de L2 quema 15 y envía un mensaje; en L1 se demuestra contra la raíz de estado y, pasados siete días de ventana de disputa, el puente de L1 libera los 15. Lo bloqueado en L1 es igual al totalSupply de la L2.">
+  <title>Depósito y retirada por el puente</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8b949e"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f85149"/></marker></defs>
+  <rect width="760" height="460" fill="#0d1117"/>
+  <rect x="20" y="20" width="340" height="420" rx="10" fill="none" stroke="#30363d" stroke-width="1.5"/>
+  <text x="34" y="42" text-anchor="start" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#8b949e" font-weight="600">L1</text>
+  <rect x="400" y="20" width="340" height="420" rx="10" fill="none" stroke="#30363d" stroke-width="1.5"/>
+  <text x="414" y="42" text-anchor="start" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#8b949e" font-weight="600">L2</text>
+  <rect x="40" y="50" width="160" height="50" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="120.0" y="67.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">alice</text>
+  <text x="120.0" y="85.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">deposit(bob, 40)</text>
+  <rect x="200" y="120" width="140" height="60" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+  <text x="270.0" y="142.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">L1Bridge</text>
+  <text x="270.0" y="160.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">bloquea 40</text>
+  <rect x="580" y="50" width="140" height="50" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="650.0" y="67.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">bob</text>
+  <text x="650.0" y="85.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">40 en L2</text>
+  <rect x="580" y="120" width="140" height="60" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+  <text x="650.0" y="142.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">L2Bridge</text>
+  <text x="650.0" y="160.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">acuña 40</text>
+  <path d="M110 100 L110 150 L198 150" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M340 150 L578 150" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/>
+  <text x="460" y="142" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#58a6ff">depósito: minutos</text>
+  <path d="M650 120 L650 102" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="380" y="232" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#3fb950">bloqueado en L1 == totalSupply en L2</text>
+  <rect x="580" y="280" width="140" height="60" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+  <text x="650.0" y="302.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">L2Bridge</text>
+  <text x="650.0" y="320.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">quema 15</text>
+  <rect x="40" y="280" width="150" height="60" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="115.0" y="302.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">Raíz de estado</text>
+  <text x="115.0" y="320.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">publicada en L1</text>
+  <rect x="40" y="370" width="150" height="56" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="115.0" y="390.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">7 días</text>
+  <text x="115.0" y="408.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">ventana de disputa</text>
+  <rect x="210" y="370" width="130" height="56" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+  <text x="275.0" y="390.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">L1Bridge</text>
+  <text x="275.0" y="408.0" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">libera 15</text>
+  <path d="M578 310 L192 310" fill="none" stroke="#e3b341" stroke-width="2" marker-end="url(#a)"/>
+  <text x="385" y="302" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#e3b341">1 iniciar en la L2</text>
+  <text x="385" y="328" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">2 demostrar en L1 contra la raíz</text>
+  <path d="M115 340 L115 368" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M190 398 L208 398" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="275" y="360" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">3 finalizar</text>
+</svg>
