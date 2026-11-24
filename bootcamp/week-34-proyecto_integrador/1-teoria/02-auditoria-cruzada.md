@@ -115,6 +115,17 @@ Cada hallazgo, con el mismo formato, para que la autora lo pueda reproducir sin 
 - **Prueba de concepto**: el test, entero.
 - **Recomendación**: cómo lo corregirías. La corrección la decide la autora.
 
+### Hablar con la autora
+
+La auditoría es de un commit, pero se hace con una persona. Tres reglas:
+
+- **Las preguntas, por escrito** y en un solo sitio (el issue de la auditoría): "¿`setRewardRate`
+  es solo del dueño a propósito?" Las respuestas pasan a ser parte del alcance.
+- **No adelantes hallazgos** sueltos mientras auditas: la autora empezaría a corregir y tu commit
+  dejaría de ser el suyo. Se entregan todos juntos, en el informe.
+- **Habla del código, no de la persona**: "`stake` no llama a `_update`", no "se te olvidó". Un
+  informe se lee mejor cuando no hay que defenderse de él.
+
 ## Cómo se escribe
 
 El PoC de H-02 del ejercicio 02: bob deposita lo mismo que alice tras un día y cobra en el mismo
@@ -148,6 +159,44 @@ Un PoC pasa cuando el fallo existe. Los tres `assertEq` son el hallazgo: antes d
 86 400; bob cobra 43 200 sin haber estado; y a alice le quedan 43 200. Lo que dice el título,
 medido.
 
+Una sospecha se escribe igual, pero el test espera que el ataque falle. `withdraw` no comprueba
+que `amount` sea como mucho el saldo; ¿puede el atacante retirar lo de alice?
+
+```solidity
+function test_Paso4_NoOneWithdrawsMoreThanTheirStake() public {
+    _stake(alice, 100e18);
+    _stake(attacker, 1e18);
+    vm.prank(attacker);
+    vm.expectRevert(stdError.arithmeticError);
+    pool.withdraw(2e18);
+    assertEq(stakingToken.balanceOf(address(pool)), 101e18, "el deposito de alice sigue en el pool");
+}
+```
+
+**Ejecuta** `forge test --mt test_Paso4 -vv`.
+
+**Salida**:
+
+```text
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 899.22µs (100.98µs CPU time)
+```
+
+La resta revierte con el error aritmético de Solidity 0.8: no es un hallazgo, y el test se queda
+en el repositorio por si alguien añade un `unchecked`.
+
+Con el PoC, el hallazgo se escribe en el formato de arriba:
+
+```markdown
+### C-02 — `stake` no apunta lo ganado: quien llega tarde cobra lo de antes
+
+- **Severidad**: alta. Impacto medio (roba recompensas, no depósitos); probabilidad alta (basta con
+  depositar).
+- **Descripción**: `RewardPool.stake` cambia `balanceOf` y `totalStaked` sin llamar antes a
+  `_update`. El `userRewardPerTokenPaid` de quien deposita queda en 0.
+- **Prueba de concepto**: `test_Paso2_PoC_LateStakerTakesHalfOfAlicesRewards` (arriba).
+- **Recomendación**: llamar a `_update(msg.sender)` al principio de `stake`, como en `withdraw`.
+```
+
 ## Antipatrones y riesgos
 
 - **Un hallazgo sin PoC.** "Podría haber reentrancy" obliga a la autora a demostrar que no. Si
@@ -180,6 +229,7 @@ medido.
 - [ ] Sé por qué la autora no ve los fallos que ve otra persona, y por qué Slither tampoco.
 - [ ] Sé fijar el alcance de una auditoría con un commit.
 - [ ] Sé hacer la tabla de funciones y buscar asimetrías.
+- [ ] Sé cómo hablar con la autora durante la auditoría.
 - [ ] Sé escribir un PoC que demuestra un hallazgo con números, y un test que descarta una sospecha.
 - [ ] Sé asignar una severidad con impacto y probabilidad.
 - [ ] Sé escribir un hallazgo con título, severidad, descripción, PoC y recomendación.

@@ -62,6 +62,34 @@ Cada respuesta incorrecta es un `revert` con un error que la nombra: `DeployerSt
 `UnexpectedMembers`, `WrongWiring("registry.priceFeed", ...)`. Un script que imprime "OK" o "MAL"
 lo lee una persona; un script que revierte lo lee también otro script, y para un despliegue.
 
+### El orden de un despliegue
+
+El mapa también dice en qué orden se despliega. Un contrato que guarda la dirección de otro en su
+constructor necesita que ese otro exista antes, o al menos saber dónde va a estar:
+
+- **Primero lo que no depende de nadie**: la implementación del registro, el timelock.
+- **Después lo que se conecta**: el token y el certificado guardan el proxy del registro, que aún
+  no existe. `DeployProtocol` calcula su dirección con `vm.computeCreateAddress` y el nonce de quien
+  despliega (semana 16); el timelock y el Governor se necesitan el uno al otro, y `HandOverToDao`
+  hace lo mismo con el Governor.
+- **Al final, el traspaso**: mientras quien despliega es administrador puede conectar y configurar.
+  Cuando renuncia, ya no; por eso renunciar es la última transacción, y la comprobación va después.
+
+Si una dirección calculada no coincide con la real (otra transacción cambió el nonce), el contrato
+queda apuntando a la nada. Es otra conexión que la comprobación tiene que leer.
+
+### Lo que cambia en dos cadenas
+
+En la L2 las preguntas son las mismas y las respuestas, otras: el administrador del registro es el
+ejecutor y no el timelock. Por eso `CheckDeployment` del proyecto tiene una parte común,
+`_checkRegistry(registry, admin, deployer, guardian)`, que recibe el administrador esperado, y dos
+entradas, `runL1()` y `runL2()`.
+
+Y hay una conexión que cruza de cadena: el ejecutor de la L2 obedece a `l1Dao`, que tiene que ser
+el timelock de L1. Desde la L2 no se puede leer L1: la comprobación recibe la dirección del
+timelock como dato (`L1_DAO`) y la compara con `executor.l1Dao()`. Si copias mal esa dirección,
+la L2 queda gobernada por nadie, o por otro.
+
 ### Comprobar en la simulación y contra la red
 
 `forge script` ejecuta el script dos veces (semana 16). Primero lo **simula** en local, contra el
@@ -188,6 +216,7 @@ El timelock no administra los puntos: quien desplegó sigue siendo el único adm
 - [ ] Sé distinguir el código de un despliegue de su configuración.
 - [ ] Sé dibujar el mapa de mi protocolo: quién administra, a quién llama y quién lo llama.
 - [ ] Sé hacer las tres preguntas y por qué `hasRole` no basta para la segunda.
+- [ ] Sé en qué orden se despliega y por qué el traspaso va al final.
 - [ ] Sé por qué la comprobación va también en un script aparte, contra la red.
 - [ ] Sé ejecutar un script sin `--broadcast` y con `--sig`.
 - [ ] Sé qué errores de despliegue no hacen fallar nada.
