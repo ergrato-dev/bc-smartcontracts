@@ -43,6 +43,15 @@ la severidad acordada es la que va al informe. En tu proyecto, H-06 bajó de med
 argumento (el OP Stack nunca devuelve `startedAt` = 0) y aun así se corrigió; H-07 se reconoce
 porque es el diseño.
 
+### Responder al auditor
+
+La respuesta va en el mismo sitio que el informe (el issue de la auditoría), hallazgo a hallazgo,
+con el id del auditor: "C-01: corregido en `a1b2c3d`, test `test_RevertWhen_...`". Así el auditor
+revisa cada corrección por su commit, sin buscar qué cambió. Si un hallazgo pasa a tu informe con
+otro id (C-01 es tu H-06), la tabla de equivalencias va en tu informe, como en la sección
+`## La entrega (semana 34)` del proyecto. Y cuando el auditor da por buena una corrección, también
+queda escrito: es la última columna de tu `## Revisión de correcciones`.
+
 ### La causa, no el síntoma
 
 El PoC demuestra un camino; la causa puede tener otros. H-02 del ejercicio 02 dice "`stake` no
@@ -200,6 +209,7 @@ Y `mutants.sh` quita la línea ("acepta el feed sin inicializar") para comprobar
 
 - [ ] Sé por qué se reproduce un hallazgo antes de discutirlo.
 - [ ] Sé cuándo un hallazgo es corregido, reconocido o en disputa.
+- [ ] Sé responder al auditor con el commit y el test de cada corrección.
 - [ ] Sé buscar variantes de un hallazgo en el resto del código.
 - [ ] Sé ordenar las correcciones de un informe por riesgo.
 - [ ] Sé convertir un PoC en un test de regresión que comprueba el comportamiento.
