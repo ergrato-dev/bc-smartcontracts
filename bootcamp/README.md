@@ -3,8 +3,7 @@
 34 semanas · 14 h/semana · 476 horas. Un contenedor `ubuntu:24.04` con Foundry y Solidity,
 y un solo protocolo —el de tu dominio— que crece semana a semana.
 
-La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está publicada,
-⬜ todavía no se escribió. Las semanas sin publicar no llevan enlace.
+Las 34 semanas están publicadas: cada número y cada tema enlazan a su semana.
 
 ---
 

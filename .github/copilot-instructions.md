@@ -56,8 +56,8 @@ Versiones exactas y política para cambiarlas: [`docs/stack-versions.md`](../doc
 | | 33 | `week-33-l2_y_cross_chain` | Rollups, despliegue en L2, puentes y mensajería |
 | | 34 | `week-34-proyecto_integrador` | Integración final y auditoría cruzada |
 
-Los nombres de carpeta de las semanas sin escribir son provisionales: se fijan al
-escribir la semana y se actualiza esta tabla.
+Los nombres de carpeta están fijados: son los de `bootcamp/`, y cambiar uno rompe los enlaces
+entre semanas.
 
 **Progresión estricta.** Ninguna semana usa lo que se enseña después. Las semanas 01-02
 no escriben Solidity (solo `cast` y `anvil`); antes de la 05 no hay `require` ni
