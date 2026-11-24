@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" role="img" aria-label="Matriz de severidad. El eje vertical es el impacto (alto, medio, bajo) y el horizontal la probabilidad (baja, media, alta). Impacto alto da severidad media, alta y crítica según la probabilidad; impacto medio da baja, media y alta; impacto bajo da baja en las tres. Lo que no tiene impacto queda fuera de la matriz: es informativo. Los cuatro hallazgos del Crowdfund del ejercicio 02 están colocados: H-01 y H-02 en impacto alto y probabilidad alta, críticos, H-03 en impacto alto y probabilidad baja, y H-04 en impacto bajo y probabilidad alta.">
+  <title>Matriz de severidad: impacto por probabilidad</title>
+  <rect width="960" height="470" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="480" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Severidad = impacto × probabilidad</text>
+
+    <text x="60" y="250" fill="#8b949e" font-size="14" font-weight="600" transform="rotate(-90 60 250)" text-anchor="middle">IMPACTO</text>
+    <text x="150" y="124" fill="#f0f6fc" font-size="14" text-anchor="end">Alto</text>
+    <text x="150" y="234" fill="#f0f6fc" font-size="14" text-anchor="end">Medio</text>
+    <text x="150" y="344" fill="#f0f6fc" font-size="14" text-anchor="end">Bajo</text>
+
+    <text x="550" y="446" fill="#8b949e" font-size="14" font-weight="600" text-anchor="middle">PROBABILIDAD</text>
+    <text x="290" y="416" fill="#f0f6fc" font-size="14" text-anchor="middle">Baja</text>
+    <text x="550" y="416" fill="#f0f6fc" font-size="14" text-anchor="middle">Media</text>
+    <text x="810" y="416" fill="#f0f6fc" font-size="14" text-anchor="middle">Alta</text>
+
+    <!-- Fila alto -->
+    <rect x="164" y="64" width="252" height="104" rx="6" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+    <text x="290" y="104" fill="#e3b341" font-size="16" font-weight="600" text-anchor="middle">Media</text>
+    <text x="290" y="136" fill="#f0f6fc" font-size="13" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">H-03</text>
+    <text x="290" y="156" fill="#8b949e" font-size="12" text-anchor="middle">un segundo exacto</text>
+
+    <rect x="424" y="64" width="252" height="104" rx="6" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <text x="550" y="104" fill="#f0883e" font-size="16" font-weight="600" text-anchor="middle">Alta</text>
+
+    <rect x="684" y="64" width="252" height="104" rx="6" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+    <text x="810" y="104" fill="#f85149" font-size="16" font-weight="600" text-anchor="middle">Crítica</text>
+    <text x="810" y="136" fill="#f0f6fc" font-size="13" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">H-01  H-02</text>
+    <text x="810" y="156" fill="#8b949e" font-size="12" text-anchor="middle">cualquiera, sin coste</text>
+
+    <!-- Fila medio -->
+    <rect x="164" y="176" width="252" height="104" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="290" y="216" fill="#58a6ff" font-size="16" font-weight="600" text-anchor="middle">Baja</text>
+    <rect x="424" y="176" width="252" height="104" rx="6" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+    <text x="550" y="216" fill="#e3b341" font-size="16" font-weight="600" text-anchor="middle">Media</text>
+    <rect x="684" y="176" width="252" height="104" rx="6" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <text x="810" y="216" fill="#f0883e" font-size="16" font-weight="600" text-anchor="middle">Alta</text>
+
+    <!-- Fila bajo -->
+    <rect x="164" y="288" width="252" height="104" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="290" y="328" fill="#58a6ff" font-size="16" font-weight="600" text-anchor="middle">Baja</text>
+    <rect x="424" y="288" width="252" height="104" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="550" y="328" fill="#58a6ff" font-size="16" font-weight="600" text-anchor="middle">Baja</text>
+    <rect x="684" y="288" width="252" height="104" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="810" y="328" fill="#58a6ff" font-size="16" font-weight="600" text-anchor="middle">Baja</text>
+    <text x="810" y="360" fill="#f0f6fc" font-size="13" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">H-04</text>
+    <text x="810" y="380" fill="#8b949e" font-size="12" text-anchor="middle">en cada cobro, 249 wei</text>
+  </g>
+</svg>

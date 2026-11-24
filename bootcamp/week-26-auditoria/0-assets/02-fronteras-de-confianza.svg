@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" role="img" aria-label="Modelo de amenazas del Escrow. Fuera de la frontera de confianza están cuatro actores: Alice, la compradora, con open, release, refund y dispute; Bob, el vendedor, con dispute; el árbitro, con resolve; y Mallory, sin permisos. Dentro está el contrato con su único activo, el ETH depositado. Las salidas de ETH van a Bob, a Alice o a quien elija el árbitro, y esa última flecha, en rojo, es la amenaza que el modelo descubre: el árbitro puede enviar el ETH a cualquiera.">
+  <title>Fronteras de confianza del Escrow</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#58a6ff"/>
+    </marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#3fb950"/>
+    </marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#f85149"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="480" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Fronteras de confianza del Escrow</text>
+
+    <!-- Actores -->
+    <text x="40" y="74" fill="#8b949e" font-size="13">ACTORES (fuera)</text>
+    <rect x="40" y="86" width="236" height="64" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="56" y="112" fill="#f0f6fc" font-size="15" font-weight="600">Alice (compradora)</text>
+    <text x="56" y="134" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">open release refund dispute</text>
+
+    <rect x="40" y="170" width="236" height="64" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="56" y="196" fill="#f0f6fc" font-size="15" font-weight="600">Bob (vendedor)</text>
+    <text x="56" y="218" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">dispute</text>
+
+    <rect x="40" y="254" width="236" height="64" rx="8" fill="#161b22" stroke="#e3b341"/>
+    <text x="56" y="280" fill="#e3b341" font-size="15" font-weight="600">Árbitro (de confianza)</text>
+    <text x="56" y="302" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">resolve</text>
+
+    <rect x="40" y="338" width="236" height="64" rx="8" fill="#161b22" stroke="#f85149"/>
+    <text x="56" y="364" fill="#f85149" font-size="15" font-weight="600">Mallory (nadie)</text>
+    <text x="56" y="386" fill="#8b949e" font-size="12">Cualquier función, cualquier dato</text>
+
+    <!-- Frontera -->
+    <line x1="330" y1="64" x2="330" y2="440" stroke="#e3b341" stroke-width="2" stroke-dasharray="8 6"/>
+    <text x="340" y="452" fill="#e3b341" font-size="13">frontera de confianza: todo lo que cruza se comprueba</text>
+
+    <!-- Llamadas -->
+    <line x1="276" y1="118" x2="396" y2="190" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="276" y1="202" x2="396" y2="214" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="276" y1="286" x2="396" y2="238" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="276" y1="370" x2="396" y2="262" stroke="#f85149" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#r)"/>
+
+    <!-- Contrato -->
+    <rect x="400" y="140" width="220" height="160" rx="10" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="510" y="172" fill="#8fa4f0" font-size="17" font-weight="600" text-anchor="middle">Escrow</text>
+    <rect x="424" y="190" width="172" height="56" rx="6" fill="#0d1117" stroke="#3fb950"/>
+    <text x="510" y="214" fill="#3fb950" font-size="14" font-weight="600" text-anchor="middle">Activo</text>
+    <text x="510" y="234" fill="#f0f6fc" font-size="13" text-anchor="middle">el ETH depositado</text>
+    <text x="510" y="276" fill="#8b949e" font-size="12" text-anchor="middle">estado: Funded, Disputed, Closed</text>
+
+    <!-- Salidas de ETH -->
+    <text x="700" y="74" fill="#8b949e" font-size="13">SALIDAS DE ETH</text>
+    <rect x="700" y="96" width="220" height="56" rx="8" fill="#161b22" stroke="#3fb950"/>
+    <text x="716" y="120" fill="#f0f6fc" font-size="14">A Bob</text>
+    <text x="716" y="140" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">release</text>
+
+    <rect x="700" y="172" width="220" height="56" rx="8" fill="#161b22" stroke="#3fb950"/>
+    <text x="716" y="196" fill="#f0f6fc" font-size="14">A Alice</text>
+    <text x="716" y="216" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">refund, tras el plazo</text>
+
+    <rect x="700" y="248" width="220" height="80" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+    <text x="716" y="272" fill="#f85149" font-size="14" font-weight="600">A quien diga el árbitro</text>
+    <text x="716" y="292" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">resolve(id, to)</text>
+    <text x="716" y="314" fill="#f0f6fc" font-size="12">¿Solo Alice o Bob? Amenaza T-05</text>
+
+    <line x1="620" y1="190" x2="696" y2="124" stroke="#3fb950" stroke-width="2" marker-end="url(#g)"/>
+    <line x1="620" y1="212" x2="696" y2="200" stroke="#3fb950" stroke-width="2" marker-end="url(#g)"/>
+    <line x1="620" y1="250" x2="696" y2="284" stroke="#f85149" stroke-width="2" marker-end="url(#r)"/>
+  </g>
+</svg>
