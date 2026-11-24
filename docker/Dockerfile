@@ -2,7 +2,7 @@
 # ¿Para qué? Que todos los aprendices compilen, prueben y desplieguen con las mismas versiones,
 #            sin instalar nada en su máquina.
 # ¿Impacto? Si un ejercicio pasa aquí, pasa en la corrección. Las herramientas que llegan
-#           más adelante (Node y pnpm, uv y PostgreSQL, Slither) se añaden en la semana que las introduce.
+#           más adelante (Node y pnpm, uv y PostgreSQL, Slither, Medusa) se añaden en la semana que las introduce.
 FROM ubuntu:24.04
 
 ARG FOUNDRY_VERSION=v1.9.0
@@ -19,6 +19,8 @@ ARG SLITHER_VERSION=0.11.5
 ARG CRYTIC_COMPILE_VERSION=0.3.11
 ARG PYTEST_VERSION=9.1.1
 ARG SLITHER_EXCLUDE_NEWER=2026-11-16T00:00:00Z
+ARG MEDUSA_VERSION=v1.5.0
+ARG MEDUSA_SHA256=c5c333d4380d150f76bd7e796a0d2ce62e85713d335c3ddd53718ac202eec8ef
 # ¿Qué? Arquitectura que Docker inyecta al construir (amd64 o arm64).
 ARG TARGETARCH
 
@@ -135,6 +137,19 @@ RUN UV_TOOL_DIR=/opt/uv-tools UV_TOOL_BIN_DIR=/usr/local/bin uv tool install --q
         --exclude-newer "${SLITHER_EXCLUDE_NEWER}" \
     && rm -rf /root/.cache/uv
 ENV SLITHER_PYTHON=/opt/uv-tools/slither-analyzer/bin/python
+
+# ¿Qué? Medusa, el fuzzer de Trail of Bits, desde su release de GitHub, verificado con su sha256,
+#   desde la semana 24. Compila con `crytic-compile`, que ya trae el entorno de Slither.
+# ¿Para qué? Fuzzing de invariantes con otro motor que el de forge, sobre el mismo proyecto.
+# ¿Impacto? Medusa solo publica binarios para linux-x64: en arm64 no se instala.
+RUN ln -s /opt/uv-tools/slither-analyzer/bin/crytic-compile /usr/local/bin/crytic-compile \
+    && if [ "${TARGETARCH:-amd64}" = amd64 ]; then \
+        curl -fsSL -o /tmp/medusa.tgz \
+            "https://github.com/crytic/medusa/releases/download/${MEDUSA_VERSION}/medusa-linux-x64.tar.gz" \
+        && echo "${MEDUSA_SHA256}  /tmp/medusa.tgz" | sha256sum -c - \
+        && tar -xzf /tmp/medusa.tgz -C /usr/local/bin medusa \
+        && rm /tmp/medusa.tgz; \
+    fi
 
 # ¿Qué? Usuario sin privilegios `ubuntu` (UID 1000), que ya trae la imagen base.
 # ¿Impacto? Los archivos que crea forge en el volumen montado no quedan como root.

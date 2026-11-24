@@ -5,6 +5,9 @@
 out/
 cache/
 broadcast/
+# Medusa (semana 24): informe de cobertura y caché de Slither
+crytic-export/
+slither_results.json
 
 # Node y Python (fase 4)
 node_modules/

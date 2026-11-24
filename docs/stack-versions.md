@@ -22,6 +22,7 @@ starter que compilaba ayer; en un contrato, además, cambia el bytecode que se d
 | kubo (`ipfs`) | `v0.43.0` | `ARG KUBO_VERSION` | Anterior a la última (v0.43.1); verificado con su sha512 |
 | Slither (`slither-analyzer`) | `0.11.5` | `ARG SLITHER_VERSION`, con `uv tool install` en `/opt/uv-tools` | Anterior a la última (0.11.6); su Python, con pytest, en `$SLITHER_PYTHON` |
 | crytic-compile | `0.3.11` | `ARG CRYTIC_COMPILE_VERSION` | La última que admite Slither 0.11.5 (`<0.4.0`); compila con forge |
+| Medusa | `v1.5.0` | `ARG MEDUSA_VERSION`, con `ARG MEDUSA_SHA256` | Anterior a la última (v1.5.1); solo linux-x64, no se instala en arm64. Usa el `crytic-compile` del entorno de Slither, enlazado en `/usr/local/bin` |
 
 ## Dependencias por semana
 
@@ -53,6 +54,7 @@ verificada ese día. Hasta entonces no se fija nada.
 | Chainlink Contracts | `1.4.0` | 20 | `AggregatorV3Interface`, `MockV3Aggregator`, `VRFConsumerBaseV2Plus` y `VRFCoordinatorV2_5Mock`; en la imagen, con el remapping `@chainlink/contracts/` |
 | Slither | `0.11.5` | 23 | Análisis estático y detectores propios; en la imagen, con sus dependencias fijadas por `ARG SLITHER_EXCLUDE_NEWER` (2026-11-16) |
 | pytest (en el entorno de Slither) | `9.1.1` | 23 | Tests de los detectores propios; la misma que la de la semana 19 |
+| Medusa | `1.5.0` | 24 | Fuzzing de invariantes con propiedades y aserciones, junto al fuzzer de forge |
 
 Las de TypeScript están en `docker/web/package.json` y su `pnpm-lock.yaml`, que fija también las
 dependencias indirectas. La imagen descarga ese lockfile (`pnpm fetch`) y **todos** los starters

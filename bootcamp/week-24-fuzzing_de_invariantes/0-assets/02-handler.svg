@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" role="img" aria-label="El handler entre el fuzzer y el protocolo. forge o Medusa llaman a las acciones del handler con números aleatorios. El handler elige una de sus cuentas, acota las entradas con bound, prepara saldo y allowance, llama al protocolo con vm.prank y, si la acción sale bien, actualiza sus variables fantasma. Después de cada llamada, las invariantes comparan el estado del protocolo con las variables fantasma">
+  <title>El handler</title>
+  <rect width="900" height="470" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">El handler, entre el fuzzer y el protocolo</text>
+
+    <!-- Fuzzer -->
+    <rect x="30" y="80" width="170" height="130" rx="10" fill="#161b22" stroke="#8b949e" stroke-width="2"/>
+    <text x="115" y="110" fill="#f0f6fc" font-size="16" font-weight="600" text-anchor="middle">Fuzzer</text>
+    <text x="115" y="136" fill="#8b949e" font-size="13" text-anchor="middle">forge o Medusa</text>
+    <text x="115" y="166" fill="#8b949e" font-size="13" text-anchor="middle">deposit(</text>
+    <text x="115" y="186" fill="#8b949e" font-size="13" text-anchor="middle">2.183e40, 1e24)</text>
+
+    <line x1="200" y1="145" x2="244" y2="145" stroke="#8b949e" stroke-width="2"/>
+    <polygon points="244,139 256,145 244,151" fill="#8b949e"/>
+
+    <!-- Handler -->
+    <rect x="258" y="60" width="370" height="230" rx="10" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="443" y="90" fill="#f0f6fc" font-size="16" font-weight="600" text-anchor="middle">Handler: una acción</text>
+    <g font-size="14">
+      <text x="282" y="124" fill="#627eea">1</text>
+      <text x="304" y="124" fill="#f0f6fc">Cuenta: actors[seed % 3]</text>
+      <text x="282" y="154" fill="#627eea">2</text>
+      <text x="304" y="154" fill="#f0f6fc">Entrada: bound(assets, 1, 1e24)</text>
+      <text x="282" y="184" fill="#627eea">3</text>
+      <text x="304" y="184" fill="#f0f6fc">Precondiciones: mint y approve</text>
+      <text x="282" y="214" fill="#627eea">4</text>
+      <text x="304" y="214" fill="#f0f6fc">vm.prank(cuenta) y llamada</text>
+      <text x="282" y="244" fill="#627eea">5</text>
+      <text x="304" y="244" fill="#f0f6fc">Si sale bien: ghost += assets</text>
+    </g>
+
+    <line x1="628" y1="145" x2="672" y2="145" stroke="#8b949e" stroke-width="2"/>
+    <polygon points="672,139 684,145 672,151" fill="#8b949e"/>
+
+    <!-- Protocolo -->
+    <rect x="686" y="80" width="184" height="130" rx="10" fill="#161b22" stroke="#8b949e" stroke-width="2"/>
+    <text x="778" y="110" fill="#f0f6fc" font-size="16" font-weight="600" text-anchor="middle">Protocolo</text>
+    <text x="778" y="140" fill="#8b949e" font-size="13" text-anchor="middle">Vault, Registry…</text>
+    <text x="778" y="170" fill="#8b949e" font-size="13" text-anchor="middle">msg.sender: la cuenta</text>
+    <text x="778" y="190" fill="#8b949e" font-size="13" text-anchor="middle">del handler</text>
+
+    <!-- Invariantes -->
+    <rect x="200" y="340" width="500" height="100" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="450" y="370" fill="#f0f6fc" font-size="16" font-weight="600" text-anchor="middle">Invariantes, tras cada llamada</text>
+    <text x="450" y="398" fill="#3fb950" font-size="14" text-anchor="middle">vault.totalAssets() == ghostDeposited + ghostYield − ghostWithdrawn</text>
+    <text x="450" y="422" fill="#8b949e" font-size="13" text-anchor="middle">lo que hay en el protocolo frente a lo que cuenta el handler</text>
+
+    <line x1="443" y1="290" x2="443" y2="326" stroke="#8b949e" stroke-width="2"/>
+    <polygon points="437,326 443,338 449,326" fill="#8b949e"/>
+    <text x="455" y="315" fill="#8b949e" font-size="13">ghosts</text>
+    <line x1="778" y1="210" x2="778" y2="380" stroke="#8b949e" stroke-width="2"/>
+    <line x1="778" y1="380" x2="716" y2="380" stroke="#8b949e" stroke-width="2"/>
+    <polygon points="716,374 704,380 716,386" fill="#8b949e"/>
+    <text x="790" y="300" fill="#8b949e" font-size="13">estado</text>
+  </g>
+</svg>

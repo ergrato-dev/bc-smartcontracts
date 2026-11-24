@@ -44,7 +44,7 @@ Versiones exactas y política para cambiarlas: [`docs/stack-versions.md`](../doc
 | 5 · Seguridad | 21 | `week-21-vulnerabilidades_clasicas` | Reentrancy, control de acceso, `tx.origin`, DoS, `unchecked` |
 | | 22 | `week-22-vulnerabilidades_economicas` | Manipulación de oráculos, flash loans, front-running y MEV, redondeo |
 | | 23 | `week-23-analisis_estatico` | Slither (uv), forge lint, detectores propios en Python |
-| | 24 | `week-24-fuzzing_de_invariantes` | Invariant testing en Foundry, handlers, Medusa |
+| | 24 | `week-24-fuzzing_de_invariantes` | Invariant testing en Foundry, handlers, Medusa, mutantes |
 | | 25 | `week-25-verificacion_formal` | SMTChecker, Halmos, ejecución simbólica |
 | | 26 | `week-26-auditoria` | Metodología, modelado de amenazas, informe, CTF local |
 | 6 · EVM avanzada y ecosistema | 27 | `week-27-evm_por_dentro` | Opcodes, stack, memoria, storage slots, calldata |
@@ -154,6 +154,10 @@ function greet() external pure returns (string memory) {
 - Las líneas de solución empiezan con `//> `. Los comentarios explicativos usan `//`.
 - El starter compila (se toleran warnings de parámetros sin usar); resuelto, pasa
   `forge test --deny warnings`.
+- Un ejercicio con Medusa (desde la semana 24) trae además `medusa.json` y `test.sh`, y
+  `dynamic_test_linking = false` en `foundry.toml`. `compilar-starters.sh` solo ejecuta
+  `forge test` en los starters con `foundry.toml`: la campaña de Medusa se verifica a mano con
+  `bash test.sh` en la copia resuelta.
 - Cuando el paso **sustituye** código que tiene que estar activo en el starter (para que un
   analizador lo encuentre, semana 23), la línea vieja acaba en `// <- Paso N` y la nueva va
   debajo en `//> `. Al resolver, `compilar-starters.sh` borra las líneas `// <- Paso N`.

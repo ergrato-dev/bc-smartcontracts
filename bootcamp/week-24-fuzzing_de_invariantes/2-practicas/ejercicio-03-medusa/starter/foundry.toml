@@ -1,0 +1,22 @@
+# ¿Qué? Configuración de Foundry de un ejercicio o proyecto del bootcamp.
+# ¿Para qué? Fijar compilador y bibliotecas para que el resultado sea idéntico en cualquier contenedor.
+[profile.default]
+src = "src"
+test = "test"
+out = "out"
+# ¿Qué? forge-std y, desde la semana 11, OpenZeppelin viven en la imagen (/opt/lib), no dentro del proyecto.
+libs = ["/opt/lib"]
+remappings = [
+    "forge-std/=/opt/lib/forge-std/src/",
+    "@openzeppelin/contracts/=/opt/lib/openzeppelin-contracts/contracts/",
+]
+solc_version = "0.8.38"
+# ¿Qué? Sin red: solc ya está en la imagen.
+# ¿Impacto? Un número de versión mal escrito falla al instante en vez de intentar descargar.
+offline = true
+# ¿Qué? Sin enlazado dinámico de tests, desde la semana 24.
+# ¿Para qué? Medusa compila con crytic-compile, que no entiende los archivos auxiliares que
+#   forge genera para enlazar los tests (`foundry-pp/DeployHelper...sol`) y falla con
+#   "Unknown file".
+# ¿Impacto? Ninguno en lo que comprueban los tests: es una optimización de compilación.
+dynamic_test_linking = false

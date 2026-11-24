@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" role="img" aria-label="Fuzzing sin estado frente a fuzzing con estado. Sin estado, cada ejecución parte del estado de setUp, hace una sola llamada con valores aleatorios y comprueba el resultado. Con estado, cada secuencia parte de setUp y encadena llamadas aleatorias sobre el estado que deja la anterior, comprobando las invariantes después de cada una; cuando una falla, el fuzzer encoge la secuencia a las llamadas imprescindibles, como book(0) seguido de transferSeat(0, address(0))">
+  <title>Fuzzing sin estado y con estado</title>
+  <rect width="900" height="500" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Una llamada frente a una secuencia</text>
+
+    <!-- Sin estado -->
+    <rect x="30" y="60" width="380" height="410" rx="10" fill="#161b22" stroke="#8b949e" stroke-width="2"/>
+    <text x="220" y="90" fill="#f0f6fc" font-size="16" font-weight="600" text-anchor="middle">Sin estado (semana 09)</text>
+    <text x="220" y="112" fill="#8b949e" font-size="13" text-anchor="middle">test con parámetros, 256 ejecuciones</text>
+
+    <g font-size="13">
+      <rect x="60" y="135" width="100" height="36" rx="6" fill="#0d1117" stroke="#8b949e" stroke-width="1.5"/>
+      <text x="110" y="158" fill="#f0f6fc" text-anchor="middle">setUp</text>
+      <line x1="160" y1="153" x2="190" y2="153" stroke="#8b949e" stroke-width="2"/>
+      <polygon points="190,147 202,153 190,159" fill="#8b949e"/>
+      <rect x="204" y="135" width="90" height="36" rx="6" fill="#0d1117" stroke="#627eea" stroke-width="1.5"/>
+      <text x="249" y="158" fill="#f0f6fc" text-anchor="middle">f(x)</text>
+      <line x1="294" y1="153" x2="314" y2="153" stroke="#8b949e" stroke-width="2"/>
+      <polygon points="314,147 326,153 314,159" fill="#8b949e"/>
+      <text x="356" y="158" fill="#3fb950" text-anchor="middle">assert</text>
+
+      <rect x="60" y="190" width="100" height="36" rx="6" fill="#0d1117" stroke="#8b949e" stroke-width="1.5"/>
+      <text x="110" y="213" fill="#f0f6fc" text-anchor="middle">setUp</text>
+      <line x1="160" y1="208" x2="190" y2="208" stroke="#8b949e" stroke-width="2"/>
+      <polygon points="190,202 202,208 190,214" fill="#8b949e"/>
+      <rect x="204" y="190" width="90" height="36" rx="6" fill="#0d1117" stroke="#627eea" stroke-width="1.5"/>
+      <text x="249" y="213" fill="#f0f6fc" text-anchor="middle">f(x′)</text>
+      <line x1="294" y1="208" x2="314" y2="208" stroke="#8b949e" stroke-width="2"/>
+      <polygon points="314,202 326,208 314,214" fill="#8b949e"/>
+      <text x="356" y="213" fill="#3fb950" text-anchor="middle">assert</text>
+
+      <text x="220" y="255" fill="#8b949e" text-anchor="middle">… cada ejecución vuelve a empezar</text>
+    </g>
+    <text x="220" y="310" fill="#f0f6fc" font-size="14" text-anchor="middle">Encuentra el valor que rompe</text>
+    <text x="220" y="330" fill="#f0f6fc" font-size="14" text-anchor="middle">una función</text>
+    <text x="220" y="380" fill="#8b949e" font-size="13" text-anchor="middle">Nunca ve dos llamadas seguidas:</text>
+    <text x="220" y="400" fill="#8b949e" font-size="13" text-anchor="middle">el fallo de Seats está entre</text>
+    <text x="220" y="420" fill="#8b949e" font-size="13" text-anchor="middle">book y transferSeat</text>
+
+    <!-- Con estado -->
+    <rect x="440" y="60" width="430" height="410" rx="10" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="655" y="90" fill="#f0f6fc" font-size="16" font-weight="600" text-anchor="middle">Con estado (esta semana)</text>
+    <text x="655" y="112" fill="#8b949e" font-size="13" text-anchor="middle">256 secuencias de hasta 500 llamadas</text>
+
+    <g font-size="13">
+      <rect x="470" y="135" width="100" height="36" rx="6" fill="#0d1117" stroke="#8b949e" stroke-width="1.5"/>
+      <text x="520" y="158" fill="#f0f6fc" text-anchor="middle">setUp</text>
+      <line x1="520" y1="171" x2="520" y2="186" stroke="#8b949e" stroke-width="2"/>
+      <polygon points="514,186 520,198 526,186" fill="#8b949e"/>
+
+      <rect x="470" y="200" width="100" height="32" rx="6" fill="#0d1117" stroke="#627eea" stroke-width="1.5"/>
+      <text x="520" y="221" fill="#f0f6fc" text-anchor="middle">book(0)</text>
+      <text x="600" y="221" fill="#3fb950">invariantes ✓</text>
+      <line x1="520" y1="232" x2="520" y2="246" stroke="#8b949e" stroke-width="2"/>
+      <polygon points="514,246 520,258 526,246" fill="#8b949e"/>
+
+      <rect x="470" y="260" width="100" height="32" rx="6" fill="#0d1117" stroke="#627eea" stroke-width="1.5"/>
+      <text x="520" y="281" fill="#f0f6fc" text-anchor="middle">cancel(7)</text>
+      <text x="600" y="281" fill="#8b949e">revierte: no cuenta</text>
+      <line x1="520" y1="292" x2="520" y2="306" stroke="#8b949e" stroke-width="2"/>
+      <polygon points="514,306 520,318 526,306" fill="#8b949e"/>
+
+      <rect x="455" y="320" width="130" height="32" rx="6" fill="#0d1117" stroke="#627eea" stroke-width="1.5"/>
+      <text x="520" y="341" fill="#f0f6fc" text-anchor="middle">transferSeat(0, 0)</text>
+      <text x="600" y="341" fill="#f85149">booked 1, dueños 0 ✗</text>
+      <line x1="520" y1="352" x2="520" y2="366" stroke="#8b949e" stroke-width="2"/>
+      <polygon points="514,366 520,378 526,366" fill="#8b949e"/>
+
+      <rect x="470" y="380" width="380" height="70" rx="6" fill="#0d1117" stroke="#d29922" stroke-width="1.5"/>
+      <text x="660" y="403" fill="#f0f6fc" text-anchor="middle">Encoger: quitar llamadas mientras siga fallando</text>
+      <text x="660" y="428" fill="#d29922" text-anchor="middle">book(0) → transferSeat(0, address(0))</text>
+    </g>
+  </g>
+</svg>
