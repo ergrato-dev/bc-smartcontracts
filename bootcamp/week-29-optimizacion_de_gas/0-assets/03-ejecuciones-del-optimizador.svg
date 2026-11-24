@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" role="img" aria-label="Dos gráficos de barras con optimizer_runs de 1, 200, 10 000 y 1 000 000. A la izquierda, el tamaño de RegistryV3 crece de 14 636 a 15 117, 18 185 y 19 752 bytes, acercándose al límite de 24 576 de EIP-170. A la derecha, el gas de un alta casi no cambia: 219 082, 217 324, 216 993 y 216 750.">
+  <title>Lo que cambian las ejecuciones del optimizador</title>
+  <rect width="960" height="400" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="480" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">optimizer_runs: tamaño frente a gas</text>
+    <text x="150" y="82" fill="#f0883e" font-size="16" font-weight="600">Tamaño de RegistryV3 (bytes)</text>
+    <text x="600" y="82" fill="#e3b341" font-size="16" font-weight="600">Gas de un alta</text>
+
+    <g font-size="13" fill="#8b949e" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+      <text x="140" y="125">1</text><text x="140" y="175">200</text><text x="140" y="225">10 000</text><text x="140" y="275">1 000 000</text>
+      <text x="590" y="125">1</text><text x="590" y="175">200</text><text x="590" y="225">10 000</text><text x="590" y="275">1 000 000</text>
+    </g>
+
+    <g>
+      <rect x="150" y="105" width="179" height="30" rx="4" fill="#161b22" stroke="#f0883e"/>
+      <rect x="150" y="155" width="185" height="30" rx="4" fill="#161b22" stroke="#f0883e"/>
+      <rect x="150" y="205" width="222" height="30" rx="4" fill="#161b22" stroke="#f0883e"/>
+      <rect x="150" y="255" width="241" height="30" rx="4" fill="#161b22" stroke="#f0883e"/>
+      <line x1="450" y1="96" x2="450" y2="296" stroke="#f85149" stroke-dasharray="5 4"/>
+      <text x="450" y="316" fill="#f85149" font-size="13" text-anchor="middle">24 576 (EIP-170)</text>
+    </g>
+    <g font-size="13" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+      <text x="337" y="125">14 636</text><text x="343" y="175">15 117</text><text x="380" y="225">18 185</text><text x="399" y="275">19 752</text>
+    </g>
+
+    <g>
+      <rect x="600" y="105" width="274" height="30" rx="4" fill="#161b22" stroke="#e3b341"/>
+      <rect x="600" y="155" width="272" height="30" rx="4" fill="#161b22" stroke="#e3b341"/>
+      <rect x="600" y="205" width="271" height="30" rx="4" fill="#161b22" stroke="#e3b341"/>
+      <rect x="600" y="255" width="271" height="30" rx="4" fill="#161b22" stroke="#e3b341"/>
+    </g>
+    <g font-size="13" fill="#f0f6fc" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+      <text x="864" y="125">219 082</text><text x="862" y="175">217 324</text><text x="861" y="225">216 993</text><text x="861" y="275">216 750</text>
+    </g>
+    <text x="600" y="316" fill="#8b949e" font-size="13">Barras desde 0: la diferencia es del 1 %</text>
+
+    <text x="480" y="360" fill="#f0f6fc" font-size="15" text-anchor="middle">De 200 a 10 000: +3068 bytes (613 600 de gas al desplegar) por −331 de gas en cada alta</text>
+    <text x="480" y="384" fill="#8b949e" font-size="13" text-anchor="middle">Solución de referencia de la semana 29, solc 0.8.38</text>
+  </g>
+</svg>

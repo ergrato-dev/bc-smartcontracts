@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" role="img" aria-label="El gas de set(2) en Box, 26 618, partido en tres: 21 000 de gas base, 204 de calldata y 5414 de ejecución, de los que 5000 son el SSTORE frío. Debajo, qué número da cada forma de medir: el recibo de anvil, vm.lastFrameGas con aislamiento y el informe de gas dan 26 618; con --no-isolate el primer set da 5414, solo la ejecución, y el segundo set da 514 porque el slot ya está caliente y ya cambió.">
+  <title>El gas de una transacción y lo que mide cada herramienta</title>
+  <rect width="960" height="440" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="480" y="38" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">set(2) en Box: 26 618 de gas</text>
+
+    <rect x="60" y="70" width="663" height="56" rx="6" fill="#161b22" stroke="#627eea"/>
+    <text x="391" y="104" fill="#8fa4f0" font-size="16" text-anchor="middle">Gas base: 21 000</text>
+    <rect x="723" y="70" width="7" height="56" fill="#f0883e"/>
+    <rect x="730" y="70" width="170" height="56" rx="6" fill="#161b22" stroke="#e3b341"/>
+    <text x="815" y="96" fill="#e3b341" font-size="15" text-anchor="middle">Ejecución: 5414</text>
+    <text x="815" y="116" fill="#8b949e" font-size="13" text-anchor="middle">5000 del SSTORE frío</text>
+    <line x1="726" y1="130" x2="726" y2="156" stroke="#f0883e"/>
+    <text x="726" y="174" fill="#f0883e" font-size="14" text-anchor="middle">Calldata: 204</text>
+    <text x="726" y="194" fill="#8b949e" font-size="13" text-anchor="middle">5 bytes × 16 + 31 × 4</text>
+
+    <text x="60" y="236" fill="#f0f6fc" font-size="16" font-weight="600">Lo que da cada forma de medir</text>
+    <g font-size="14">
+      <rect x="60" y="252" width="840" height="40" rx="6" fill="#161b22" stroke="#30363d"/>
+      <text x="80" y="277" fill="#f0f6fc">Recibo de anvil, vm.lastFrameGas con isolate = true, informe de gas</text>
+      <text x="880" y="277" fill="#3fb950" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">26618</text>
+      <rect x="60" y="302" width="840" height="40" rx="6" fill="#161b22" stroke="#30363d"/>
+      <text x="80" y="327" fill="#f0f6fc">--no-isolate, primer set: solo la ejecución</text>
+      <text x="880" y="327" fill="#e3b341" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">5414</text>
+      <rect x="60" y="352" width="840" height="40" rx="6" fill="#161b22" stroke="#30363d"/>
+      <text x="80" y="377" fill="#f0f6fc">--no-isolate, segundo set: el slot ya está caliente y ya cambió</text>
+      <text x="880" y="377" fill="#f85149" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">514</text>
+    </g>
+    <text x="480" y="420" fill="#8b949e" font-size="13" text-anchor="middle">Solo el primer número es lo que paga un usuario en la cadena</text>
+  </g>
+</svg>

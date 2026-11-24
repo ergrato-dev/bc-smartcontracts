@@ -167,6 +167,13 @@ function greet() external pure returns (string memory) {
   acaba en `// <- Paso N` y la solución va en `//> `. `foundry.toml` lleva `lint_on_build = false`
   en `[lint]` (el linter no entiende Yul) y `fs_permissions` de lectura sobre `./out`: sin ABI,
   `deployCode` no lo acepta y el test lee el bytecode del artefacto.
+- Un test de gas (desde la semana 29) es un tope: `assertLt(vm.lastFrameGas().gasTotalUsed, N,
+  "Paso N: ...")`, con `isolate` por defecto (cada llamada es una transacción, con su gas base).
+  Los topes valen para la configuración del `foundry.toml` del starter: se fijan entre el número
+  de antes y el de después del paso, medidos en cada estado intermedio (pasos 1..N-1 y 1..N), y
+  no usan snapshots con nombre (`snapshots/` no se publica en los ejercicios). El proyecto sí
+  versiona `contracts/snapshots/RegisterGasTest.json` y `test.sh` lo comprueba con
+  `FORGE_SNAPSHOT_CHECK=true` antes de `forge test`, que lo reescribe.
 - Cuando el paso **sustituye** código que tiene que estar activo en el starter (para que un
   analizador lo encuentre, semana 23), la línea vieja acaba en `// <- Paso N` y la nueva va
   debajo en `//> `. Al resolver, `compilar-starters.sh` borra las líneas `// <- Paso N`.
