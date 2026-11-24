@@ -74,6 +74,21 @@ de que una corrección falle:
 - **Rompe la compatibilidad**: cambia el layout de storage de un proxy (semana 15), un evento que
   lee el indexador o una firma que usa el frontend.
 
+### El orden de las correcciones
+
+Un informe trae varios hallazgos y no todos se corrigen a la vez. El orden lo decide el riesgo, no
+lo fácil que sea cada uno:
+
+1. **Lo explotable hoy en un despliegue con fondos**, primero y en privado: pausa, corrección,
+   propuesta.
+2. **Lo crítico y lo alto**, cada uno en su commit y con su test, antes de la siguiente versión.
+3. **Lo medio y lo bajo**, agrupados en una misma actualización: cada actualización del proxy es
+   una propuesta, dos días de espera y un riesgo nuevo de romper el storage.
+4. **Lo informativo**, en el informe: casi siempre es documentación, no código.
+
+Dos correcciones que tocan la misma función van juntas y se revisan juntas: corregidas por
+separado, la segunda puede deshacer la primera sin que ningún test lo note.
+
 ### Llevarla a la red
 
 En un contrato desplegado, "corregido en el código" no es "corregido". Depende de cómo se
@@ -126,6 +141,36 @@ La respuesta al informe, en la tabla de la autora:
 | H-01 | Corregido | `onlyOwner` en `setRewardRate` | `test_Paso1_RevertWhen_StrangerSetsTheRate` |
 | H-04 | Corregido (encontrado en la revisión) | `_updateGlobal` en `setRewardRate` | `test_Paso4_RateChangeIsNotRetroactive` |
 
+El mismo camino con un hallazgo del proyecto: H-06, el feed de disponibilidad sin inicializar. El
+PoC de la auditoría cruzada demostraba que el precio salía; el test de regresión espera el revert.
+
+**Dónde**: en `contracts/test/cross/ReceivedFindings.t.sol` del proyecto. `UninitializedUptimeFeed`
+devuelve una ronda toda a cero, como el feed de Arbitrum antes de inicializarse.
+
+```solidity
+function test_RevertWhen_TheUptimeFeedHasNotStarted() public {
+    SequencerAwareFeed feed = new SequencerAwareFeed(
+        AggregatorV3Interface(address(new UninitializedUptimeFeed())), AggregatorV3Interface(address(priceFeed))
+    );
+    vm.expectRevert(SequencerAwareFeed.UptimeFeedNotStarted.selector);
+    feed.latestRoundData();
+}
+```
+
+**Ejecuta** `forge test --mc ReceivedFindingsTest` antes de corregir.
+
+**Salida** (la línea del test):
+
+```text
+[FAIL: next call did not revert as expected] test_RevertWhen_TheUptimeFeedHasNotStarted() (gas: 635001)
+```
+
+La corrección es una línea en `_checkSequencer`, antes del plazo de gracia:
+`if (statusSince == 0) revert UptimeFeedNotStarted();`. Con ella, `2 tests passed`. El segundo
+test, `test_ReadsThePriceOnceTheUptimeFeedStarted`, es la revisión de la corrección: con un feed
+inicializado el precio sigue saliendo, y los nueve tests de la L2 de la semana 33 siguen en verde.
+Y `mutants.sh` quita la línea ("acepta el feed sin inicializar") para comprobar que el test la mira.
+
 ## Antipatrones y riesgos
 
 - **Discutir antes de reproducir.** Si el PoC pasa, el fallo existe. Lo que se discute es la
@@ -156,6 +201,7 @@ La respuesta al informe, en la tabla de la autora:
 - [ ] Sé por qué se reproduce un hallazgo antes de discutirlo.
 - [ ] Sé cuándo un hallazgo es corregido, reconocido o en disputa.
 - [ ] Sé buscar variantes de un hallazgo en el resto del código.
+- [ ] Sé ordenar las correcciones de un informe por riesgo.
 - [ ] Sé convertir un PoC en un test de regresión que comprueba el comportamiento.
 - [ ] Sé revisar una corrección: incompleta, nueva o incompatible.
 - [ ] Sé cómo llega una corrección a un contrato detrás de un proxy, a uno inmutable y cuándo pausar
