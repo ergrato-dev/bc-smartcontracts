@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" role="img" aria-label="La DAO del protocolo: quien guarda puntos en PointsVault delega los votos de sus shares; ProtocolGovernor lee los votos de la foto y programa lo aprobado en el TimelockController, que espera dos días y es el administrador del registro. El guardián solo tiene PAUSER_ROLE y quien desplegó ya no tiene ningún rol">
+  <title>La DAO del protocolo</title>
+  <rect width="760" height="400" fill="#0d1117"/>
+  <rect x="20.0" y="82.0" width="130" height="56" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="85" y="106" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">Depositantes</text>
+  <text x="85" y="125" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8b949e">delegate(yo)</text>
+  <rect x="195.0" y="82.0" width="140" height="56" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+  <text x="265" y="106" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">PointsVault</text>
+  <text x="265" y="125" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8b949e">shares = votos</text>
+  <rect x="380.0" y="82.0" width="150" height="56" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+  <text x="455" y="106" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">ProtocolGovernor</text>
+  <text x="455" y="125" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8b949e">4 % de quórum</text>
+  <rect x="575.0" y="82.0" width="150" height="56" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="650" y="106" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">Timelock</text>
+  <text x="650" y="125" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8b949e">espera 2 días</text>
+  <rect x="575.0" y="272.0" width="150" height="56" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="650" y="296" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">Registry</text>
+  <text x="650" y="315" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8b949e">el protocolo</text>
+  <rect x="330.0" y="272.0" width="140" height="56" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="400" y="296" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">Guardián</text>
+  <text x="400" y="315" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8b949e">PAUSER_ROLE</text>
+  <rect x="65.0" y="272.0" width="150" height="56" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="140" y="296" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#f0f6fc">Quien desplegó</text>
+  <text x="140" y="315" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8b949e">renunció a todo</text>
+  <line x1="150" y1="110" x2="183.0" y2="110.0" stroke="#8b949e" stroke-width="2"/>
+  <polygon points="193.0,110.0 183.0,115.0 183.0,105.0" fill="#8b949e"/>
+  <text x="172" y="68" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">deposit</text>
+  <line x1="335" y1="110" x2="368.0" y2="110.0" stroke="#8b949e" stroke-width="2"/>
+  <polygon points="378.0,110.0 368.0,115.0 368.0,105.0" fill="#8b949e"/>
+  <text x="357" y="60" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8fa4f0">getPastVotes</text>
+  <text x="357" y="76" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">en la foto</text>
+  <line x1="530" y1="110" x2="563.0" y2="110.0" stroke="#8b949e" stroke-width="2"/>
+  <polygon points="573.0,110.0 563.0,115.0 563.0,105.0" fill="#8b949e"/>
+  <text x="552" y="60" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8fa4f0">queue</text>
+  <text x="552" y="76" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8fa4f0">execute</text>
+  <line x1="650" y1="138" x2="650.0" y2="260.0" stroke="#8b949e" stroke-width="2"/>
+  <polygon points="650.0,270.0 645.0,260.0 655.0,260.0" fill="#8b949e"/>
+  <text x="640" y="200" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8fa4f0">DEFAULT_ADMIN_ROLE</text>
+  <text x="640" y="218" text-anchor="end" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">upgrade, hook, unpause</text>
+  <line x1="470" y1="300" x2="563.0" y2="300.0" stroke="#8b949e" stroke-width="2"/>
+  <polygon points="573.0,300.0 563.0,305.0 563.0,295.0" fill="#8b949e"/>
+  <text x="522" y="288" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8fa4f0">pause()</text>
+  <text x="380" y="370" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#8b949e">Cada cambio del registro: propuesta, foto, una semana de votos y dos días de espera.</text>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" role="img" aria-label="Checkpoints de votos: alice delega en el bloque 100 con 1000 votos y en el 101 pasa a 600; getPastVotes de alice en el bloque 100 da 1000. carol pide un millón prestado y lo devuelve dentro del bloque 200: su checkpoint del bloque 200 queda en 0">
+  <title>Checkpoints y la foto de un bloque</title>
+  <rect width="760" height="420" fill="#0d1117"/>
+  <line x1="60" y1="350" x2="720" y2="350" stroke="#30363d" stroke-width="2"/>
+  <line x1="100" y1="344" x2="100" y2="356" stroke="#8b949e" stroke-width="2"/>
+  <text x="100" y="376" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#8b949e">99</text>
+  <line x1="220" y1="344" x2="220" y2="356" stroke="#8b949e" stroke-width="2"/>
+  <text x="220" y="376" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#8b949e">100</text>
+  <line x1="340" y1="344" x2="340" y2="356" stroke="#8b949e" stroke-width="2"/>
+  <text x="340" y="376" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#8b949e">101</text>
+  <line x1="460" y1="344" x2="460" y2="356" stroke="#8b949e" stroke-width="2"/>
+  <text x="460" y="376" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#8b949e">102</text>
+  <line x1="600" y1="344" x2="600" y2="356" stroke="#8b949e" stroke-width="2"/>
+  <text x="600" y="376" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#8b949e">200</text>
+  <line x1="700" y1="344" x2="700" y2="356" stroke="#8b949e" stroke-width="2"/>
+  <text x="700" y="376" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#8b949e">201</text>
+  <text x="530" y="376" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#8b949e">…</text>
+  <text x="720" y="402" text-anchor="end" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#8b949e">bloque</text>
+  <text x="60" y="50" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#f0f6fc" font-weight="bold">Checkpoints de alice</text>
+  <rect x="170" y="70" width="100" height="56" rx="6" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+  <text x="220" y="93" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#8fa4f0">desde 100</text>
+  <text x="220" y="115" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="#f0f6fc">1000 votos</text>
+  <rect x="290" y="70" width="100" height="56" rx="6" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+  <text x="340" y="93" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#8fa4f0">desde 101</text>
+  <text x="340" y="115" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="#f0f6fc">600 votos</text>
+  <text x="220" y="148" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">delega en sí misma</text>
+  <text x="340" y="148" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">envía 400 a bob</text>
+  <polyline points="100,330 220,330 220,250 340,250 340,282 480,282" fill="none" stroke="#627eea" stroke-width="3"/>
+  <text x="104" y="322" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">0</text>
+  <text x="226" y="244" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8fa4f0">1000</text>
+  <text x="400" y="276" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8fa4f0">600</text>
+  <line x1="280" y1="170" x2="280" y2="344" stroke="#3fb950" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="286" y="190" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#3fb950">foto: fin del bloque 100</text>
+  <text x="286" y="208" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#3fb950">getPastVotes(alice, 100) = 1000</text>
+  <text x="560" y="50" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#f0f6fc" font-weight="bold">carol, en el bloque 200</text>
+  <rect x="545" y="70" width="175" height="56" rx="6" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="632" y="93" text-anchor="middle" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#f85149">préstamo, delega, devuelve</text>
+  <text x="632" y="115" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#f0f6fc">desde 200: 0 votos</text>
+  <line x1="600" y1="330" x2="600" y2="230" stroke="#f85149" stroke-width="3"/>
+  <text x="608" y="244" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#f85149">1 000 000 durante la tx</text>
+  <line x1="560" y1="330" x2="720" y2="330" stroke="#f85149" stroke-width="3"/>
+  <text x="620" y="318" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" fill="#8b949e">0 al cerrar el bloque</text>
+</svg>

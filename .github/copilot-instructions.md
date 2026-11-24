@@ -110,7 +110,10 @@ Desde la semana 20, los contratos de Chainlink están en `/opt/lib/chainlink-con
 remapping `@chainlink/contracts/` (los `import` de la documentación de Chainlink funcionan tal
 cual). Un proyecto que compile sus contratos de VRF añade
 `ignored_warnings_from = ["/opt/lib/chainlink-contracts"]`: su copia de OpenZeppelin 4.7 da un
-warning de solc 0.8.38. El proyecto semanal activa el optimizador desde la semana 20
+warning de solc 0.8.38. Desde la semana 31, un proyecto que compile `ERC20Votes` o un Governor de OpenZeppelin añade
+`ignored_warnings_from` con la carpeta `utils/structs` de OpenZeppelin (`/opt/lib/...` en los
+ejercicios, `lib/...` en el proyecto): solc 0.8.38 avisa (6335) de que `at` será palabra reservada
+en `Checkpoints` y `DoubleEndedQueue`. El proyecto semanal activa el optimizador desde la semana 20
 (`optimizer = true`, 200 ejecuciones): RegistryV3 sin él pasa de 24 576 bytes.
 
 ## 1-teoria

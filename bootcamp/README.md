@@ -69,7 +69,7 @@ La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está p
 | [28](week-28-yul_e_inline_assembly/README.md) | [Yul e inline assembly](week-28-yul_e_inline_assembly/README.md) | ✅ |
 | [29](week-29-optimizacion_de_gas/README.md) | [Optimización de gas](week-29-optimizacion_de_gas/README.md) | ✅ |
 | [30](week-30-defi/README.md) | [DeFi: AMM, vaults y préstamos](week-30-defi/README.md) | ✅ |
-| 31 | Gobernanza y DAOs | ⬜ |
+| [31](week-31-gobernanza_y_daos/README.md) | [Gobernanza y DAOs](week-31-gobernanza_y_daos/README.md) | ✅ |
 | 32 | Account abstraction | ⬜ |
 | 33 | L2 y cross-chain | ⬜ |
 | 34 | Proyecto integrador | ⬜ |
