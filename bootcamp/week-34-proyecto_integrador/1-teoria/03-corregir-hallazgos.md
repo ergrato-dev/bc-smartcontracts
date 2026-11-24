@@ -50,7 +50,7 @@ con el id del auditor: "C-01: corregido en `a1b2c3d`, test `test_RevertWhen_...`
 revisa cada corrección por su commit, sin buscar qué cambió. Si un hallazgo pasa a tu informe con
 otro id (C-01 es tu H-06), la tabla de equivalencias va en tu informe, como en la sección
 `## La entrega (semana 34)` del proyecto. Y cuando el auditor da por buena una corrección, también
-queda escrito: es la última columna de tu `## Revisión de correcciones`.
+queda escrito, en tu `## Revisión de correcciones`.
 
 ### La causa, no el síntoma
 
