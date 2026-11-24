@@ -14,6 +14,8 @@ ARG PNPM_VERSION=11.28.12
 ARG UV_VERSION=0.13.8
 ARG CHAINLINK_VERSION=1.4.0
 ARG CHAINLINK_SHA512=4a93422744cf388ea96b697bd365a4e1620ff1c730e4045c44fd44fd94ea6857df5cda19785d375a1b152fc7f797739344503d678d0ee4a719ce626665092814
+ARG AA_VERSION=0.8.0
+ARG AA_SHA512=f24acfc7f8299e84fee7102ba1a81509b780ec56d48a031959714a28f9bea20872af6f4392cb2c771e6c23bc46bfddb5da2e093da0c3506164e7c769bb05601c
 ARG KUBO_VERSION=v0.43.0
 ARG SLITHER_VERSION=0.11.5
 ARG CRYTIC_COMPILE_VERSION=0.3.11
@@ -113,6 +115,20 @@ RUN curl -fsSL -o /tmp/chainlink.tgz \
     && mkdir -p /opt/lib/chainlink-contracts \
     && tar -xzf /tmp/chainlink.tgz -C /opt/lib/chainlink-contracts --strip-components=1 package/src \
     && rm /tmp/chainlink.tgz
+
+# ¿Qué? Los contratos de ERC-4337 de eth-infinitism (EntryPoint, interfaces y cuentas de
+#   ejemplo) en /opt/lib, desde la semana 32. Del paquete de npm `@account-abstraction/contracts`,
+#   verificado con su sha512.
+# ¿Para qué? Los tests despliegan el EntryPoint de referencia, el mismo código que hay en mainnet,
+#   en lugar de uno escrito para el curso. Se importa como `@account-abstraction/contracts/...`.
+# ¿Impacto? Solo se copian `core`, `interfaces`, `accounts` y `utils`: `legacy` es la v0.6.
+RUN curl -fsSL -o /tmp/aa.tgz \
+        "https://registry.npmjs.org/@account-abstraction/contracts/-/contracts-${AA_VERSION}.tgz" \
+    && echo "${AA_SHA512}  /tmp/aa.tgz" | sha512sum -c - \
+    && mkdir -p /opt/lib/account-abstraction \
+    && tar -xzf /tmp/aa.tgz -C /opt/lib/account-abstraction --strip-components=1 \
+        package/core package/interfaces package/accounts package/utils \
+    && rm /tmp/aa.tgz
 
 # ¿Qué? kubo, el nodo de IPFS de referencia (comando `ipfs`), desde su release de GitHub,
 #   verificado con su sha512, desde la semana 20.

@@ -25,4 +25,4 @@
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | Semana 32 (próximamente) |
+| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | [Semana 32 — Account abstraction →](../../week-32-account_abstraction/README.md) |

@@ -1,0 +1,3 @@
+# ¿Qué? Lo que genera forge al compilar el fixture: no se versiona.
+out/
+cache/

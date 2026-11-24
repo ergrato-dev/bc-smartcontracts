@@ -1,0 +1,63 @@
+# ¿Qué? Configuración de Foundry de un ejercicio o proyecto del bootcamp.
+# ¿Para qué? Fijar compilador y bibliotecas para que el resultado sea idéntico en cualquier contenedor.
+[profile.default]
+src = "src"
+test = "test"
+out = "out"
+# ¿Qué? forge-std y OpenZeppelin siguen en la imagen (/opt/lib), pero desde la semana 16 se
+#   llega a ellas por `lib`, un enlace simbólico a /opt/lib dentro del proyecto.
+# ¿Para qué? Que las rutas de las bibliotecas sean relativas al proyecto (`lib/...`). Con
+#   /opt/lib, fuera del proyecto, el JSON que forge envía al verificador no recompila.
+# ¿Impacto? El enlace solo funciona dentro del contenedor; fuera, `lib` apunta a nada.
+libs = ["lib"]
+remappings = [
+    "forge-std/=lib/forge-std/src/",
+    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+    "@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+    "@chainlink/contracts/=lib/chainlink-contracts/",
+    "@account-abstraction/contracts/=lib/account-abstraction/",
+]
+solc_version = "0.8.38"
+# ¿Qué? El optimizador de solc, desde la semana 20, con su valor por defecto de 200 ejecuciones.
+# ¿Para qué? RegistryV3 sin optimizar ocupa 25 851 bytes, y la EVM no acepta desplegar más de
+#   24 576 (EIP-170): `forge script` falla con "above the contract size limit". Optimizado,
+#   ocupa 14 878.
+# ¿Impacto? Cambia el bytecode de todo lo que compiles a partir de ahora; lo ya desplegado no
+#   cambia. La semana 29 explica qué hace el optimizador y qué significan las ejecuciones.
+optimizer = true
+optimizer_runs = 200
+# ¿Qué? Sin red: solc ya está en la imagen.
+# ¿Impacto? Un número de versión mal escrito falla al instante en vez de intentar descargar.
+offline = true
+# ¿Qué? Sin enlazado dinámico de tests, desde la semana 24.
+# ¿Para qué? Medusa compila con crytic-compile, que no entiende los archivos auxiliares que
+#   forge genera para enlazar los tests (`foundry-pp/DeployHelper...sol`) y falla con
+#   "Unknown file".
+# ¿Impacto? Ninguno en lo que comprueban los tests: es una optimización de compilación. Halmos
+#   también lo necesita desde la semana 25: con enlazado dinámico, `new` en un test es un
+#   cheatcode (`deployCode`) que Halmos no tiene.
+dynamic_test_linking = false
+# ¿Qué? El árbol sintáctico de cada archivo en los artefactos de out/, desde la semana 25.
+# ¿Para qué? Halmos lo lee para encontrar los `check_`. Sin él, si forge ya compiló, Halmos
+#   avisa "Skipped ... due to parsing failure: KeyError: 'ast'" y no encuentra ningún test.
+ast = true
+# ¿Qué? Sin los warnings de solc que salen de las estructuras de datos de OpenZeppelin, desde la
+#   semana 31.
+# ¿Para qué? solc 0.8.38 avisa de que `at` será una palabra reservada, y Checkpoints y
+#   DoubleEndedQueue de OpenZeppelin 5.7, que usan ERC20Votes y Governor, tienen funciones `at`.
+#   Con `--deny warnings`, test.sh pararía por código que no es tuyo.
+# ¿Impacto? Solo esa carpeta: un warning de tu src/ o de otra parte de OpenZeppelin sigue parando.
+#   Desde la semana 32, también el código de ERC-4337 de eth-infinitism: BaseAccount (v0.8.0) tiene
+#   un parámetro que se llama `error`, que solc 0.8.38 avisa que será palabra reservada.
+ignored_warnings_from = ["lib/openzeppelin-contracts/contracts/utils/structs", "lib/account-abstraction"]
+
+# ¿Qué? Alias de red para `--rpc-url` y `--chain`. La URL de Sepolia sale de una variable de entorno.
+# ¿Para qué? Escribir `--rpc-url sepolia` en vez de una URL larga que puede llevar tu clave de API.
+# ¿Impacto? La URL y la clave nunca quedan en el repo: viven en tu `.env`, que git ignora.
+[rpc_endpoints]
+anvil = "http://127.0.0.1:8545"
+sepolia = "${SEPOLIA_RPC_URL}"
+
+# ¿Qué? Clave de la API de Etherscan para `--verify` en Sepolia.
+[etherscan]
+sepolia = { key = "${ETHERSCAN_API_KEY}" }
