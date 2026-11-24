@@ -1,0 +1,27 @@
+# ¿Qué? Configuración de Foundry de un ejercicio o proyecto del bootcamp.
+# ¿Para qué? Fijar compilador y bibliotecas para que el resultado sea idéntico en cualquier contenedor.
+[profile.default]
+src = "src"
+test = "test"
+out = "out"
+# ¿Qué? forge-std vive en la imagen (/opt/lib), no dentro del proyecto.
+libs = ["/opt/lib"]
+remappings = ["forge-std/=/opt/lib/forge-std/src/"]
+solc_version = "0.8.38"
+# ¿Qué? Sin red: solc ya está en la imagen.
+# ¿Impacto? Un número de versión mal escrito falla al instante en vez de intentar descargar.
+offline = true
+
+# ¿Qué? El SMTChecker de solc, desde la semana 25: en cada compilación, intenta demostrar los
+#   `assert` de los contratos de `contracts` para cualquier secuencia de transacciones.
+# ¿Para qué? Que `forge build` y `forge test` digan si la propiedad de TicketsSpec se cumple
+#   siempre, con un contraejemplo si no. Usa el `z3` de la imagen.
+# ¿Impacto? Cada compilación tarda más: solo se analiza TicketsSpec, y cada consulta al solver
+#   tiene 20 segundos como mucho.
+[profile.default.model_checker]
+contracts = { "test/TicketsSpec.sol" = ["TicketsSpec"] }
+engine = "chc"
+targets = ["assert"]
+invariants = ["contract"]
+show_proved_safe = true
+timeout = 20000

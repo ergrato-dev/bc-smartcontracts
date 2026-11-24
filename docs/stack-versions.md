@@ -23,6 +23,8 @@ starter que compilaba ayer; en un contrato, además, cambia el bytecode que se d
 | Slither (`slither-analyzer`) | `0.11.5` | `ARG SLITHER_VERSION`, con `uv tool install` en `/opt/uv-tools` | Anterior a la última (0.11.6); su Python, con pytest, en `$SLITHER_PYTHON` |
 | crytic-compile | `0.3.11` | `ARG CRYTIC_COMPILE_VERSION` | La última que admite Slither 0.11.5 (`<0.4.0`); compila con forge |
 | Medusa | `v1.5.0` | `ARG MEDUSA_VERSION`, con `ARG MEDUSA_SHA256` | Anterior a la última (v1.5.1); solo linux-x64, no se instala en arm64. Usa el `crytic-compile` del entorno de Slither, enlazado en `/usr/local/bin` |
+| Halmos | `0.3.2` | `ARG HALMOS_VERSION`, con `uv tool install` en `/opt/uv-tools` y `ARG SLITHER_EXCLUDE_NEWER` | Anterior a la última (0.3.3); solo linux-x64: z3-solver y yices-solver no publican paquetes para Linux arm64. Trae z3 4.12.6, enlazado en `/usr/local/bin` para el SMTChecker de solc, y yices |
+| halmos-cheatcodes | commit `7328abe` | `ARG HALMOS_CHEATCODES_COMMIT`, en `/opt/lib/halmos-cheatcodes` | Anterior al último commit (`6da4e69`); `SymTest` y `svm` |
 
 ## Dependencias por semana
 
@@ -55,6 +57,9 @@ verificada ese día. Hasta entonces no se fija nada.
 | Slither | `0.11.5` | 23 | Análisis estático y detectores propios; en la imagen, con sus dependencias fijadas por `ARG SLITHER_EXCLUDE_NEWER` (2026-11-16) |
 | pytest (en el entorno de Slither) | `9.1.1` | 23 | Tests de los detectores propios; la misma que la de la semana 19 |
 | Medusa | `1.5.0` | 24 | Fuzzing de invariantes con propiedades y aserciones, junto al fuzzer de forge |
+| Halmos | `0.3.2` | 25 | Ejecución simbólica de tests `check_`, con z3 y yices |
+| halmos-cheatcodes | `7328abe` | 25 | `svm.createCalldata` y los `create*` simbólicos; remapping `halmos-cheatcodes/=/opt/lib/halmos-cheatcodes/src/` |
+| z3 | `4.12.6` | 25 | Solver del SMTChecker de solc, el de la rueda de Halmos |
 
 Las de TypeScript están en `docker/web/package.json` y su `pnpm-lock.yaml`, que fija también las
 dependencias indirectas. La imagen descarga ese lockfile (`pnpm fetch`) y **todos** los starters

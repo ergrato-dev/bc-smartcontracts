@@ -2,7 +2,7 @@
 # ¿Para qué? Que todos los aprendices compilen, prueben y desplieguen con las mismas versiones,
 #            sin instalar nada en su máquina.
 # ¿Impacto? Si un ejercicio pasa aquí, pasa en la corrección. Las herramientas que llegan
-#           más adelante (Node y pnpm, uv y PostgreSQL, Slither, Medusa) se añaden en la semana que las introduce.
+#           más adelante (Node y pnpm, uv y PostgreSQL, Slither, Medusa, Halmos) se añaden en la semana que las introduce.
 FROM ubuntu:24.04
 
 ARG FOUNDRY_VERSION=v1.9.0
@@ -21,6 +21,9 @@ ARG PYTEST_VERSION=9.1.1
 ARG SLITHER_EXCLUDE_NEWER=2026-11-16T00:00:00Z
 ARG MEDUSA_VERSION=v1.5.0
 ARG MEDUSA_SHA256=c5c333d4380d150f76bd7e796a0d2ce62e85713d335c3ddd53718ac202eec8ef
+ARG HALMOS_VERSION=0.3.2
+# halmos-cheatcodes no publica versiones: se fija un commit.
+ARG HALMOS_CHEATCODES_COMMIT=7328abe100445fc53885c21d0e713b95293cf14c
 # ¿Qué? Arquitectura que Docker inyecta al construir (amd64 o arm64).
 ARG TARGETARCH
 
@@ -149,6 +152,27 @@ RUN ln -s /opt/uv-tools/slither-analyzer/bin/crytic-compile /usr/local/bin/cryti
         && echo "${MEDUSA_SHA256}  /tmp/medusa.tgz" | sha256sum -c - \
         && tar -xzf /tmp/medusa.tgz -C /usr/local/bin medusa \
         && rm /tmp/medusa.tgz; \
+    fi
+
+# ¿Qué? halmos-cheatcodes (la interfaz `SymTest` de Halmos) en /opt/lib, desde la semana 25.
+# ¿Para qué? Crear valores simbólicos dentro de un test (`svm.createUint`, `svm.createCalldata`),
+#   como forge-std, sin `forge install` en cada proyecto.
+RUN git init -q /opt/lib/halmos-cheatcodes \
+    && cd /opt/lib/halmos-cheatcodes \
+    && git fetch -q --depth 1 https://github.com/a16z/halmos-cheatcodes "${HALMOS_CHEATCODES_COMMIT}" \
+    && git checkout -q FETCH_HEAD \
+    && rm -rf .git
+
+# ¿Qué? Halmos, el ejecutor simbólico de a16z, como herramienta de uv en /opt/uv-tools, desde la
+#   semana 25. Trae sus solvers SMT (z3 y yices) como paquetes de Python.
+# ¿Para qué? Verificar tests `check_` para todas las entradas, no para unas cuantas. Y el `z3` de
+#   su entorno, en el PATH, es el que usa el SMTChecker de solc.
+# ¿Impacto? z3-solver y yices-solver solo publican ruedas para Linux x64: en arm64 no se instala.
+RUN if [ "${TARGETARCH:-amd64}" = amd64 ]; then \
+        UV_TOOL_DIR=/opt/uv-tools UV_TOOL_BIN_DIR=/usr/local/bin uv tool install --quiet \
+            "halmos==${HALMOS_VERSION}" --exclude-newer "${SLITHER_EXCLUDE_NEWER}" \
+        && ln -s /opt/uv-tools/halmos/bin/z3 /usr/local/bin/z3 \
+        && rm -rf /root/.cache/uv; \
     fi
 
 # ¿Qué? Usuario sin privilegios `ubuntu` (UID 1000), que ya trae la imagen base.

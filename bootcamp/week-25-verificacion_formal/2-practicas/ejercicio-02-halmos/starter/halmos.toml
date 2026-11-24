@@ -1,0 +1,6 @@
+# ¿Qué? Configuración de Halmos, desde la semana 25: la lee de la carpeta donde se ejecuta.
+# ¿Para qué? z3 como solver. Con yices, el que usa Halmos por defecto, una consulta de
+#   check_NoDayTwice agotó los 60 segundos en 2 de 15 ejecuciones; con z3, en ninguna de 30.
+# ¿Impacto? Solo en este ejercicio: en el 03 pasa al revés, y se queda con yices (teoría 03).
+[global]
+solver = "z3"

@@ -24,4 +24,4 @@
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | Semana 25 (próximamente) |
+| [← Webgrafía](../4-recursos/webgrafia/README.md) | **Glosario** | [Semana 25 — Verificación formal →](../../week-25-verificacion_formal/README.md) |

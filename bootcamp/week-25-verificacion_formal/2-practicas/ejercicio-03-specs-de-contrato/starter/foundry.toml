@@ -1,0 +1,26 @@
+# ¿Qué? Configuración de Foundry de un ejercicio o proyecto del bootcamp.
+# ¿Para qué? Fijar compilador y bibliotecas para que el resultado sea idéntico en cualquier contenedor.
+[profile.default]
+src = "src"
+test = "test"
+out = "out"
+# ¿Qué? forge-std vive en la imagen (/opt/lib), no dentro del proyecto.
+libs = ["/opt/lib"]
+remappings = [
+    "forge-std/=/opt/lib/forge-std/src/",
+    # ¿Qué? `SymTest` y `svm`, los cheatcodes propios de Halmos (semana 25).
+    "halmos-cheatcodes/=/opt/lib/halmos-cheatcodes/src/",
+]
+solc_version = "0.8.38"
+# ¿Qué? Sin red: solc ya está en la imagen.
+# ¿Impacto? Un número de versión mal escrito falla al instante en vez de intentar descargar.
+offline = true
+# ¿Qué? Sin enlazado dinámico de tests, desde la semana 24.
+# ¿Para qué? Con enlazado dinámico, `new` en un test se compila como un cheatcode
+#   (`deployCode`) que Halmos no tiene: el `setUp` falla con "Unsupported cheat code".
+# ¿Impacto? Ninguno en lo que comprueban los tests: es una optimización de compilación.
+dynamic_test_linking = false
+# ¿Qué? El árbol sintáctico de cada archivo en los artefactos de out/, desde la semana 25.
+# ¿Para qué? Halmos lo lee para encontrar los `check_`. Sin él, si forge ya compiló, Halmos
+#   avisa "Skipped ... due to parsing failure: KeyError: 'ast'" y no encuentra ningún test.
+ast = true

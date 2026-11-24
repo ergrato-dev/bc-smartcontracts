@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" role="img" aria-label="Ejecución simbólica de tryCode. La entrada code es un símbolo. En el if, la ejecución sigue las dos ramas: el camino 1, con la condición code XOR 0x5eed5eed5eed igual a 0x1234abcd9876, deja open en true; el camino 2, con la condición contraria, deja open en false. En la aserción assertFalse(open), el solver responde sat para el camino 1, con el contraejemplo code igual a 0x4cd9f520c69b, y unsat para el camino 2">
+  <title>Caminos simbólicos</title>
+  <rect width="900" height="500" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Ejecución simbólica de tryCode</text>
+
+    <!-- Entrada -->
+    <rect x="320" y="58" width="260" height="56" rx="10" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="450" y="82" fill="#f0f6fc" font-size="15" font-weight="600" text-anchor="middle">code = símbolo</text>
+    <text x="450" y="102" fill="#8b949e" font-size="13" text-anchor="middle">uint64, todos los valores a la vez</text>
+
+    <line x1="450" y1="114" x2="450" y2="146" stroke="#8b949e" stroke-width="2"/>
+    <polygon points="444,146 450,158 456,146" fill="#8b949e"/>
+
+    <!-- if -->
+    <rect x="250" y="160" width="400" height="50" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <text x="450" y="191" fill="#f0f6fc" font-size="14" text-anchor="middle" font-family="ui-monospace, 'SFMono-Regular', Menlo, monospace">if (code ^ 0x5eed5eed5eed == 0x1234abcd9876)</text>
+
+    <line x1="330" y1="210" x2="230" y2="250" stroke="#8b949e" stroke-width="2"/>
+    <polygon points="232,243 220,254 236,255" fill="#8b949e"/>
+    <line x1="570" y1="210" x2="670" y2="250" stroke="#8b949e" stroke-width="2"/>
+    <polygon points="664,255 680,254 668,243" fill="#8b949e"/>
+
+    <!-- Camino 1 -->
+    <rect x="40" y="258" width="380" height="104" rx="10" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="60" y="284" fill="#58a6ff" font-size="15" font-weight="600">Camino 1</text>
+    <text x="60" y="308" fill="#8b949e" font-size="13">Condición de camino:</text>
+    <text x="60" y="328" fill="#f0f6fc" font-size="13" font-family="ui-monospace, 'SFMono-Regular', Menlo, monospace">code ^ 0x5eed5eed5eed == 0x1234abcd9876</text>
+    <text x="60" y="350" fill="#f0f6fc" font-size="13">Al final: open = true</text>
+
+    <!-- Camino 2 -->
+    <rect x="480" y="258" width="380" height="104" rx="10" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="500" y="284" fill="#58a6ff" font-size="15" font-weight="600">Camino 2</text>
+    <text x="500" y="308" fill="#8b949e" font-size="13">Condición de camino:</text>
+    <text x="500" y="328" fill="#f0f6fc" font-size="13" font-family="ui-monospace, 'SFMono-Regular', Menlo, monospace">code ^ 0x5eed5eed5eed != 0x1234abcd9876</text>
+    <text x="500" y="350" fill="#f0f6fc" font-size="13">Al final: open = false</text>
+
+    <line x1="230" y1="362" x2="230" y2="394" stroke="#8b949e" stroke-width="2"/>
+    <polygon points="224,394 230,406 236,394" fill="#8b949e"/>
+    <line x1="670" y1="362" x2="670" y2="394" stroke="#8b949e" stroke-width="2"/>
+    <polygon points="664,394 670,406 676,394" fill="#8b949e"/>
+
+    <!-- Resultados -->
+    <rect x="40" y="408" width="380" height="70" rx="10" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+    <text x="60" y="434" fill="#f85149" font-size="15" font-weight="600">Solver: sat</text>
+    <text x="60" y="458" fill="#f0f6fc" font-size="13">assertFalse(open) falla con code = 0x4cd9f520c69b</text>
+
+    <rect x="480" y="408" width="380" height="70" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="500" y="434" fill="#3fb950" font-size="15" font-weight="600">Solver: unsat</text>
+    <text x="500" y="458" fill="#f0f6fc" font-size="13">Ningún code de este camino rompe la aserción</text>
+  </g>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" role="img" aria-label="Qué cubre cada técnica. El fuzz y las invariantes prueban una muestra de entradas y una muestra de secuencias de hasta 500 llamadas. Halmos cubre todas las entradas, pero solo la secuencia que escribe el test, de una o pocas llamadas. El SMTChecker con CHC cubre todas las entradas y todas las secuencias, de cualquier longitud, pero solo en contratos pequeños y con la sintaxis que entiende">
+  <title>Tres técnicas</title>
+  <rect width="900" height="430" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="450" y="34" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Qué cubre cada técnica</text>
+
+    <!-- Cabecera -->
+    <text x="250" y="78" fill="#8b949e" font-size="14" font-weight="600">Entradas</text>
+    <text x="520" y="78" fill="#8b949e" font-size="14" font-weight="600">Secuencias de llamadas</text>
+    <line x1="30" y1="90" x2="870" y2="90" stroke="#30363d" stroke-width="2"/>
+
+    <!-- Fuzz -->
+    <text x="40" y="132" fill="#f0f6fc" font-size="16" font-weight="600">Fuzz e invariantes</text>
+    <text x="40" y="154" fill="#8b949e" font-size="13">forge, Medusa</text>
+    <rect x="250" y="112" width="230" height="40" rx="6" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <circle cx="275" cy="132" r="5" fill="#e3b341"/>
+    <circle cx="310" cy="124" r="5" fill="#e3b341"/>
+    <circle cx="352" cy="140" r="5" fill="#e3b341"/>
+    <circle cx="398" cy="126" r="5" fill="#e3b341"/>
+    <circle cx="447" cy="138" r="5" fill="#e3b341"/>
+    <rect x="520" y="112" width="340" height="40" rx="6" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <circle cx="548" cy="132" r="5" fill="#e3b341"/>
+    <circle cx="610" cy="126" r="5" fill="#e3b341"/>
+    <circle cx="690" cy="138" r="5" fill="#e3b341"/>
+    <circle cx="790" cy="128" r="5" fill="#e3b341"/>
+    <text x="250" y="176" fill="#e3b341" font-size="13">Una muestra</text>
+    <text x="520" y="176" fill="#e3b341" font-size="13">Una muestra, de hasta 500 llamadas</text>
+
+    <line x1="30" y1="198" x2="870" y2="198" stroke="#30363d" stroke-width="1"/>
+
+    <!-- Halmos -->
+    <text x="40" y="240" fill="#f0f6fc" font-size="16" font-weight="600">Halmos</text>
+    <text x="40" y="262" fill="#8b949e" font-size="13">tests check_</text>
+    <rect x="250" y="220" width="230" height="40" rx="6" fill="#3fb950" fill-opacity="0.25" stroke="#3fb950" stroke-width="2"/>
+    <rect x="520" y="220" width="340" height="40" rx="6" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <rect x="520" y="220" width="70" height="40" rx="6" fill="#3fb950" fill-opacity="0.25" stroke="#3fb950" stroke-width="2"/>
+    <text x="250" y="284" fill="#3fb950" font-size="13">Todas</text>
+    <text x="520" y="284" fill="#3fb950" font-size="13">La que escribe el test: una llamada o pocas</text>
+
+    <line x1="30" y1="306" x2="870" y2="306" stroke="#30363d" stroke-width="1"/>
+
+    <!-- SMTChecker -->
+    <text x="40" y="348" fill="#f0f6fc" font-size="16" font-weight="600">SMTChecker (CHC)</text>
+    <text x="40" y="370" fill="#8b949e" font-size="13">dentro de solc</text>
+    <rect x="250" y="328" width="230" height="40" rx="6" fill="#3fb950" fill-opacity="0.25" stroke="#3fb950" stroke-width="2"/>
+    <rect x="520" y="328" width="340" height="40" rx="6" fill="#3fb950" fill-opacity="0.25" stroke="#3fb950" stroke-width="2"/>
+    <text x="250" y="392" fill="#3fb950" font-size="13">Todas</text>
+    <text x="520" y="392" fill="#3fb950" font-size="13">Todas, de cualquier longitud</text>
+    <text x="450" y="420" fill="#f85149" font-size="13" text-anchor="middle">Solo en contratos pequeños y con la sintaxis que entiende</text>
+  </g>
+</svg>

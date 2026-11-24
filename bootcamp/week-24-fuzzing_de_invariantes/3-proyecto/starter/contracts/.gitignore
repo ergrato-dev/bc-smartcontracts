@@ -9,5 +9,6 @@ broadcast/*/31337/
 broadcast/**/dry-run/
 # ¿Qué? Tu URL RPC y tu clave de Etherscan.
 .env
-# ¿Qué? Lo que genera Medusa: el informe de cobertura (semana 24).
+# ¿Qué? Lo que genera Medusa: el informe de cobertura y la huella de sus artefactos (semana 24).
 crytic-export/
+.medusa-artifact-hash

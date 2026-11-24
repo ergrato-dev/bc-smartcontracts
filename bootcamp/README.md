@@ -58,7 +58,7 @@ La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está p
 | [22](week-22-vulnerabilidades_economicas/README.md) | [Vulnerabilidades económicas](week-22-vulnerabilidades_economicas/README.md) | ✅ |
 | [23](week-23-analisis_estatico/README.md) | [Análisis estático](week-23-analisis_estatico/README.md) | ✅ |
 | [24](week-24-fuzzing_de_invariantes/README.md) | [Fuzzing de invariantes](week-24-fuzzing_de_invariantes/README.md) | ✅ |
-| 25 | Verificación formal | ⬜ |
+| [25](week-25-verificacion_formal/README.md) | [Verificación formal](week-25-verificacion_formal/README.md) | ✅ |
 | 26 | Auditoría | ⬜ |
 
 ### Fase 6 — EVM avanzada y ecosistema (S27-34, 112 h)

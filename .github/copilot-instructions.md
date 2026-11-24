@@ -158,6 +158,11 @@ function greet() external pure returns (string memory) {
   `dynamic_test_linking = false` en `foundry.toml`. `compilar-starters.sh` solo ejecuta
   `forge test` en los starters con `foundry.toml`: la campaña de Medusa se verifica a mano con
   `bash test.sh` en la copia resuelta.
+- Un ejercicio con Halmos (desde la semana 25) trae `test.sh` (`forge test`, build con
+  `--deny warnings` y `halmos --no-status`) y, en `foundry.toml`, `dynamic_test_linking = false` y
+  `ast = true`: sin ellos Halmos no encuentra el `setUp` o los tests. Se verifica a mano con
+  `bash test.sh` en la copia resuelta, como Medusa. `halmos.toml` solo si el solver por defecto
+  falla o tarda en mediciones repetidas.
 - Cuando el paso **sustituye** código que tiene que estar activo en el starter (para que un
   analizador lo encuentre, semana 23), la línea vieja acaba en `// <- Paso N` y la nueva va
   debajo en `//> `. Al resolver, `compilar-starters.sh` borra las líneas `// <- Paso N`.
