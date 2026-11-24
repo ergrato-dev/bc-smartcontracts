@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" role="img" aria-label="Mapa de la memoria de Solidity con el string hola. De 0x00 a 0x3f, la zona de trabajo, para calcular hashes. En 0x40, el puntero de memoria libre, que aquí vale 0xc0. En 0x60, el slot cero, siempre 0. En 0x80, la longitud del string, 4, y en 0xa0 sus bytes, 686f6c61. Desde 0xc0, memoria libre: el puntero apunta ahí y la siguiente reserva empieza en esa posición. El puntero empieza en 0x80 y solo avanza.">
+  <title>Mapa de la memoria de Solidity</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#58a6ff"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="480" y="38" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">La memoria de Solidity, con el string "hola"</text>
+    <text x="40" y="72" fill="#8b949e" font-size="13">POSICIÓN</text>
+    <text x="150" y="72" fill="#8b949e" font-size="13">PALABRA DE 32 BYTES</text>
+    <text x="660" y="72" fill="#8b949e" font-size="13">QUÉ ES</text>
+
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">
+      <text x="40" y="112" fill="#8b949e">0x00</text>
+      <text x="40" y="152" fill="#8b949e">0x20</text>
+      <text x="40" y="216" fill="#8b949e">0x40</text>
+      <text x="40" y="272" fill="#8b949e">0x60</text>
+      <text x="40" y="328" fill="#8b949e">0x80</text>
+      <text x="40" y="384" fill="#8b949e">0xa0</text>
+      <text x="40" y="440" fill="#8b949e">0xc0</text>
+    </g>
+
+    <rect x="150" y="88" width="450" height="80" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="170" y="134" fill="#8b949e" font-size="14">zona de trabajo (scratch space)</text>
+    <text x="660" y="122" fill="#f0f6fc" font-size="14" font-weight="600">Zona de trabajo</text>
+    <text x="660" y="144" fill="#8b949e" font-size="13">64 bytes para hashes cortos</text>
+
+    <rect x="150" y="192" width="450" height="40" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="170" y="217" fill="#8fa4f0" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">000…00c0</text>
+    <text x="660" y="210" fill="#f0f6fc" font-size="14" font-weight="600">Puntero de memoria libre</text>
+    <text x="660" y="230" fill="#8b949e" font-size="13">empieza en 0x80; solo avanza</text>
+
+    <rect x="150" y="248" width="450" height="40" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="170" y="273" fill="#8b949e" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">000…0000</text>
+    <text x="660" y="266" fill="#f0f6fc" font-size="14" font-weight="600">Slot cero</text>
+    <text x="660" y="286" fill="#8b949e" font-size="13">siempre 0: el array vacío</text>
+
+    <rect x="150" y="304" width="450" height="40" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="170" y="329" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">000…0004</text>
+    <text x="660" y="322" fill="#3fb950" font-size="14" font-weight="600">"hola": longitud</text>
+    <text x="660" y="342" fill="#8b949e" font-size="13">4 bytes</text>
+
+    <rect x="150" y="360" width="450" height="40" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="170" y="385" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">686f6c61000…000</text>
+    <text x="660" y="378" fill="#3fb950" font-size="14" font-weight="600">"hola": bytes</text>
+    <text x="660" y="398" fill="#8b949e" font-size="13">en UTF-8, ceros a la derecha</text>
+
+    <rect x="150" y="416" width="450" height="40" rx="8" fill="none" stroke="#58a6ff" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="170" y="441" fill="#58a6ff" font-size="14">memoria libre</text>
+    <text x="660" y="434" fill="#58a6ff" font-size="14" font-weight="600">La siguiente reserva</text>
+    <text x="660" y="454" fill="#8b949e" font-size="13">empieza donde dice el puntero</text>
+
+    <path d="M600 212 H628 V436 H606" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/>
+    <text x="150" y="486" fill="#8b949e" font-size="13">Todo contrato de solc empieza con 6080604052: mstore(0x40, 0x80).</text>
+  </g>
+</svg>

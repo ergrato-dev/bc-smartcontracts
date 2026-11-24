@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" role="img" aria-label="Las zonas de datos de la EVM, anidadas por lo que duran. Dentro de una llamada, que empieza vacía en cada call: la pila, de hasta 1024 palabras de 32 bytes; la memoria, bytes que empiezan a cero; la calldata, la entrada, de solo lectura; y la returndata, lo que devolvió la última llamada. Dentro de la transacción: el transient storage, que se borra al acabarla. En la cuenta del contrato, para siempre: el storage, slots de 32 bytes, y el código, de solo lectura. Cada zona lleva sus opcodes.">
+  <title>Las zonas de datos de la EVM</title>
+  <rect width="960" height="500" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="480" y="38" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Las zonas de datos de la EVM</text>
+
+    <rect x="24" y="60" width="912" height="420" rx="12" fill="none" stroke="#627eea" stroke-width="2"/>
+    <text x="44" y="86" fill="#8fa4f0" font-size="13" font-weight="600">CUENTA DEL CONTRATO · dura para siempre</text>
+
+    <rect x="48" y="100" width="600" height="360" rx="10" fill="none" stroke="#e3b341" stroke-width="2" stroke-dasharray="8 5"/>
+    <text x="68" y="126" fill="#e3b341" font-size="13" font-weight="600">TRANSACCIÓN · se borra al acabar</text>
+
+    <rect x="72" y="140" width="552" height="228" rx="10" fill="none" stroke="#58a6ff" stroke-width="2"/>
+    <text x="92" y="166" fill="#58a6ff" font-size="13" font-weight="600">LLAMADA · empieza vacía en cada call</text>
+
+    <g font-size="13">
+      <rect x="88" y="180" width="256" height="84" rx="8" fill="#161b22" stroke="#30363d"/>
+      <text x="104" y="206" fill="#f0f6fc" font-size="15" font-weight="600">Pila</text>
+      <text x="104" y="228" fill="#8b949e">hasta 1024 palabras de 32 bytes</text>
+      <text x="104" y="250" fill="#f0883e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">PUSH DUP SWAP POP</text>
+
+      <rect x="352" y="180" width="256" height="84" rx="8" fill="#161b22" stroke="#30363d"/>
+      <text x="368" y="206" fill="#f0f6fc" font-size="15" font-weight="600">Memoria</text>
+      <text x="368" y="228" fill="#8b949e">bytes que empiezan a cero</text>
+      <text x="368" y="250" fill="#f0883e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">MLOAD MSTORE MSIZE</text>
+
+      <rect x="88" y="272" width="256" height="84" rx="8" fill="#161b22" stroke="#30363d"/>
+      <text x="104" y="298" fill="#f0f6fc" font-size="15" font-weight="600">Calldata</text>
+      <text x="104" y="320" fill="#8b949e">la entrada, solo lectura</text>
+      <text x="104" y="342" fill="#f0883e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">CALLDATALOAD CALLDATACOPY</text>
+
+      <rect x="352" y="272" width="256" height="84" rx="8" fill="#161b22" stroke="#30363d"/>
+      <text x="368" y="298" fill="#f0f6fc" font-size="15" font-weight="600">Returndata</text>
+      <text x="368" y="320" fill="#8b949e">lo que devolvió la última llamada</text>
+      <text x="368" y="342" fill="#f0883e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">RETURNDATASIZE RETURNDATACOPY</text>
+
+      <rect x="72" y="380" width="552" height="64" rx="8" fill="#161b22" stroke="#30363d"/>
+      <text x="92" y="406" fill="#f0f6fc" font-size="15" font-weight="600">Transient storage</text>
+      <text x="92" y="428" fill="#8b949e">slots de 32 bytes, de una llamada a otra dentro de la transacción</text>
+      <text x="604" y="406" fill="#f0883e" font-size="12" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TLOAD TSTORE</text>
+
+      <rect x="672" y="100" width="240" height="172" rx="8" fill="#161b22" stroke="#30363d"/>
+      <text x="688" y="128" fill="#f0f6fc" font-size="15" font-weight="600">Storage</text>
+      <text x="688" y="152" fill="#8b949e">2²⁵⁶ slots de 32 bytes</text>
+      <text x="688" y="174" fill="#8b949e">persisten entre transacciones</text>
+      <text x="688" y="196" fill="#8b949e">el acceso más caro</text>
+      <text x="688" y="252" fill="#f0883e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">SLOAD SSTORE</text>
+
+      <rect x="672" y="288" width="240" height="172" rx="8" fill="#161b22" stroke="#30363d"/>
+      <text x="688" y="316" fill="#f0f6fc" font-size="15" font-weight="600">Código</text>
+      <text x="688" y="340" fill="#8b949e">el runtime bytecode</text>
+      <text x="688" y="362" fill="#8b949e">solo lectura, público</text>
+      <text x="688" y="440" fill="#f0883e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">CODECOPY CODESIZE</text>
+    </g>
+  </g>
+</svg>

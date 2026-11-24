@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" role="img" aria-label="Calldata de totalLength con el array ab, cde. Detrás del selector ad70be72, la palabra 0x00 es el offset del array, 0x20, que apunta a la palabra 0x20. En 0x20, la longitud del array, 2. En 0x40 y 0x60, la tabla de offsets, contados desde 0x40: 0x40 apunta a 0x80 y 0x80 apunta a 0xc0. En 0x80, la longitud de ab, 2, y en 0xa0 sus bytes, 6162. En 0xc0, la longitud de cde, 3, y en 0xe0 sus bytes, 636465.">
+  <title>Calldata de un string[]</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#58a6ff"/>
+    </marker>
+    <marker id="y" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#e3b341"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="480" y="36" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">totalLength(["ab", "cde"]): offsets dentro de offsets</text>
+
+    <rect x="120" y="56" width="760" height="36" rx="8" fill="#161b22" stroke="#627eea" stroke-width="2"/>
+    <text x="140" y="79" fill="#8fa4f0" font-size="14" font-weight="600">Selector</text>
+    <text x="300" y="79" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">ad70be72</text>
+
+    <g font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+      <text x="40" y="129" fill="#8b949e">0x00</text>
+      <text x="40" y="177" fill="#8b949e">0x20</text>
+      <text x="40" y="225" fill="#8b949e">0x40</text>
+      <text x="40" y="273" fill="#8b949e">0x60</text>
+      <text x="40" y="321" fill="#8b949e">0x80</text>
+      <text x="40" y="369" fill="#8b949e">0xa0</text>
+      <text x="40" y="417" fill="#8b949e">0xc0</text>
+      <text x="40" y="465" fill="#8b949e">0xe0</text>
+    </g>
+
+    <rect x="120" y="104" width="760" height="40" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="140" y="129" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">000…0020</text>
+    <text x="860" y="129" fill="#58a6ff" font-size="13" text-anchor="end">offset del array: empieza en 0x20</text>
+
+    <rect x="120" y="152" width="760" height="40" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="140" y="177" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">000…0002</text>
+    <text x="860" y="177" fill="#f0f6fc" font-size="13" text-anchor="end">longitud del array: 2 elementos</text>
+
+    <rect x="120" y="200" width="760" height="40" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+    <text x="140" y="225" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">000…0040</text>
+    <text x="860" y="225" fill="#e3b341" font-size="13" text-anchor="end">elemento 0: 0x40 + 0x40 = 0x80</text>
+
+    <rect x="120" y="248" width="760" height="40" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+    <text x="140" y="273" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">000…0080</text>
+    <text x="860" y="273" fill="#e3b341" font-size="13" text-anchor="end">elemento 1: 0x40 + 0x80 = 0xc0</text>
+
+    <rect x="120" y="296" width="760" height="40" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <text x="140" y="321" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">000…0002</text>
+    <text x="860" y="321" fill="#f0883e" font-size="13" text-anchor="end">"ab": longitud</text>
+
+    <rect x="120" y="344" width="760" height="40" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <text x="140" y="369" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">6162000…000</text>
+    <text x="860" y="369" fill="#f0883e" font-size="13" text-anchor="end">"ab": bytes</text>
+
+    <rect x="120" y="392" width="760" height="40" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <text x="140" y="417" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">000…0003</text>
+    <text x="860" y="417" fill="#f0883e" font-size="13" text-anchor="end">"cde": longitud</text>
+
+    <rect x="120" y="440" width="760" height="40" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <text x="140" y="465" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">636465000…000</text>
+    <text x="860" y="465" fill="#f0883e" font-size="13" text-anchor="end">"cde": bytes</text>
+
+    <path d="M120 116 C 96 116 96 164 116 164" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/>
+    <path d="M880 212 C 916 212 916 308 884 308" fill="none" stroke="#e3b341" stroke-width="2" marker-end="url(#y)"/>
+    <path d="M880 268 C 940 268 940 404 884 404" fill="none" stroke="#e3b341" stroke-width="2" marker-end="url(#y)"/>
+    <text x="120" y="506" fill="#8b949e" font-size="13">Los offsets de la tabla se cuentan desde 0x40, justo después de la longitud del array.</text>
+  </g>
+</svg>

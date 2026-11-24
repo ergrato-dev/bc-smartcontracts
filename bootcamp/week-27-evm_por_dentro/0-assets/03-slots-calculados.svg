@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Cómo se calculan los slots de los tipos dinámicos. Un mapping en el slot p deja el slot p vacío y guarda el valor de la clave k en keccak256(k . p). Un mapping anidado calcula primero q = keccak256(k1 . p) y después keccak256(k2 . q). Un array dinámico guarda su longitud en el slot p y sus elementos a partir de keccak256(p): el elemento i en keccak256(p) + i. Un string de hasta 31 bytes va entero en el slot p, con sus bytes a la izquierda y la longitud por dos en el último byte; uno más largo guarda en p la longitud por dos más uno y sus datos a partir de keccak256(p).">
+  <title>Cómo se calculan los slots</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#58a6ff"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="#0d1117"/>
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="480" y="38" fill="#f0f6fc" font-size="20" font-weight="600" text-anchor="middle">Dónde guarda sus datos cada tipo dinámico</text>
+
+    <!-- Mapping -->
+    <rect x="24" y="60" width="448" height="210" rx="10" fill="none" stroke="#30363d"/>
+    <text x="44" y="88" fill="#8fa4f0" font-size="15" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">mapping(K =&gt; V)</text>
+    <text x="44" y="110" fill="#8b949e" font-size="13">en el slot p</text>
+    <rect x="44" y="128" width="150" height="48" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="119" y="150" fill="#f0f6fc" font-size="14" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">slot p</text>
+    <text x="119" y="168" fill="#8b949e" font-size="12" text-anchor="middle">vacío</text>
+    <line x1="194" y1="152" x2="278" y2="152" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/>
+    <text x="236" y="142" fill="#58a6ff" font-size="12" text-anchor="middle">semilla</text>
+    <rect x="282" y="128" width="170" height="48" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <text x="367" y="150" fill="#f0f6fc" font-size="13" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">keccak256(k . p)</text>
+    <text x="367" y="168" fill="#8b949e" font-size="12" text-anchor="middle">el valor de k</text>
+    <text x="44" y="210" fill="#8b949e" font-size="13">Anidado: q = keccak256(k1 . p), y el valor en</text>
+    <text x="44" y="232" fill="#f0f6fc" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">keccak256(k2 . q)</text>
+    <text x="44" y="254" fill="#8b949e" font-size="13">k . p: abi.encode(k, p), dos palabras</text>
+
+    <!-- Array -->
+    <rect x="488" y="60" width="448" height="210" rx="10" fill="none" stroke="#30363d"/>
+    <text x="508" y="88" fill="#8fa4f0" font-size="15" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">T[]</text>
+    <text x="508" y="110" fill="#8b949e" font-size="13">en el slot p</text>
+    <rect x="508" y="128" width="150" height="48" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="583" y="150" fill="#f0f6fc" font-size="14" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">slot p</text>
+    <text x="583" y="168" fill="#8b949e" font-size="12" text-anchor="middle">la longitud n</text>
+    <line x1="658" y1="152" x2="742" y2="152" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="746" y="128" width="170" height="40" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <text x="831" y="153" fill="#f0f6fc" font-size="13" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">keccak256(p) + 0</text>
+    <rect x="746" y="174" width="170" height="40" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <text x="831" y="199" fill="#f0f6fc" font-size="13" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">keccak256(p) + 1</text>
+    <text x="831" y="234" fill="#8b949e" font-size="13" text-anchor="middle">… hasta n − 1</text>
+    <text x="508" y="210" fill="#8b949e" font-size="13">Un elemento por slot</text>
+    <text x="508" y="232" fill="#8b949e" font-size="13">si ocupa 32 bytes;</text>
+    <text x="508" y="254" fill="#8b949e" font-size="13">los pequeños se empaquetan</text>
+
+    <!-- String corto -->
+    <rect x="24" y="290" width="448" height="226" rx="10" fill="none" stroke="#30363d"/>
+    <text x="44" y="318" fill="#8fa4f0" font-size="15" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">string corto</text>
+    <text x="44" y="340" fill="#8b949e" font-size="13">31 bytes o menos, en el slot p</text>
+    <rect x="44" y="360" width="408" height="48" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="60" y="390" fill="#f0f6fc" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">436c7562 … 7a 00 … 00</text>
+    <line x1="392" y1="366" x2="392" y2="402" stroke="#30363d"/>
+    <text x="422" y="390" fill="#3fb950" font-size="13" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">1e</text>
+    <text x="44" y="436" fill="#8b949e" font-size="13">Los bytes desde la izquierda;</text>
+    <text x="44" y="458" fill="#8b949e" font-size="13">en el último byte, longitud · 2 (par).</text>
+    <text x="44" y="480" fill="#8b949e" font-size="13">"Club de ajedrez": 15 bytes, 0x1e.</text>
+
+    <!-- String largo -->
+    <rect x="488" y="290" width="448" height="226" rx="10" fill="none" stroke="#30363d"/>
+    <text x="508" y="318" fill="#8fa4f0" font-size="15" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">string largo</text>
+    <text x="508" y="340" fill="#8b949e" font-size="13">32 bytes o más, en el slot p</text>
+    <rect x="508" y="360" width="150" height="48" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="583" y="382" fill="#f0f6fc" font-size="14" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">slot p</text>
+    <text x="583" y="400" fill="#8b949e" font-size="12" text-anchor="middle">longitud · 2 + 1</text>
+    <line x1="658" y1="384" x2="742" y2="384" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="746" y="360" width="170" height="40" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <text x="831" y="385" fill="#f0f6fc" font-size="13" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">keccak256(p) + 0</text>
+    <rect x="746" y="406" width="170" height="40" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <text x="831" y="431" fill="#f0f6fc" font-size="13" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">keccak256(p) + 1</text>
+    <text x="508" y="458" fill="#8b949e" font-size="13">El último bit, 1, dice "largo".</text>
+    <text x="508" y="480" fill="#8b949e" font-size="13">Los datos, 32 bytes por slot.</text>
+  </g>
+</svg>

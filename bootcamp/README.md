@@ -65,7 +65,7 @@ La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está p
 
 | Semana | Tema | Estado |
 |:--:|---|:--:|
-| 27 | La EVM por dentro | ⬜ |
+| [27](week-27-evm_por_dentro/README.md) | [La EVM por dentro](week-27-evm_por_dentro/README.md) | ✅ |
 | 28 | Yul e inline assembly | ⬜ |
 | 29 | Optimización de gas | ⬜ |
 | 30 | DeFi: AMM, vaults y préstamos | ⬜ |
